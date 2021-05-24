@@ -9,7 +9,7 @@
 <body>
 
 	
-	<%@ include file="views/support/supportDetail.jsp" %>
+	<%@ include file="views/common/mainPage.jsp" %>
 	
 	
 	

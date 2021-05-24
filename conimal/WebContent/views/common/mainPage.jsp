@@ -21,7 +21,7 @@
         position: relative;
         z-index: 1;
     }
-     .careing{
+     .animal{
         height: 20%;
         
      }
@@ -90,7 +90,7 @@
                 <image src="resources/images/slide.png" class="img1" width= "1200px"  height= "235px" ></image>
             </div>
             <br><br><br><br>
-            <div class="careing">
+            <div class="animal">
 
                 <div class="extitle">
                     <h3>보호중인 아이들</h3>
