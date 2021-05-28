@@ -1,0 +1,20 @@
+- 입양 절차 조회 O
+adoptionProcessView
+- 입소 절차 조회 O
+enterProcessView
+- 후원 게시판 O
+donateListView
+- 후원 상세보기 O
+donateDetailView
+- 자원봉사 게시판 O
+volunteerListView
+- 자원봉사 상세보기 O
+volunteerDetailView
+- 보호중인 아이들 게시판
+petListView
+- 보호중인 아이들 상세보기
+petDetailView
+- 보호소 게시판
+shelterListView
+- 보호소 상세보기
+shelterDetailView

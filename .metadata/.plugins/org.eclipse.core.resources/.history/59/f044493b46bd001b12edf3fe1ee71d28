@@ -1,0 +1,93 @@
+package com.kh.volunteer.model.vo;
+
+import java.sql.Date;
+
+public class Volunteer {
+	
+	private int volNo; // 자원봉사 글번호
+	private String volTitle; // 자원봉사 글제목
+	private String speriod; // 모집기간
+	private String volContent; // 상세설명
+	private Date volWritedate; // 작성일
+	private int memNo; // 보호소 번호
+	private String refType; //게시글 유형
+	
+	public Volunteer() {}
+
+	public Volunteer(int volNo, String volTitle, String speriod, String volContent, Date volWritedate, int memNo,
+			String refType) {
+		super();
+		this.volNo = volNo;
+		this.volTitle = volTitle;
+		this.speriod = speriod;
+		this.volContent = volContent;
+		this.volWritedate = volWritedate;
+		this.memNo = memNo;
+		this.refType = refType;
+	}
+
+	public int getVolNo() {
+		return volNo;
+	}
+
+	public void setVolNo(int volNo) {
+		this.volNo = volNo;
+	}
+
+	public String getVolTitle() {
+		return volTitle;
+	}
+
+	public void setVolTitle(String volTitle) {
+		this.volTitle = volTitle;
+	}
+
+	public String getSperiod() {
+		return speriod;
+	}
+
+	public void setSperiod(String speriod) {
+		this.speriod = speriod;
+	}
+
+	public String getVolContent() {
+		return volContent;
+	}
+
+	public void setVolContent(String volContent) {
+		this.volContent = volContent;
+	}
+
+	public Date getVolWritedate() {
+		return volWritedate;
+	}
+
+	public void setVolWritedate(Date volWritedate) {
+		this.volWritedate = volWritedate;
+	}
+
+	public int getMemNo() {
+		return memNo;
+	}
+
+	public void setMemNo(int memNo) {
+		this.memNo = memNo;
+	}
+
+	public String getRefType() {
+		return refType;
+	}
+
+	public void setRefType(String refType) {
+		this.refType = refType;
+	}
+
+	@Override
+	public String toString() {
+		return "Volunteer [volNo=" + volNo + ", volTitle=" + volTitle + ", speriod=" + speriod + ", volContent="
+				+ volContent + ", volWritedate=" + volWritedate + ", memNo=" + memNo + ", refType=" + refType + "]";
+	}
+	
+	
+
+}

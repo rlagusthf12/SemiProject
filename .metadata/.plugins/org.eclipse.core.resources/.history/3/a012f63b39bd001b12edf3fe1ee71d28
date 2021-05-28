@@ -1,0 +1,24 @@
+package com.kh.volunteer.model.service;
+
+import static com.kh.common.JDBCTemplate.close;
+import static com.kh.common.JDBCTemplate.*;
+
+import java.sql.Connection;
+
+import com.kh.volunteer.model.dao.VolunteerDao;
+
+public class VolunteerService {
+	
+	public int selectListCount() {
+		
+		Connection conn = getConnection();
+		
+		int listCount = new VolunteerDao().selectListCount();
+		
+		close(conn);
+		
+		return listCount;
+		
+	}
+
+}

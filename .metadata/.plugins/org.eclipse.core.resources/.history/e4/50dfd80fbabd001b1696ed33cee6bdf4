@@ -1,0 +1,20 @@
+package com.kh.donation.model.vo;
+
+import java.sql.Date;
+
+public class Donation {
+	
+	private int doNo; // 후원 글번호
+	private String doTitle; // 후원 글제목
+	private String doContent; // 상세설명
+	private Date doWritedate; // 작성일
+	private String doAdmission; // 승인여부
+	private String memNo; // 작성시 회원번호 / 조회시 회원아이디
+	private String refType; // 게시글 유형
+	private int doCount; // 조회수
+	
+	private String shName; // 보호소 이름
+	private String shPhone; // 보호소 연락처
+	private String shAddress; // 보호소 주소
+
+}

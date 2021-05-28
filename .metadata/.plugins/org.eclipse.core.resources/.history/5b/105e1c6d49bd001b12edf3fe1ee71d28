@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<entry key="selectListCount">
+		SELECT
+		       COUNT(*) COUNT
+		  FROM VOLUNTEER     
+	</entry>
+	
+	<entry key="selectList">
+		SELECT *
+		  FROM (
+		        SELECT ROWNUM RNUM, A.*
+		          FROM (
+		                SELECT 
+		                       VOL_NO
+		                     , VOL_TITLE
+		                     , MEM_ID
+		                     , VOL_COUNT
+		                     , VOL_WRITEDATE
+		                  FROM VOLUNTEER
+		                  JOIN MEMBER USING(MEM_NO)
+		                 ORDER
+		                    BY VOL_WRITEDATE DESC
+		                ) A
+		        )
+		 WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+</properties>

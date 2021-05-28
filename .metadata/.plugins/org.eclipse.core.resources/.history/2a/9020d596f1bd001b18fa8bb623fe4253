@@ -1,0 +1,39 @@
+package com.kh.donation.model.service;
+
+import static com.kh.common.JDBCTemplate.close;
+import static com.kh.common.JDBCTemplate.getConnection;
+
+import java.sql.Connection;
+import java.util.ArrayList;
+
+import com.kh.common.model.vo.PageInfo;
+import com.kh.donation.model.dao.DonationDao;
+import com.kh.donation.model.vo.Donation;
+
+public class DonationService {
+	
+	public int selectListCount() {
+		
+		Connection conn = getConnection();
+		
+		int listCount = new DonationDao().selectListCount(conn);
+		
+		close(conn);
+		
+		return listCount;
+		
+	}
+	
+	public ArrayList<Donation> selectList(PageInfo pi) {
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Donation> list = new DonationDao().selectList(conn, pi);
+		
+		close(conn);
+		
+		return list;
+		
+	}
+
+}

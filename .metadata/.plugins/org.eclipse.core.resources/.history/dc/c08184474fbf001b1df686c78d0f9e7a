@@ -1,0 +1,19 @@
+package com.kh.animal.model.service;
+
+import static com.kh.common.JDBCTemplate.*;
+
+public class AnimalService {
+	
+	public int selectListCount() {
+		
+		Connection conn= getConneciton();
+		
+		int listCount = new AnimalDao().selectListCount(conn);
+		
+		close(conn);
+		
+		return listCount;
+		
+	}
+
+}

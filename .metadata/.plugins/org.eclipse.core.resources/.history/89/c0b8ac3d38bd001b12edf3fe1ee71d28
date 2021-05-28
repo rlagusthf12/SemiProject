@@ -1,0 +1,21 @@
+package com.kh.volunteer.model.service;
+
+import static com.kh.common.JDBCTemplate.*;
+
+import java.sql.Connection;
+
+public class VolunteerService {
+	
+	public int selectListCount {
+		
+		Connection conn = getConection();
+		
+		int listCount = new VolunteerService().selectListCount();
+		
+		close(conn);
+		
+		return listCount;
+		
+	}
+
+}

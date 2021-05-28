@@ -1,0 +1,60 @@
+package com.kh.animal.controller;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.kh.animal.model.service.AnimalService;
+import com.kh.animal.model.vo.Animal;
+
+/**
+ * Servlet implementation class DogDetailController
+ */
+@WebServlet("/detail.dog")
+public class DogDetailController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public DogDetailController() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		int animalNo = Integer.parseInt(request.getParameter("ano"));
+		
+		AnimalService aService = new AnimalService();
+		
+		int result = aService.increaseCount(animalNo);
+		
+		if(result > 0) {
+			
+			Animal a = aService.selectDog(animalNo);
+			
+			request.setAttribute("a", a);
+			
+			request.getRequestDispatcher("views/animal/animalDetailView.jsp").forward(request, response);
+			
+		}
+ 		
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

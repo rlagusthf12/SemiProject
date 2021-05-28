@@ -1,0 +1,23 @@
+package com.kh.shelter.model.service;
+
+import java.sql.Connection;
+
+import com.kh.shelter.model.dao.ShelterDao;
+
+import static com.kh.common.JDBCTemplate.*;
+
+public class ShelterService {
+	
+	public int selectDogCount() {
+		
+		Connection conn = getConnection();
+		
+		int listCount = new ShelterDao().selectDogCount(conn);
+		
+		close(conn);
+		
+		return listCount;
+		
+	}
+
+}

@@ -1,0 +1,15 @@
+package com.kh.volunteer.model.vo;
+
+import java.sql.Date;
+
+public class Volunteer {
+	
+	private int volNo; // 자원봉사 글번호
+	private String volTitle; // 자원봉사 글제목
+	private String speriod; // 모집기간
+	private String volContent; // 상세설명
+	private Date volWritedate; // 작성일
+	private int memNo; // 보호소 번호
+	private String refType; //게시글 유형
+
+}
