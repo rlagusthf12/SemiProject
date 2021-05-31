@@ -13,7 +13,9 @@ public class Member {
 	private String status;
 	private int memCode;
 	
-	public Member() {}
+	public Member(){
+		
+	}
 
 	public Member(int memNo, String memId, String memPwd, String memName, String email, Date enrollDate, String status,
 			int memCode) {
@@ -26,6 +28,16 @@ public class Member {
 		this.enrollDate = enrollDate;
 		this.status = status;
 		this.memCode = memCode;
+	}
+	
+
+
+	public Member(String memId, String memPwd, String memName, String email) {
+		super();
+		this.memId = memId;
+		this.memPwd = memPwd;
+		this.memName = memName;
+		this.email = email;
 	}
 
 	public int getMemNo() {

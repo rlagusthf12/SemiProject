@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"
+    import="com.kh.member.model.vo.Member"%>
 <%
 	String contextPath = request.getContextPath();
-
+	Member loginUser = (Member)session.getAttribute("loginUser");
 	String alertMsg = (String)session.getAttribute("alertMsg");
 %>    
 <!DOCTYPE html>
@@ -20,6 +21,7 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <style>
     .on{
          width: 1200px;
@@ -138,25 +140,51 @@
 
             <div class="on">  
 
-                    <image src="resources/images/mainLogo.png" width="558px" height="120px" class="mainLogo">
+                    <img src="resources/images/mainLogo.png" width="558px" height="120px" class="mainLogo">
                         
                         <div class="login" align="center">
-                   
-                            <form action="" id="loginform">                
-                           
+                            <% if(loginUser == null){ %>   
+                            <form action="<%= contextPath %>/login.me" id="loginform" method="POST">                
+                                
                                 <div class="id_pwd">        
-                                    <input type="text" class="id" value="아이디"><br>
-                                    <input type="password" class="pwd" value="비밀번호" >                    
+                                    <input type="text" class="id" placeholder="아이디" name="memId" required><br>
+                                    <input type="password" class="pwd" placeholder="비밀번호" name="memPwd" required>                    
                                 </div>
                          
                                 <div class="loginbtn">
                                     <input type="submit" value="login">
                                 </div>
+                                
                             </form>      
-                            <span class="find">ID/PW 찾기 | 회원가입</span>
+                            <a href = "<%=contextPath%>/searchIdPwd.me" id="searchMem" style="font-style: normal; text-decoration: none; color: black;" class="find">ID/PW 찾기</a> | 
+                            <a href = "<%=contextPath%>/joinChooseForm.me" id="enrollMem" style="font-style: normal; text-decoration: none; color: black;" class="find">회원가입</a>
                         </div>   
+                        
+          
+                        <script>
+                        
+                            function enrollPage(){
+                                //location.href = "<%= contextPath %>/views/member/memberEnrollForm.jsp";
+                                // 웹 애플리케이션의 디렉토리 구조가 url에 노출되면 보안에 위험함
+                                
+                                // 단순한 정적인 페이지 요청이라고 해도 반드시 servlet거쳐갈 것! => url에서 서블릿 매핑값만 노출됨
+                                location.href="<%= contextPath%>/enrollForm.me";
+                            }
+                        </script>
+                        
+                        <% } else { %>
+                            <div id="user-info">
+                                <b><%=loginUser.getMemName() %>님</b>의 방문을 환영합니다. <br><br>
+                                <div align="center">
+                                <a href="<%= contextPath %>/myPage.me">마이페이지</a> 
+                                <a href="<%= contextPath %>/logout.me">로그아웃</a>
+                                </div>
+                            </div>
+                        <% } %>
                        
             </div>
+            
+            
             <div class="navi">                
                     <ul id="navi1" >
                         <li><a href="">코니멀 소개</a></li>

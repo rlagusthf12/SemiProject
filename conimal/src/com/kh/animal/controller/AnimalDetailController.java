@@ -31,6 +31,8 @@ public class AnimalDetailController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		request.setCharacterEncoding("UTF-8");
+		
 		int animalNo = Integer.parseInt(request.getParameter("ano"));
 		
 		AnimalService aService = new AnimalService();

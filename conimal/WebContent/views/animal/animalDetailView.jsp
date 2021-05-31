@@ -42,7 +42,7 @@
 	
 		<br>
 	
-		<table border>
+		<table border="1">
 			<tr>
 				<th>보호소명</th>
 				<td><%=a.getShName() %></td>
@@ -68,8 +68,33 @@
 		<br>
 	
 		<div align="center">
-			<button type="button" class="btn btn-primary" onclick="history.back();">목록으로</button>
+			<%if(loginUser != null){ %>
+				<button type="button" class="btn btn-primary" onclick="history.back();">목록으로</button>
+				<button type="button" class="btn btn-primary" onclick="bookmark();">즐겨찾기</button>
+			<%} else { %>
+				<button type="button" class="btn btn-primary" onclick="history.back();">목록으로</button>
+			<%} %>
 		</div>
+		
+		<script>
+			function bookmark() {
+				$.ajax({
+					url:"bookmark.an",
+					data:{
+						mno:<%=loginUser.getMemNo()%>,
+						ano:<%=a.getAnNo()%>
+					},
+					type:"post",
+					success:function(result){
+						if(result > 0) {
+							alert("즐겨찾기에 추가되었습니다");
+						}
+					},error:function(){
+						alert("즐겨찾기 실패");
+					}
+				});
+			}
+		</script>
 	
 		<br><br>
 	

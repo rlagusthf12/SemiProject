@@ -69,5 +69,21 @@
 		 WHERE AN_NO = ?
 	</entry>
 	
+	<entry key="insertBookMark">
+		INSERT
+		  INTO BOOKMARK
+		     (
+		       MEM_NO
+		     , BINFO_NO
+		     , MARK_DATE
+		     )
+		VALUES
+		     (
+		       ?
+		     , ?
+		     , SYSDATE
+		     )     
+	</entry>
+	
 	
 </properties>

@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.kh.animal.model.vo.Animal;
+import com.kh.animal.model.vo.Bookmark;
 import com.kh.common.model.vo.PageInfo;
 
 public class AnimalDao {
@@ -199,6 +200,29 @@ public class AnimalDao {
 		}
 		
 		return a;
+		
+	}
+	
+	public int insertBookMark(Connection conn, Bookmark bk) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertBookMark");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bk.getMemNo());
+			pstmt.setInt(1, bk.getBinfoNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
 		
 	}
 

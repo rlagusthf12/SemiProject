@@ -1,12 +1,16 @@
 package com.kh.animal.model.service;
 
-import static com.kh.common.JDBCTemplate.*;
+import static com.kh.common.JDBCTemplate.close;
+import static com.kh.common.JDBCTemplate.commit;
+import static com.kh.common.JDBCTemplate.getConnection;
+import static com.kh.common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
 import java.util.ArrayList;
 
 import com.kh.animal.model.dao.AnimalDao;
 import com.kh.animal.model.vo.Animal;
+import com.kh.animal.model.vo.Bookmark;
 import com.kh.common.model.vo.PageInfo;
 
 public class AnimalService {
@@ -86,6 +90,24 @@ public class AnimalService {
 		close(conn);
 		
 		return a;
+		
+	}
+	
+	public int insertBookMark(Bookmark bk) {
+		
+		Connection conn = getConnection();
+		
+		int result = new AnimalDao().insertBookMark(conn, bk);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
 		
 	}
 
