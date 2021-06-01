@@ -2,5 +2,102 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 
+<entry key="selectListCount">
+		SELECT
+		       COUNT(*) COUNT
+		  FROM ( select DO_NO,
+					        	   DO_TITLE,
+					        	   DO_CONTENT,
+					        	   DO_WRITEDATE,
+					        	   DO_ADMISSION,
+					        	   a.MEM_NO,
+					        	   a.REF_TYPE,
+					        	   DO_COUNT,
+					        	   SH_NAME,
+					        	   SH_PHONE,
+					        	   FILE_NO,
+					        	   REF_NO,
+					        	   ORIGIN_NAME,
+					        	   CHANGE_NAME,
+					        	   FILE_PATH,
+					        	   UPLOAD_DATE
+					        	   
+					       
+							from donation a, attachment b, shelter c
+							where (a.ref_type=b.ref_type and a.do_no=b.ref_no and c.mem_no=a.mem_no) and (do_title like ? or do_content like ? or sh_name like ?)
+							order by do_writedate desc)	
+	</entry>
+	
+<entry key="selectDonationList">
+	 
+ SELECT *
+		  FROM (
+		        SELECT ROWNUM RNUM, A.*
+		          FROM (		                      
+		                         
+					        select DO_NO,
+					        	   DO_TITLE,
+					        	   DO_CONTENT,
+					        	   DO_WRITEDATE,
+					        	   DO_ADMISSION,
+					        	   a.MEM_NO,
+					        	   b.REF_TYPE,
+					        	   DO_COUNT,
+					        	   SH_NAME,
+					        	   SH_PHONE,
+					        	   FILE_NO,
+					        	   REF_NO,
+					        	   ORIGIN_NAME,
+					        	   CHANGE_NAME,
+					        	   FILE_PATH,
+					        	   UPLOAD_DATE
+					        	   
+					       
+							from donation a, attachment b, shelter c
+							where (a.ref_type=b.ref_type and a.do_no=b.ref_no and c.mem_no=a.mem_no) and (do_title like ? or do_content like ? or sh_name like ?)
+							order by do_writedate desc
+		                ) A
+		        )
+		 WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="selectDonation">
+		select DO_NO,
+			   DO_TITLE,
+			   DO_CONTENT,
+			   DO_WRITEDATE,
+			   DO_ADMISSION,
+			   a.MEM_NO,
+			   b.REF_TYPE,
+			   DO_COUNT,
+			   SH_NAME,
+			   SH_PHONE,
+			   FILE_NO,
+			   REF_NO,
+			   ORIGIN_NAME,
+			   CHANGE_NAME,
+			   FILE_PATH,
+			   UPLOAD_DATE
+			 
+					       
+		from donation a, attachment b, shelter c
+		where (a.ref_type=b.ref_type and a.do_no=b.ref_no and c.mem_no=a.mem_no) and do_no =?
+		order by do_writedate desc 
+	</entry>
+	
+	<entry key="approveDonation">
+		UPDATE 
+		       Donation
+		   SET do_admission = ?
+		    
+		 WHERE do_no = ?
+	</entry>
+	
+	
+	<entry key="deleteDonation">
+		delete from  DONATION		   
+		 WHERE DO_NO = ?
+	</entry>
+
 	
 </properties>

@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.kh.donation.model.vo.Donation"%>
+   <% Donation dona = (Donation)request.getAttribute("dona");    
+	  String keyword =(String)request.getAttribute("keyword");
+	  String admission = "Y";
+	  
+   %>
+   
 <!DOCTYPE html>
 <html>
 <head>
@@ -65,25 +71,13 @@
      .list-area>tbody>tr>td{
      border-top: 1px solid #ccc; 
       border-bottom: 1px solid #ccc; 
+      width:500px;
     	
     }
-   
-     
-     .paging-area>button{
-    font-size: 16px; 
-    color: rgb(255, 255, 255); 
-    text-align: center; 
-    line-height: 2.5em; 
-    border-radius: 4px; 
-	background-color: rgb(244, 244, 244);
-	color:black;
-    border:0px;
-    border-radius:50px;    
-    width:30px;
-    height:30px;
-    }
+        
+ 
   .approvebtn, .rejectbtn{
-    float:right;
+   
     font-size: 16px;
     color: rgb(64, 64, 64);
     text-align: center;
@@ -93,6 +87,9 @@
     border-radius: 4px; 
     width: 100px; height: 40px;
     margin:20px;
+  }
+  .btn{
+  float:right;
   }
 
     
@@ -106,57 +103,58 @@
  
   </div>
 	<div class="head2">
-  <table class="list-area" >
+  <table class="list-area">
   <tbody>
                  <tr>
 		         <th>제목</th>
-		         <td>하얀 강아지는 익산에 위치한 200여마리 아이들의 진정한 보금자리입니다.</td>
+		         <td><%=dona.getDoTitle()%></td>
 		        </tr>
 		         <tr>
 		         <th>보호소명</th>
-		          <td>하얀 강아지</td>
+		          <td><%=dona.getShelterName()%></td>
 		         </tr>
 		         <tr>
 		         <th>시설 연락처</th>
-		          <td>010-1234-7777</td>
+		          <td><%=dona.getShelterPhone()%></td>
 		         </tr>
 		          <tr>
 		         <th>등록 일자</th>
-		          <td>2021-05-04</td>
+		          <td><%=dona.getDoWriteDate()%></td>
 		         </tr>
 		         </tbody>
 		                
         </table>
   </div>
   <div class="imglist" align="center">
-  	<img src="">
-   <div align="center" class="paging-area">
-
-            	<button > &lt; </button>		
-	            	<button disabled></button>
-	            	<button disabled></button>
-	            	<button disabled></button>
-                    <button disabled></button>  
-            	<button > &gt; </button>
-		
-        </div>     
+  	<img src="<%=contextPath %>/<%=dona.getFilePath() + dona.getChangeName()%>" width="200" height="150">   
   </div>
   
   
   <div class="content" align="center" >
   <hr>
   <div class="contentex">
-  <p>안녕하세요 하얀 강아지는 전라북도 익산에 위치한 200여마리 강아지 고양이들의 안전하고 따뜻한 쉼터입니다.</p>
+  <p><%=dona.getDoContent()%></p>
   </div>
   </div>
   
   
-  <div class="btn">
- 	
- 	<button class="rejectbtn">거절</button>
- 	<button class="approvebtn">승인</button>
+  <div class="btn">	
+  <% if(dona.getDoAdmission().equals("Y")||loginUser.getMemCode()!=1){%>
+  <% }else{%>
+ 	<button class="approvebtn" onclick="location.href='<%=contextPath%>/Approve.do?doNo=<%=dona.getDoNo()%>&admission=<%=admission%>';">승인</button>
+ 	<button class="rejectbtn" onclick="confirm1();">거절</button>
+ 	<% }%>
  </div>
-  
+   <script>
+ function confirm1(){
+	 if(confirm("정말 거절하시겠습니까?")==true){
+		 location.href='<%=contextPath%>/Reject.do?doNo=<%=dona.getDoNo()%>';
+		
+	 } else{
+		 return;
+	 }
+ }
+ </script>
  
   
   </div>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.kh.community.notice.model.vo.Notice"%>
+ <% Notice n = (Notice)request.getAttribute("n");%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,20 +15,31 @@
 	}
 	.title{
 	height: 58px;
-	width:293px;	
+	width:100%;	
+	}
+	.title>h1{
+	font-weight:bold;font-size:40px;
 	}
 	.date{
 	height:20px;
-	width:85px;
+	width:300px;
+	margin-top:30px;	
+	font-size: 20px; color: rgb(158, 158, 158);
 	}
 	.content{
 	width:761px;
 	height:415px;
-	margin-top:80px;
+	margin-top:80px;	
 	}
- 
+	.content>p{
+	font-size: 15px; border-width: 0px; border-style: none;
+	}
+ 	
+ 	.btn{
+ 	 float:right;
+ 	}
   .deletebtn, .modifybtn{
-    float:right;
+   
     font-size: 16px;
     color: rgb(64, 64, 64);
     text-align: center;
@@ -44,25 +56,34 @@
 <body>
 <%@ include file="../../common/menubar.jsp" %>
   <div class="body"> 
-  <div calss="title">
-  <h1>사이트 이용 가이드</h1>
+  <div class="title">
+  <h1><%=n.getNoticeTitle() %></h1>
   </div>
   <div class="date">
-  2021-05-02
+  <%=n.getNoticeDate()%>
   </div>
   <div class="content">
   <p>
-  	사이트 이용에 대한 안내입니다.<br><br>
-  	아래의 사항에 따라 이용해주세요.
-  	<br><br><br><br><br><br><br><br><br><br>
-  	감사합니다.
+  	<%=n.getNoticeContent()%>
   </p>   
   </div>
   <hr>
  <div class="btn">
- 	<button class="deletebtn">삭제</button>
- 	<button class="modifybtn">수정</button>
+ <% if(loginUser != null && loginUser.getUserNo()==n.getNoticeMem()){ %>
+ 	<button  onclick="confirm1();" class="deletebtn">삭제</button>
+ 	<button  onclick="location.href='<%= contextPath %>/UpdateForm.no?noticeNo=<%= n.getNoticeNo() %>'" class="modifybtn">수정</button>
+ <% } %>
  </div>
+ <script>
+ function confirm1(){
+	 if(confirm("정말 삭제하시겠습니까?")==true){
+		 location.href='<%= contextPath %>/delete.no?noticeNo=<%=n.getNoticeNo()%>';
+		
+	 } else{
+		 return;
+	 }
+ }
+ </script>
   
   
   </div>

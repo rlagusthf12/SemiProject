@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.kh.shelter.model.vo.Shelter"%>
+ <% Shelter sh = (Shelter)request.getAttribute("sh");
+ 	String admission ="Y";
+ %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +26,7 @@
   	
   }
   .body1{
-  	height:370px;
+  	height:800px;
   	width:777px;
   	
   }
@@ -50,9 +53,9 @@
      
     ul{
      list-style: none;
+    margin-right:50px;
     }
-  .approvebtn, .rejectbtn{
-    float:right;
+  .approvebtn, .rejectbtn{    
     font-size: 16px;
     color: rgb(64, 64, 64);
     text-align: center;
@@ -62,6 +65,11 @@
     border-radius: 4px; 
     width: 100px; height: 40px;
     margin:20px;
+  }
+  .btn{
+  float:right;
+  margin-top:50px;
+  margin-left:30px;
   }
 
     
@@ -79,19 +87,19 @@
   <tbody>
                  <tr>
 		         <th>보호소명</th>
-		         <td>도그마루</td>
+		         <td><%=sh.getShelterName()%></td>
 		        </tr>
 		         <tr>
 		         <th>주소</th>
-		          <td>서울시 송파구 석촌호수로</td>
+		          <td><%=sh.getShelterAddress()%></td>
 		         </tr>
 		         <tr>
 		         <th>시설 연락처</th>
-		          <td>1566-8713</td>
+		          <td><%=sh.getShelterPhone() %></td>
 		         </tr>
 		          <tr>
 		         <th>등록일자</th>
-		          <td>2021-05-24</td>
+		          <td><%=sh.getEnrollDate()%></td>
 		         </tr>
 		         <tr>
 		         <th>첨부파일</th>
@@ -109,6 +117,12 @@
 		         </ul>
 		         <td>
 		         </tr>
+		         <tr>
+		         <th height="500">보호소 소개</th>
+		         <td>
+		         <%=sh.getShelterAbout() %>
+		         </td>
+		         </tr>
 		         </tbody>
 		                
         </table>
@@ -120,11 +134,21 @@
   
   
   <div class="btn">
- 	
- 	<button class="rejectbtn">거절</button>
- 	<button class="approvebtn">승인</button>
- </div>
   
+ 	<button class="approvebtn" onclick="location.href='<%=contextPath%>/Approve.sh?memNo=<%=sh.getMemNo()%>&admission=<%=admission %>';">승인</button>
+ 	<button class="rejectbtn" onclick="confirm1();">거절</button>
+ 	
+ </div>
+  <script>
+ function confirm1(){
+	 if(confirm("정말 거절하시겠습니까?")==true){
+		 location.href='<%=contextPath%>/Reject.sh?memNo=<%=sh.getMemNo()%>';
+		
+	 } else{
+		 return;
+	 }
+ }
+ </script>
  
   
   </div>

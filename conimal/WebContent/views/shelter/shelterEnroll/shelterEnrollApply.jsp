@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.kh.common.model.vo.PageInfo, java.util.ArrayList, com.kh.shelter.model.vo.Shelter"%>
+     <% ArrayList<Shelter> list = (ArrayList<Shelter>)request.getAttribute("list");
+      PageInfo pi = (PageInfo)request.getAttribute("pi");
+      int currentPage = pi.getCurrentPage();
+	  int startPage = pi.getStartPage();
+	  int endPage = pi.getEndPage();
+	  int maxPage = pi.getMaxPage();
+	  String keyword =(String)request.getAttribute("keyword");
+   %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -120,7 +128,7 @@
 	
 <body>
 
-<%@ include file="../common/menubar.jsp" %>
+<%@ include file="../../common/menubar.jsp" %>
 <div class="body">  
 <div class="head1">
   <h5>통합관리>보호소 등록 신청 조회</h5> 
@@ -128,82 +136,77 @@
  
   </div>
   <div class="head2"align="right">
+ 
+  <form action="<%=contextPath%>/Main.sh?currentPage=1" id="Search-Shelter" method="post">
   <div class="search" >
-  <button class="searchbutton">검색</button>
-  <input type="search" class="searchbar">
+  <button type="submit" class="searchbutton">검색</button>
+  <input type="text" class="searchbar" name="keyword">
   </div>
-  </div>
+  </form>
+  </div> 
 	<div class="body1">
   <table class="list-area" >
             <thead>
                 <tr>
                     <th width="50">No.</th>
-                    <th width="100">지역</th>
-                    <th width="150">보호소명</th>
-                    <th width="365">주소</th>
-                    <th width="200">연락처</th>
-                    <th width="100">신청일자</th>
+                    <th width="110">지역</th>
+                    <th width="160">보호소명</th>
+                    <th width="360">주소</th>
+                    <th width="210">연락처</th>
+                    <th width="110">신청일자</th>
                 </tr>
             </thead>
-            <tbody>
+             <tbody>
+            <%if(list.isEmpty()){ %>
+            <tr>
+            <td colspan="6">존재하는 공지사항이 없습니다.</td>
+            </tr>
+            <% } else {%>
+            <% for(Shelter sh: list){ %>
                  <tr>
-		                 <td>1</td>
-		                 <td>서울특별시</td>
-		                 <td>아이조아</td>
-		                  <td>서울시 송파구 석촌호수로</td>
-		                   <td>010-2282-2828</td>
-		                    <td>2021-05-24</td>
-		         </tr>
-		           <tr>
-		                 
-		                 <td>1</td>
-		                 <td>서울특별시</td>
-		                 <td>아이조아</td>
-		                  <td>서울시 송파구 석촌호수로</td>
-		                   <td>010-2282-2828</td>
-		                    <td>2021-05-24</td>
-		         </tr>
-		           <tr>
-		                
-		                <td>1</td>
-		                 <td>서울특별시</td>
-		                 <td>아이조아</td>
-		                  <td>서울시 송파구 석촌호수로</td>
-		                   <td>010-2282-2828</td>
-		                    <td>2021-05-24</td>
-		         </tr>
-		         <tr>
-		         	<td>1</td>
-		                 <td>서울특별시</td>
-		                 <td>아이조아</td>
-		                  <td>서울시 송파구 석촌호수로</td>
-		                   <td>010-2282-2828</td>
-		                    <td>2021-05-24</td>
-		         </tr>
-		         
-               
-                
+		                 <td><%=sh.getMemNo()%></td>
+		                 <td><%=sh.getShelterLocal()%></td>
+		                 <td><%=sh.getShelterName()%></td>
+		                 <td><%=sh.getShelterAddress()%></td>
+		                 <td><%=sh.getShelterPhone()%></td>
+		                 <td><%=sh.getEnrollDate()%></td>
+		         </tr>		         
+                <%} %>
+                <%} %>
             </tbody>
         </table>
   </div>
+  
+   <script>
+  	$(function(){
+  		$(".list-area>tbody>tr").click(function(){
+  			var memNo =$(this).children().eq(0).text();
+  			location.href='<%=contextPath%>/Detail.sh?memNo='+memNo;
+  		})
+  	})
+  </script>
   <div class="foot1">
   
-        <div align="center" class="paging-area">
-
-            	<button > &lt; </button>		
-	            	<button disabled>1</button>
-	            		<button >2</button>
-	            		<button >3</button>
-                        <button >4</button>  
-                        <button >5</button>              
-            	<button > &gt; </button>
-		
-        </div>        
+          <div align="center" class="paging-area">
+				<% if(currentPage != 1){ %>
+            	<button onclick="location.href='<%=contextPath%>/Main.sh?currentPage=<%=currentPage-1%>&keyword=<%=keyword%>';" > &lt; </button>
+            	<% } %>
+            	 <% for(int p=startPage; p<=endPage; p++){ %>	
+            	 <% if(p != currentPage){ %>	
+	            	<button onclick="location.href='<%=contextPath%>/Main.sh?currentPage=<%= p %>&keyword=<%=keyword%>';"><%= p %></button> 
+	             <% }else { %>
+	            	<button disabled><%= p %></button>
+            	<% } %>
+            	
+            <% } %>    
+            	<% if(currentPage != maxPage){ %>       
+            	<button onclick="location.href='<%=contextPath%>/Main.sh?currentPage=<%=currentPage+1%>&keyword=<%=keyword%>';"> &gt; </button>
+            	<% } %>  
   </div>
 
   
-  
   </div>
-         <%@ include file="../common/footerbar.jsp" %>
+  </div>
+         <%@ include file="../../common/footerbar.jsp" %>
 </body>
 </html>

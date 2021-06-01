@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.kh.introduce.model.vo.Introduce, com.kh.attachment.model.vo.Attachment"
+    %>
+    <% Introduce intro = (Introduce)request.getAttribute("intro");
+    Attachment at= (Attachment)request.getAttribute("at");
+    String a = "resources/images/dog.png";
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,21 +62,29 @@
   
   <div class="head1">
   <h5>코니멀 소개>사이트 소개</h5> 
-  <h1>사이트소개</h1>
+  <h1><%=intro.getIntroTitle()%></h1>
  
   </div>
 	<div class="body1">
-  <img src="" class="introduceimg">
+	
+	<%if(at==null){%>
+	<img src="<%=contextPath %>/<%=a%>" class="introduceimg">
+	<%} else {%> 
+	<img src="<%=contextPath %>/<%=at.getFilePath() + at.getChangeName()%>" class="introduceimg">
+	<% }%>
+  
   
   </div>
   <div class="body2">
   <hr>
   <p>
-  	사이트 소개
+  	<%=intro.getIntroContent()%>
   </p>  
   </div>
   <div class="foot1">
-  <button class="modifybtn">수정</button>
+    <% if(loginUser != null && loginUser.getMemCode()==1){ %>
+  <button class="modifybtn" onclick="location.href='<%= contextPath%>/UpdateForm.intro'" >수정</button>
+  <% } %>
   </div>
   
   

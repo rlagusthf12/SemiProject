@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.kh.common.model.vo.PageInfo, java.util.ArrayList, com.kh.community.notice.model.vo.Notice"%>
+   <% ArrayList<Notice> list = (ArrayList<Notice>)request.getAttribute("list");
+      PageInfo pi = (PageInfo)request.getAttribute("pi");
+      int currentPage = pi.getCurrentPage();
+	  int startPage = pi.getStartPage();
+	  int endPage = pi.getEndPage();
+	  int maxPage = pi.getMaxPage();
+	  String keyword =(String)request.getAttribute("keyword");
+   %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -112,6 +120,11 @@
     width: 100px; 
     height: 40px;
   }
+  .current{
+  	
+  	;
+  
+  }
 	</style>
 </head>
 
@@ -126,10 +139,12 @@
  
   </div>
   <div class="head2"align="right">
+  <form action="<%=contextPath%>/Main.no?currentPage=1" id="Search-Notice" method="post">
   <div class="search" >
-  <button class="searchbutton">검색</button>
-  <input type="search" class="searchbar">
+  <button type="submit" class="searchbutton">검색</button>
+  <input type="text" class="searchbar" name="keyword">
   </div>
+  </form>
   </div>
 	<div class="body1">
   <table class="list-area">
@@ -141,42 +156,55 @@
                 </tr>
             </thead>
             <tbody>
+            <%if(list.isEmpty()){ %>
+            <tr>
+            <td colspan="3">존재하는 공지사항이 없습니다.</td>
+            </tr>
+            <% } else {%>
+            <% for(Notice n: list){ %>
                  <tr>
-		                 <td>11</td>
-		                 <td>사이트 이용 안내</td>
-		                 <td>2021-05-16</td>
-		         </tr>
-		           <tr>
-		                 <td>11</td>
-		                 <td>사이트 이용 안내</td>
-		                 <td>2021-05-16</td>
-		         </tr>
-		           <tr>
-		                 <td>11</td>
-		                 <td>사이트 이용 안내</td>
-		                 <td>2021-05-16</td>
-		         </tr>
-               
-                
+		                 <td><%=n.getNoticeNo()%></td>
+		                 <td><%=n.getNoticeTitle()%></td>
+		                 <td><%=n.getNoticeDate()%></td>
+		         </tr>		         
+                <%} %>
+                <%} %>
             </tbody>
         </table>
   </div>
+  <script>
+  	$(function(){
+  		$(".list-area>tbody>tr").click(function(){
+  			var noticeNo =$(this).children().eq(0).text();
+  			location.href='<%=contextPath%>/Detail.no?noticeNo='+noticeNo;
+  		})
+  	})
+  </script>
+  
   <div class="foot1">
   
         <div align="center" class="paging-area">
-
-            	<button > &lt; </button>		
-	            	<button disabled>1</button>
-	            		<button >2</button>
-	            		<button >3</button>
-                        <button >4</button>  
-                        <button >5</button>              
-            	<button > &gt; </button>
+				<% if(currentPage != 1){ %>
+            	<button onclick="location.href='<%=contextPath%>/Main.no?currentPage=<%=currentPage-1%>&keyword=<%=keyword%>';" > &lt; </button>
+            	<% } %>
+            	 <% for(int p=startPage; p<=endPage; p++){ %>	
+            	 <% if(p != currentPage){ %>	
+	            	<button onclick="location.href='<%=contextPath%>/Main.no?currentPage=<%= p %>&keyword=<%=keyword%>';"><%= p %></button> 
+	             <% }else { %>
+	            	<button style="background-color: gray" disabled><%= p %></button>
+            	<% } %>
+            	
+            <% } %>    
+            	<% if(currentPage != maxPage){ %>       
+            	<button onclick="location.href='<%=contextPath%>/Main.no?currentPage=<%=currentPage+1%>&keyword=<%=keyword%>';"> &gt; </button>
+            	<% } %>
 		
         </div>        
   </div>
   <div>
-   <button class="writebutton">글쓰기</button>
+  <% if(loginUser != null && loginUser.getMemCode()==1){ %>
+   <button onclick="location.href='<%=contextPath%>/WriteForm.no'"class="writebutton">글쓰기</button>
+   <% } %>
   </div>
   
   

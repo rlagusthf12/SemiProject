@@ -44,26 +44,7 @@ width:100%;
 height:100%;
 border-radius:4px;
 }
-.attachment{
-width:741px;
-height:40px;
-margin:100px;
-}
-.attachmentbtn{
-padding: 10px 25px;
-border-radius:4px;
-font-size: 16px; 
-color: rgb(64, 64, 64);
- text-align: center;
- line-height: 2.5em;  
-background-color: rgb(224, 224, 224);
-}
-.attachment>input{
- width: 580px; height: 40px;
- margin-left:20px;
- border-radius:4px;
- border:0px;
-}
+
 #inputfile{
 display:none;
 }
@@ -88,30 +69,24 @@ display:none;
 <%@ include file="../../common/menubar.jsp" %>
 
   <div class="body">  
-  
+  <form id="write-form" action="<%=contextPath%>/insert.no" method="post">
   <div class="headTitle">
- 	<h1>공지사항</h1>
+  <h1>공지사항</h1>
   </div>
   
   <h3>제목</h3>
-  <div class="title">
-  
-  <input type="text" placeholder="제목을 입력해주세요.">
+  <div class="title">  
+  <input type="text" name="title" placeholder="제목을 입력해주세요." required>
   </div>
    <h3>내용</h3>
   <div class="content">
-  <textarea placeholder="내용을 입력해주세요."></textarea>
-  </div>
-  <div class="attachment">
-   <input type="file" id="inputfile">   
-  <label class="attachmentbtn" for="inputfile">첨부 파일</label>
-  <input type="text" placeholder="파일을 첨부해주세요.">
+  <textarea placeholder="내용을 입력해주세요." name="content" style="resize:none" required></textarea>
+  </div> 
  
-  </div>
   <div class="write">
-  <button>등록</button>
+  <button type="submit">등록</button>  
   </div>
-  
+  </form>
   
   </div>
 
