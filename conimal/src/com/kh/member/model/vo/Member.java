@@ -8,53 +8,52 @@ public class Member {
 	private String userId;
 	private String userPwd;
 	private String userName;
-	private String phone;
 	private String email;
-	private String address;
-	private String interest;
 	private Date enrollDate;
-	private Date modifyDate;
 	private String status;
+	private int userCode;
+	private String shelterName;
+	private String shelterPhone;
+	private String shelterAddress;
+	private String shelterAbout;
+	private String admission;		// 승인여부
+	private String shelterLocal;
+	private String refType;
 	
 	public Member() {}
-
-	public Member(int userNo, String userId, String userPwd, String userName, String phone, String email,
-			String address, String interest, Date enrollDate, Date modifyDate, String status) {
+	
+	public Member(int userNo, String userId, String userPwd, String userName, String email, Date enrollDate,
+			String status, int userCode) {
 		super();
 		this.userNo = userNo;
 		this.userId = userId;
 		this.userPwd = userPwd;
 		this.userName = userName;
-		this.phone = phone;
 		this.email = email;
-		this.address = address;
-		this.interest = interest;
 		this.enrollDate = enrollDate;
-		this.modifyDate = modifyDate;
 		this.status = status;
+		this.userCode = userCode;
 	}
-	
-	public Member(String userId, String userPwd, String userName, String phone, String email, String address,
-			String interest) {
+
+	public Member(int userNo, String userId, String userPwd, String userName, String email, Date enrollDate,
+			String status, int userCode, String shelterName, String shelterPhone, String shelterAddress,
+			String shelterAbout, String admission, String shelterLocal, String refType) {
 		super();
+		this.userNo = userNo;
 		this.userId = userId;
 		this.userPwd = userPwd;
 		this.userName = userName;
-		this.phone = phone;
 		this.email = email;
-		this.address = address;
-		this.interest = interest;
-	}
-	
-	
-	public Member(String userId, String userName, String phone, String email, String address, String interest) {
-		super();
-		this.userId = userId;
-		this.userName = userName;
-		this.phone = phone;
-		this.email = email;
-		this.address = address;
-		this.interest = interest;
+		this.enrollDate = enrollDate;
+		this.status = status;
+		this.userCode = userCode;
+		this.shelterName = shelterName;
+		this.shelterPhone = shelterPhone;
+		this.shelterAddress = shelterAddress;
+		this.shelterAbout = shelterAbout;
+		this.admission = admission;
+		this.shelterLocal = shelterLocal;
+		this.refType = refType;
 	}
 
 	public int getUserNo() {
@@ -89,36 +88,12 @@ public class Member {
 		this.userName = userName;
 	}
 
-	public String getPhone() {
-		return phone;
-	}
-
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-
 	public String getEmail() {
 		return email;
 	}
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public String getInterest() {
-		return interest;
-	}
-
-	public void setInterest(String interest) {
-		this.interest = interest;
 	}
 
 	public Date getEnrollDate() {
@@ -129,14 +104,6 @@ public class Member {
 		this.enrollDate = enrollDate;
 	}
 
-	public Date getModifyDate() {
-		return modifyDate;
-	}
-
-	public void setModifyDate(Date modifyDate) {
-		this.modifyDate = modifyDate;
-	}
-
 	public String getStatus() {
 		return status;
 	}
@@ -145,12 +112,78 @@ public class Member {
 		this.status = status;
 	}
 
+	public int getUserCode() {
+		return userCode;
+	}
+
+	public void setUserCode(int userCode) {
+		this.userCode = userCode;
+	}
+	
+	public String getShelterName() {
+		return shelterName;
+	}
+
+	public void setShelterName(String shelterName) {
+		this.shelterName = shelterName;
+	}
+
+	public String getShelterPhone() {
+		return shelterPhone;
+	}
+
+	public void setShelterPhone(String shelterPhone) {
+		this.shelterPhone = shelterPhone;
+	}
+
+	public String getShelterAddress() {
+		return shelterAddress;
+	}
+
+	public void setShelterAddress(String shelterAddress) {
+		this.shelterAddress = shelterAddress;
+	}
+
+	public String getShelterAbout() {
+		return shelterAbout;
+	}
+
+	public void setShelterAbout(String shelterAbout) {
+		this.shelterAbout = shelterAbout;
+	}
+
+	public String getAdmission() {
+		return admission;
+	}
+
+	public void setAdmission(String admission) {
+		this.admission = admission;
+	}
+
+	public String getShelterLocal() {
+		return shelterLocal;
+	}
+
+	public void setShelterLocal(String shelterLocal) {
+		this.shelterLocal = shelterLocal;
+	}
+
+	public String getRefType() {
+		return refType;
+	}
+
+	public void setRefType(String refType) {
+		this.refType = refType;
+	}
+
 	@Override
 	public String toString() {
 		return "Member [userNo=" + userNo + ", userId=" + userId + ", userPwd=" + userPwd + ", userName=" + userName
-				+ ", phone=" + phone + ", email=" + email + ", address=" + address + ", interest=" + interest
-				+ ", enrollDate=" + enrollDate + ", modifyDate=" + modifyDate + ", status=" + status + "]";
+				+ ", email=" + email + ", enrollDate=" + enrollDate + ", status=" + status + ", userCode=" + userCode
+				+ "]";
 	}
-		
+	
+			
+	
 
 }
