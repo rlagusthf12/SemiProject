@@ -1,5 +1,6 @@
 package com.kh.member.model.dao;
 
+import static com.kh.common.JDBCTemplate.close;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -10,7 +11,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
-import static com.kh.common.JDBCTemplate.*;
 import com.kh.common.model.vo.PageInfo;
 import com.kh.member.model.vo.Member;
 

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="reportListCount">
+		SELECT COUNT(*) COUNT
+  		FROM MEMBER
+	</entry>
+	
+	<entry key="selectReportList">
+		SELECT *
+		  FROM (
+		         SELECT ROWNUM RNUM, A.*
+		           FROM (
+		                  SELECT
+						         REPORT_UNIQUE
+						       , MEM_ID
+						       , REF_TYPE
+						       , REF_NO
+						       , REPORT_REASON
+						       , REPORT_DATE
+						    FROM REPORT
+						    JOIN MEMBER USING (MEM_NO)
+						    JOIN REPORT_REASON USING (REPORT_NO)
+						   ORDER 
+						      BY REPORT_DATE DESC
+		                ) A
+		        )
+		 WHERE RNUM BETWEEN ? AND ?
+	</entry>
+
+</properties>

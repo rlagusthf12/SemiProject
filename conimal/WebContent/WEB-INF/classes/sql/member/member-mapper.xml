@@ -61,20 +61,27 @@
 	
 	<entry key="selectMember">
 		SELECT 
-			   USER_NO
-		     , USER_ID
-		     , USER_PWD
-		     , USER_NAME
-		     , PHONE
+		       MEM_NO
+		     , MEM_ID
+		     , MEM_PWD
+		     , MEM_NAME
 		     , EMAIL
-		     , ADDRESS
-		     , INTEREST
 		     , ENROLL_DATE
-		     , MODIFY_DATE
 		     , STATUS
+		     , MEM_CODE
+		     , SH_NAME
+		     , SH_PHONE
+		     , SH_ADDRESS
+		     , SH_ABOUT
+		     , ADMISSION
+		     , SH_LOCAL
+		     , REF_TYPE
 		  FROM MEMBER
-		 WHERE USER_ID = ?
-		   AND STATUS = 'Y'
+		  LEFT JOIN SHELTER USING (MEM_NO)
+		 WHERE STATUS = 'Y'
+		   AND MEM_NO = ?
+		 ORDER 
+		    BY ENROLL_DATE DESC
 	</entry>
 	
 	<entry key="updatePwdMember">
@@ -86,15 +93,80 @@
 		   AND USER_PWD = ?
 	</entry>
 	
-	<entry key="deleteMember">
+	<entry key="imDeleteMember">
 		UPDATE
 			   MEMBER
 		   SET STATUS = 'N'
-		   	 , MODIFY_DATE = SYSDATE
-		 WHERE USER_ID = ?
-		   AND USER_PWD = ?
+		 WHERE MEM_NO = ?
 	</entry>
 	
+	<entry key="selectMemberList">
+		SELECT *
+		  FROM (
+		        SELECT ROWNUM RNUM, A.*
+		          FROM (
+		                  SELECT 
+		                         MEM_NO
+		                       , MEM_ID
+		                       , MEM_PWD
+		                       , MEM_NAME
+		                       , EMAIL
+		                       , ENROLL_DATE
+		                       , STATUS
+		                       , MEM_CODE
+		                    FROM MEMBER
+		                   WHERE STATUS = 'Y'
+		                   ORDER 
+		                      BY ENROLL_DATE DESC
+		                ) A
+		        )
+		 WHERE RNUM BETWEEN ? AND ?
+	</entry>
 	
+	<entry key="searchMemberList">
+		SELECT *
+		  FROM (
+		        SELECT ROWNUM RNUM, A.*
+		          FROM (
+		                  SELECT 
+		                         MEM_NO
+		                       , MEM_ID
+		                       , MEM_PWD
+		                       , MEM_NAME
+		                       , EMAIL
+		                       , ENROLL_DATE
+		                       , STATUS
+		                       , MEM_CODE
+		                    FROM MEMBER
+		                   WHERE STATUS = 'Y'
+		                     AND MEM_ID LIKE '%' || ? || '%'
+		                   ORDER 
+		                      BY ENROLL_DATE DESC
+		                ) A
+		        )
+		 WHERE RNUM BETWEEN ? AND ?
+		
+	</entry>
+	
+	<entry key="selectListCount">
+		SELECT COUNT(*) COUNT
+  		  FROM MEMBER
+  		 WHERE STATUS = 'Y'
+	</entry>
+	
+	<entry key="searchListCount">
+		SELECT COUNT(*) COUNT
+  		  FROM MEMBER
+  		 WHERE STATUS = 'Y'
+  		   AND MEM_ID LIKE '%' || ? || '%'
+	</entry>
+	
+	<entry key="imUpdateMember">
+		UPDATE 
+			   MEMBER
+		   SET MEM_NAME = ?,
+		       EMAIL = ?
+		 WHERE MEM_NO = ?
+	</entry>
 	
 </properties>

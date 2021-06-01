@@ -1,10 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	String contextPath = request.getContextPath();
+	String alertMsg = (String)session.getAttribute("alertMsg");
+	// 서비스요청 전 menubar.jsp 로딩시 : null
+	// 서비스요청 성공 후 menubar.jsp 로딩시 : alert로 띄워줄 메세지문구
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- (Optional) Latest compiled and minified JavaScript translation files -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/i18n/defaults-*.min.js"></script>
 
 <style>
     .on{
@@ -109,6 +129,19 @@
 </head>
 
 <body>
+	<script>
+		var msg = "<%= alertMsg %>";
+		// var msg = 성공적으로 로그인 되었습니다.; -> 쌍(홑)따옴표 붙여주지 않으면 해당문구 오류!
+		// var msg = "메세지" / "null"
+		
+		if(msg != "null"){
+			alert(msg);
+			// 알림창 띄워준 후 session에 담긴 해당 메세지는 지워줘야함
+			// 그렇지 않으면 menubar.jsp가 로딩될때마다 매번 alert가 계속 뜰거임
+			<% session.removeAttribute("alertMsg"); %>
+		}	
+    
+    </script>
 
             <div class="on">  
 

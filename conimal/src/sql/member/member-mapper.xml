@@ -61,20 +61,12 @@
 	
 	<entry key="selectMember">
 		SELECT 
-			   USER_NO
-		     , USER_ID
-		     , USER_PWD
-		     , USER_NAME
-		     , PHONE
 		       MEM_NO
 		     , MEM_ID
 		     , MEM_PWD
 		     , MEM_NAME
 		     , EMAIL
-		     , ADDRESS
-		     , INTEREST
 		     , ENROLL_DATE
-		     , MODIFY_DATE
 		     , STATUS
 		     , MEM_CODE
 		     , SH_NAME
@@ -85,8 +77,6 @@
 		     , SH_LOCAL
 		     , REF_TYPE
 		  FROM MEMBER
-		 WHERE USER_ID = ?
-		   AND STATUS = 'Y'
 		  LEFT JOIN SHELTER USING (MEM_NO)
 		 WHERE STATUS = 'Y'
 		   AND MEM_NO = ?
@@ -103,14 +93,10 @@
 		   AND USER_PWD = ?
 	</entry>
 	
-	<entry key="deleteMember">
 	<entry key="imDeleteMember">
 		UPDATE
 			   MEMBER
 		   SET STATUS = 'N'
-		   	 , MODIFY_DATE = SYSDATE
-		 WHERE USER_ID = ?
-		   AND USER_PWD = ?
 		 WHERE MEM_NO = ?
 	</entry>
 	
