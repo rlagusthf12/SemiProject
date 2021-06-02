@@ -36,11 +36,12 @@ public class ShelterDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, sh.getShName());
-			pstmt.setString(2, sh.getShPhone());
-			pstmt.setString(3, sh.getShAddress());
-			pstmt.setString(4, sh.getShAbout());
-			pstmt.setString(5, sh.getShLocal());
+			pstmt.setInt(1, sh.getMemNo());
+			pstmt.setString(2, sh.getShName());
+			pstmt.setString(3, sh.getShPhone());
+			pstmt.setString(4, sh.getShAddress());
+			pstmt.setString(5, sh.getShAbout());
+			pstmt.setString(6, sh.getShLocal());
 			
 			result1 = pstmt.executeUpdate();
 			

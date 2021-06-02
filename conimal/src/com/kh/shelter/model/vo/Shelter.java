@@ -14,14 +14,16 @@ public class Shelter {
 
 	public Shelter() {}
 	
-	public Shelter(String shName, String shPhone, String shAddress, String shAbout,
-			String shLocal) {
+	public Shelter(int memNo, String shName, String shPhone, String shAddress, String shAbout
+			,String shLocal) {
 		super();
+		this.memNo = memNo;
 		this.shName = shName;
 		this.shPhone = shPhone;
 		this.shAddress = shAddress;
 		this.shAbout = shAbout;
-		this.shLocal = shLocal;
+		this.shLocal= shLocal;
+		
 	}
 
 	public Shelter(int memNo, String shName, String shPhone, String shAddress, String shAbout, String admission,
@@ -36,6 +38,7 @@ public class Shelter {
 		this.shLocal = shLocal;
 		this.refType = refType;
 	}
+	
 
 	public int getMemNo() {
 		return memNo;

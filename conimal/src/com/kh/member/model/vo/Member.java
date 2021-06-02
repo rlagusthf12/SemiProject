@@ -17,11 +17,12 @@ public class Member {
 	
 	
 
-	public Member(String memId, String memPwd, String memName) {
+	public Member(String memId, String memPwd, String memName, int memCode) {
 		super();
 		this.memId = memId;
 		this.memPwd = memPwd;
 		this.memName = memName;
+		this.memCode = memCode;
 	}
 
 

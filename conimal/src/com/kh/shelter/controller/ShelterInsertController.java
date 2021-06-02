@@ -46,13 +46,17 @@ public class ShelterInsertController extends HttpServlet {
 		String shAddress = request.getParameter("shAddress"); //"주소"
 		String shAbout = request.getParameter("shAbout"); //"소개글"
 		String shLocal = request.getParameter("shLocal"); //"지역"
-		
+		int memCode =2;
 		//  기본 생성자로 생성 후 setter이용해서 담기!
-		Shelter sh = new Shelter(shName, shPhone, shAddress, shAbout, shLocal);
-		Member m = new Member(memId, memPwd, shName);
+		Member m = new Member(memId, memPwd, shName , memCode);	
+		int result2 = new MemberService().insertMember(m);
+		Member m1 = new MemberService().loginMember(m.getMemId(),m.getMemPwd());
+		int shNo = m1.getMemNo();
+		Shelter sh = new Shelter(shNo,shName, shPhone, shAddress, shAbout,shLocal);
+		
 		// 3) 요청처리 (서비스 메소드 호출 및 결과 돌려받기)
 		int result1 = new ShelterService().insertShelter(sh);
-		int result2 = new MemberService().insertMember(m);
+		
 		
 		// 4) 처리 결과를 갖고 사용자가 보게될 응답뷰 지정
 		if(result1>0 && result2>0) { // 성공=> /jsp	 url재요청 => index.jsp

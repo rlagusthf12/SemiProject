@@ -49,15 +49,15 @@
             <table>
                 <tr>
                     <th>보호소명 </th>
-                        <td><input type="text" id="shName" placeholder="이름을 입력해주세요." required> </td>
+                        <td><input type="text" name="shName" placeholder="이름을 입력해주세요." required> </td>
                 </tr>
                 <tr>
                     <th>아이디</th>
-                        <td><input type="text" id="memId" placeholder="아이디를 입력하세요." required>&nbsp; <button>중복확인</button> </td>
+                        <td><input type="text" name="memId" placeholder="아이디를 입력하세요." required>&nbsp; <button>중복확인</button> </td>
                 </tr>
                 <tr>
                     <th>비밀번호 </th>
-                        <td><input type="password" id="memPwd" placeholder="비밀번호를 입력하세요." required></td>
+                        <td><input type="password" name="memPwd" placeholder="비밀번호를 입력하세요." required></td>
                 </tr>
                 <tr>
                     <th>비밀번호 확인 </th>
@@ -70,26 +70,7 @@
                 <tr>
                     <th>주소</th>
                         <td>
-                            <select id="city_select" title="시/도별 선택 리스트">
-                                <option value="">전국</option>
-                                <option value="1">서울특별시</option>
-                                <option value="11">부산광역시</option>
-                                <option value="9">대구광역시</option>
-                                <option value="2">인천광역시</option>
-                                <option value="15">광주광역시</option>
-                                <option value="7">대전광역시</option>
-                                <option value="12">울산광역시</option>
-                                <option value="3">경기도</option>
-                                <option value="4">강원도</option>
-                                <option value="5">충청북도</option>
-                                <option value="6">충청남도</option>
-                                <option value="13">전라북도</option>
-                                <option value="14">전라남도</option>
-                                <option value="10">경상북도</option>
-                                <option value="8">경상남도</option>
-                                <option value="16">제주도</option>
-                                <option value="17">세종특별자치시</option>
-                            </select>
+                             <input type="text" name="shLocal" placeholder="지역을 입력하세요.">
                             <input type="text" name="shAddress" placeholder="주소를 입력하세요.">
                         </td>
                 </tr>

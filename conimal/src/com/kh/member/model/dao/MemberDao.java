@@ -75,7 +75,8 @@ public class MemberDao {
 			pstmt.setString(1, m.getMemId());
 			pstmt.setString(2, m.getMemPwd());
 			pstmt.setString(3, m.getMemName());
-			pstmt.setString(4, m.getEmail());
+			pstmt.setInt(4, m.getMemCode());
+			
 			
 			result = pstmt.executeUpdate();
 			
@@ -221,12 +222,7 @@ public class MemberDao {
 		}
 		return result2;
 	}
-	
-	
-	
-	
-	
-	
+		
 	
 	
 	
