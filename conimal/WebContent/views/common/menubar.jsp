@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page
+	import = "com.kh.member.model.vo.Member"
+%>
 <%
 	String contextPath = request.getContextPath();
 	String alertMsg = (String)session.getAttribute("alertMsg");
-	// 서비스요청 전 menubar.jsp 로딩시 : null
-	// 서비스요청 성공 후 menubar.jsp 로딩시 : alert로 띄워줄 메세지문구
+	Member loginUser = (Member)session.getAttribute("loginUser");
 %>
 <!DOCTYPE html>
 <html>
@@ -131,13 +133,9 @@
 <body>
 	<script>
 		var msg = "<%= alertMsg %>";
-		// var msg = 성공적으로 로그인 되었습니다.; -> 쌍(홑)따옴표 붙여주지 않으면 해당문구 오류!
-		// var msg = "메세지" / "null"
 		
 		if(msg != "null"){
 			alert(msg);
-			// 알림창 띄워준 후 session에 담긴 해당 메세지는 지워줘야함
-			// 그렇지 않으면 menubar.jsp가 로딩될때마다 매번 alert가 계속 뜰거임
 			<% session.removeAttribute("alertMsg"); %>
 		}	
     
@@ -148,21 +146,35 @@
                     <image src="resources/images/mainLogo.png" width="558px" height="120px" class="mainLogo">
                         
                         <div class="login" align="center">
-                   
-                            <form action="" id="loginform">                
-                           
-                                <div class="id_pwd">        
-                                    <input type="text" class="id" value="아이디"><br>
-                                    <input type="password" class="pwd" value="비밀번호" >                    
-                                </div>
-                         
-                                <div class="loginbtn">
-                                    <input type="submit" value="login">
-                                </div>
-                            </form>      
-                            <span class="find">ID/PW 찾기 | 회원가입</span>
-                        </div>   
-                       
+                   			<% if(loginUser == null) { %>
+	                            <form action="<%=contextPath %>/login.me" id="loginform" method="post">                
+	                                <div class="id_pwd">        
+	                                    <input type="text" class="id" name="id" value="아이디"><br>
+	                                    <input type="password" class="pwd" name="pwd" value="비밀번호" >                    
+	                                </div>
+	                         
+	                                <div class="loginbtn">
+	                                    <input type="submit" value="login">
+	                                </div>
+	                            </form>      
+	                            <span class="find">ID/PW 찾기 | 회원가입</span>
+                       	   
+                       <% } else { %>
+				        	<!-- 로그인성공후 -->
+					        <div id="user-info">
+					            <b><%= loginUser.getUserName() %>님</b>의 방문을 환영합니다. <br><br>
+					            <div align="center">
+					            	<% if(loginUser.getUserCode() == 1){ %>
+						                <a href="<%= contextPath %>/list.me?currentPage=1">통합관리</a>
+						                <a href="<%= contextPath %>/logout.me">로그아웃</a>
+					                <% }else{ %>
+					                	<a href="<%= contextPath %>/myPage.me">마이페이지</a>
+						                <a href="<%= contextPath %>/logout.me">로그아웃</a>
+					                <% } %>
+					            </div>
+					        </div>
+						<% } %>
+				</div>
             </div>
             <div class="navi">                
                     <ul id="navi1" >

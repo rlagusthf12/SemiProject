@@ -9,7 +9,7 @@ public class Donation {
 	private Date doWriteDate;
 	private String doAdmission;
 	private String doWriter;
-	private String refType;		// donation
+	private String refType;		// 'donation'
 	private int doCount;
 	
 	public Donation() {}
@@ -93,8 +93,10 @@ public class Donation {
 
 	@Override
 	public String toString() {
-		return "Volunteer [doNo=" + doNo + ", doTitle=" + doTitle + ", doContent=" + doContent + ", doWriteDate="
-				+ doWriteDate + ", doAdmission=" + doAdmission + ", memId=" + doWriter + ", refType=" + refType
+		return "Donation [doNo=" + doNo + ", doTitle=" + doTitle + ", doContent=" + doContent + ", doWriteDate="
+				+ doWriteDate + ", doAdmission=" + doAdmission + ", doWriter=" + doWriter + ", refType=" + refType
 				+ ", doCount=" + doCount + "]";
 	}
+
+	
 }

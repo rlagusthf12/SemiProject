@@ -4,20 +4,17 @@
 
 	<entry key="loginMember">
 		SELECT 
-		       USER_NO
-		     , USER_ID
-		     , USER_PWD
-		     , USER_NAME
-		     , PHONE
-		     , EMAIL
-		     , ADDRESS
-		     , INTEREST
-		     , ENROLL_DATE
-		     , MODIFY_DATE
-		     , STATUS
+		       MEM_NO
+			 , MEM_ID
+			 , MEM_PWD
+			 , MEM_NAME
+			 , EMAIL
+			 , ENROLL_DATE
+			 , STATUS
+			 , MEM_CODE
 		  FROM MEMBER
-		 WHERE USER_ID = ?
-		   AND USER_PWD = ?
+		 WHERE MEM_ID = ?
+		   AND MEM_PWD = ?
 		   AND STATUS = 'Y'
 	</entry>
 	

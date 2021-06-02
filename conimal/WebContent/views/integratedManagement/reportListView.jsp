@@ -16,11 +16,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-	.outer{
+    .outer{
 		margin-top:50px;
 		margin:auto;
-		width: 900px;
+		width: 1000px;
 		height: 1200px;
+        
 	}
     .outer>h2{
         text-align: left;
@@ -28,9 +29,10 @@
     table{
     	width: 700px;
     }
-    .paging-area{
+    .pagination{
+    	display: block;
     	text-align: center;
-    	margin: auto;
+    }
 </style>
 </head>
 <body>
@@ -55,18 +57,17 @@
 		            	<tr>
 			                <th>No</th>
 			                <th>신고자 아이디</th>
-			                <th>게시글 제목</th>
 			                <th>게시판 이름</th>
-			                <th>신고 사유</th>
+			                <th width="400px">신고 사유</th>
 			                <th>신고 날짜</th>
 		            	</tr>
 		            </thead>
-		            <tbdoy class="text-center">
+		            
+		            <tbody class="text-center">
 		            	<% for(Report r : list){ %>
 				            <tr>
 				                <td><%=r.getReportUnique() %></td>
 				                <td><%=r.getMemberId() %></td>
-				                <td><%=r.getRefBoardNo() %></td>
 				                <td>
 				                	<% if(r.getRefBoardType().equals("POST")){ %>
 				                		자유게시판
@@ -81,7 +82,7 @@
 				                	<% }else if(r.getRefBoardType().equals("VOLUNTEER")){ %>
 				                		자원봉사
 				                	<% } else {%>
-				                	
+				                		
 				                	<% } %>
 				                </td>
 				                <td><%=r.getReportTypeNo() %></td>
@@ -98,7 +99,7 @@
 			// 해당 게시글 바로가기 수정해야함
 			$(function(){
 				$(".list-area>tbody>tr").click(function(){
-					location.href = "<%=contextPath%>/detail" + $(this).children().eq(0).text();
+					location.href = "<%=contextPath%>/detail." + $(this).children().eq(0).text();
 				})
 			})
 		</script>

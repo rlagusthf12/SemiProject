@@ -41,14 +41,6 @@
 	<%@ include file="../common/menubar.jsp" %>
 	<%@ include file="../common/adminPageNavibar.jsp" %>
 	
-	<script>
-		function(){
-			console.log(<%= list%>);
-		}
-	</script>
-	
-    
-
     <div class="outer" align="center">
 		<br>
         <div data-text-content="true" style="font-size: 16px; font-weight: bold; color: rgb(127, 127, 127);" class="" spellcheck="false">통합 관리&gt; 회원 조회</div>

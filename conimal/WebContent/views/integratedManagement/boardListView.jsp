@@ -9,7 +9,7 @@
 <%
 	ArrayList<Adopt> adoptList = (ArrayList<Adopt>)request.getAttribute("adoptList");
 	ArrayList<Animal> animalList = (ArrayList<Animal>)request.getAttribute("animalList");
-	ArrayList<C_Post> c_PostList = (ArrayList<C_Post>)request.getAttribute("c_PostList");
+	ArrayList<C_Post> c_postList = (ArrayList<C_Post>)request.getAttribute("c_postList");
 	ArrayList<Donation> doList = (ArrayList<Donation>)request.getAttribute("doList");
 	ArrayList<Volunteer> voList = (ArrayList<Volunteer>)request.getAttribute("voList");
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
@@ -46,10 +46,12 @@
 </head>
 <body>
 	<%@ include file="../common/menubar.jsp" %>
+	<%@ include file="../common/adminPageNavibar.jsp" %>
 	<div class="outer" align="center">
 		<br>
-        <h2>게시판 글 조회</h2>
-        
+        <div data-text-content="true" style="font-size: 16px; font-weight: bold; color: rgb(127, 127, 127);" class="" spellcheck="false">통합 관리&gt; 게시판 글 조회</div>
+        <div data-text-content="true" style="font-weight: bold; font-size: 32px; color: rgb(127, 127, 127);" class="" spellcheck="false">게시판 글 조회</div>
+        <br>
 	    <div class="container">
 	        <!-- Nav tabs -->
 	        <ul class="nav nav-tabs" role="tablist">
@@ -77,38 +79,43 @@
 	        <div class="tab-content">
 	        
 	          <div id="home" class="container tab-pane active"><br>
-	            <h3>전체</h3>
-	            <table border="1">
-		            <thead>
+	            <table border="1" class="list-area table table-bordered" align="center">
+		            <thead class="thead-light text-center">
 			            <tr>
 			                <th>No</th>
 			                <th>게시판 이름</th>
-			                <th>제목</th>
+			                <th width="400">제목</th>
 			                <th>작성자</th>
 			                <th>작성날짜</th>
 			                <th>조회수</th>
 			            </tr>
 		            </thead>
-		            <tbody>
-		            	
+		            <tbody class="text-center">
+		            	<tr>
+			                <td>No</td>
+			                <td>게시판 이름</td>
+			                <td>제목</td>
+			                <td>작성자</td>
+			                <td>작성날짜</td>
+			                <td>조회수</td>
+			            </tr>
 		            </tbody>
 	        	</table>
 	          </div>
 	          
 	          <div id="menu1" class="container tab-pane fade"><br>
-	            <h3>보호중인 아이들</h3>
-	            <table border="1">
-		            <thead>
+	            <table border="1" class="list-area table table-bordered" align="center">
+		            <thead class="thead-light text-center">
 			            <tr>
 			                <th>No</th>
 			                <th>게시판 이름</th>
-			                <th>제목</th>
+			                <th width="400">제목</th>
 			                <th>작성자</th>
 			                <th>작성날짜</th>
 			                <th>조회수</th>
 			            </tr>
 		            </thead>
-		            <tbody>
+		            <tbody class="text-center">
 		            	<%if(animalList.isEmpty()){ %>
 		            		<tr>
 		            			<td colspan="6">등록된 글이 없습니다.</td>
@@ -130,19 +137,18 @@
 	          </div>
 	          
 	          <div id="menu2" class="container tab-pane fade"><br>
-	            <h3>입양 후기</h3>
-	            <table border="1">
-		            <thead>
+	            <table border="1" class="list-area table table-bordered" align="center">
+		            <thead class="thead-light text-center">
 			            <tr>
 			                <th>No</th>
 			                <th>게시판 이름</th>
-			                <th>제목</th>
+			                <th width="400">제목</th>
 			                <th>작성자</th>
 			                <th>작성날짜</th>
 			                <th>조회수</th>
 			            </tr>
 		            </thead>
-		            <tbody>
+		            <tbody class="text-center">
 		            	<%if(adoptList.isEmpty()){ %>
 		            		<tr>
 		            			<td colspan="6">등록된 글이 없습니다.</td>
@@ -161,21 +167,22 @@
 				        <% } %>
 		            </tbody>
 	        	</table>
-	        	
-	        	<div id="menu3" class="container tab-pane fade"><br>
-		            <h3>후원</h3>
-		            <table border="1">
-		            <thead>
+        	</div>
+	        
+        	<div id="menu3" class="container tab-pane fade"><br>
+	            <table border="1" class="list-area table table-bordered" align="center">
+		            <thead class="thead-light text-center">
 			            <tr>
 			                <th>No</th>
 			                <th>게시판 이름</th>
-			                <th>제목</th>
+			                <th width="400">제목</th>
 			                <th>작성자</th>
 			                <th>작성날짜</th>
 			                <th>조회수</th>
 			            </tr>
 		            </thead>
-		            <tbody>
+	            
+		            <tbody class="text-center">
 		            	<%if(doList.isEmpty()){ %>
 		            		<tr>
 		            			<td colspan="6">등록된 글이 없습니다.</td>
@@ -193,116 +200,106 @@
 				            <% } %>
 				        <% } %>
 		            </tbody>
-	        	</table>
-	            </div>
+        		</table>
+            </div> 
 		          
 	            <div id="menu4" class="container tab-pane fade"><br>
-		            <h3>자원봉사</h3>
-		            <table border="1">
-		            <thead>
-			            <tr>
-			                <th>No</th>
-			                <th>게시판 이름</th>
-			                <th>제목</th>
-			                <th>작성자</th>
-			                <th>작성날짜</th>
-			                <th>조회수</th>
-			            </tr>
-		            </thead>
-		            <tbody>
-		            	<%if(voList.isEmpty()){ %>
-		            		<tr>
-		            			<td colspan="6">등록된 글이 없습니다.</td>
-		            		</tr>
-		            	<%} else { %>
-		            		<% for(Volunteer vo : voList){ %>
-					            <tr>
-					                <td><%=vo.getVolNo() %></td>
-					                <td>자원봉사</td>
-					                <td><%=vo.getVolTitle() %></td>
-					                <td><%=vo.getVolWriter() %></td>
-					                <td><%=vo.getVolWriteDate() %></td>
-					                <td><%=vo.getVolCount() %></td>
-					            </tr>
-				            <% } %>
-				        <% } %>
-		            </tbody>
-	        	</table>
+		            <table border="1" class="list-area table table-bordered" align="center">
+		            	<thead class="thead-light text-center">
+				            <tr>
+				                <th>No</th>
+				                <th>게시판 이름</th>
+				                <th width="400">제목</th>
+				                <th>작성자</th>
+				                <th>작성날짜</th>
+				                <th>조회수</th>
+				            </tr>
+			            </thead>
+			            <tbody class="text-center">
+			            	<%if(voList.isEmpty()){ %>
+			            		<tr>
+			            			<td colspan="6">등록된 글이 없습니다.</td>
+			            		</tr>
+			            	<%} else { %>
+			            		<% for(Volunteer vo : voList){ %>
+						            <tr>
+						                <td><%=vo.getVolNo() %></td>
+						                <td>자원봉사</td>
+						                <td><%=vo.getVolTitle() %></td>
+						                <td><%=vo.getVolWriter() %></td>
+						                <td><%=vo.getVolWriteDate() %></td>
+						                <td><%=vo.getVolCount() %></td>
+						            </tr>
+					            <% } %>
+					        <% } %>
+			            </tbody>
+	        		</table>
 	            </div>
 		          
 		        <div id="menu5" class="container tab-pane fade"><br>
-		            <h3>자유게시판</h3>
-		            <table border="1">
-		            <thead>
-			            <tr>
-			                <th>No</th>
-			                <th>게시판 이름</th>
-			                <th>제목</th>
-			                <th>작성자</th>
-			                <th>작성날짜</th>
-			                <th>조회수</th>
-			            </tr>
-		            </thead>
-		            <tbody>
-		            	<%if(c_PostList.isEmpty()){ %>
-		            		<tr>
-		            			<td colspan="6">등록된 글이 없습니다.</td>
-		            		</tr>
-		            	<%} else { %>
-		            		<% for(C_Post cp : c_PostList){ %>
-					            <tr>
-					                <td><%=cp.getCpostNo()%></td>
-					                <td>자유게시판</td>
-					                <td><%=cp.getCpostTitle() %></td>
-					                <td><%=cp.getCuserId() %></td>
-					                <td><%=cp.getCpostDate() %></td>
-					                <td><%=cp.getCpostCount()%></td>
-					            </tr>
-				            <% } %>
-				        <% } %>
-		            </tbody>
-	        	</table>
+		            <table border="1" class="list-area table table-bordered" align="center">
+		            	<thead class="thead-light text-center">
+				            <tr>
+				                <th>No</th>
+				                <th>게시판 이름</th>
+				                <th width="400">제목</th>
+				                <th>작성자</th>
+				                <th>작성날짜</th>
+				                <th>조회수</th>
+				            </tr>
+			            </thead>
+			            <tbody class="text-center">
+			            	<%if(c_postList.isEmpty()){ %>
+			            		<tr>
+			            			<td colspan="6">등록된 글이 없습니다.</td>
+			            		</tr>
+			            	<%} else { %>
+			            		<% for(C_Post cp : c_postList){ %>
+						            <tr>
+						                <td><%=cp.getCpostNo()%></td>
+						                <td>자유게시판</td>
+						                <td><%=cp.getCpostTitle() %></td>
+						                <td><%=cp.getCuserId() %></td>
+						                <td><%=cp.getCpostDate() %></td>
+						                <td><%=cp.getCpostCount()%></td>
+						            </tr>
+					            <% } %>
+					        <% } %>
+			            </tbody>
+	        		</table>
 	            </div>
-	        	
+	        </div>
 	        	<!-- 
 					페이징바--------------------------------------------------------------------------------------- 
 				-->
 				<br>
 				<div align="center" class="paging-area">
-				  <ul class="pagination" align="center">
+				  <ul class="pagination justify-content-center" align="center">
 				  	<% if(currentPage != 1){ %>
 				    	<li class="page-item"><a class="page-link" href="<%=contextPath%>/list.bo?currentPage=<%=currentPage-1%>">Previous</a></li>
 				    <% }else{ %>
-				    	<li class="page-item"><a class="page-link" href="<%=contextPath%>/list.bo?currentPage=<%=currentPage%>">Previous</a></li>
+				    	<li class="page-item disabled"><a class="page-link" href="<%=contextPath%>/list.bo?currentPage=<%=currentPage%>">Previous</a></li>
 				    <% } %>
 				    
 				    <% for(int p=startPage; p<=endPage; p++){ %>
-				    	<li class="page-item"><a class="page-link" href="<%=contextPath%>/list.bo?currentPage=<%= p %>"><%= p %></a></li>
+				    	<%if(currentPage == p){ %>
+				    		<li class="page-item active"><a class="page-link" href="<%=contextPath%>/list.bo?currentPage=<%= p %>"><%= p %></a></li>
+				    	<% }else{ %>
+				    		<li class="page-item"><a class="page-link" href="<%=contextPath%>/list.bo?currentPage=<%= p %>"><%= p %></a></li>
+				    	<% } %>
 				    <% } %>
 				    
 				    <% if(currentPage != maxPage){ %>
 				    	<li class="page-item"><a class="page-link" href="<%=contextPath%>/list.bo?currentPage=<%=currentPage+1%>">Next</a></li>
 				    <% }else{ %>
-				    	<li class="page-item"><a class="page-link" href="<%=contextPath%>/list.bo?currentPage=<%=currentPage%>">Next</a></li>
+				    	<li class="page-item disabled"><a class="page-link" href="<%=contextPath%>/list.bo?currentPage=<%=currentPage%>">Next</a></li>
 				    <% } %>
 				  </ul>
 				</div>
-	          </div>
-	          
-	          
-	          
 	        </div>
 	      </div>
-	
-    
-        
-        	
         <br>
 
-
-
-        
-        
         <br>
     </div>
     <%@ include file="../common/footerbar.jsp" %>

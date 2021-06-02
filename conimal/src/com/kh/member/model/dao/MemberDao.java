@@ -30,6 +30,36 @@ public class MemberDao {
 		
 	}
 	
+	public Member loginMember(Connection conn, String userId, String userPwd) {
+		// select문 => ResultSet 객체 (한 행) => Member객체
+		Member m = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("loginMember");
+		try {
+			pstmt = conn.prepareStatement(sql); // 미완성된 sql문
+			pstmt.setString(1, userId);
+			pstmt.setString(2, userPwd);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				m = new Member(rset.getInt("mem_no"),
+							   rset.getString("mem_id"),
+						       rset.getString("mem_pwd"),
+							   rset.getString("mem_name"),
+							   rset.getString("email"),
+							   rset.getDate("enroll_date"),
+							   rset.getString("status"),
+							   rset.getInt("mem_code"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return m;
+	}
+	
 	/**
 	 * @return 총 회원 수
 	 */
