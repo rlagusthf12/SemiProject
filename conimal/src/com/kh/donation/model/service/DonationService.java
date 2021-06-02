@@ -64,5 +64,29 @@ public class DonationService {
 		return d;
 		
 	}
+	
+	public int selectListCountByKeyword(String keyword) {
+		
+		Connection conn = getConnection();
+		
+		int listCount = new DonationDao().selectListCountByKeyword(conn, keyword);
+		
+		close(conn);
+		
+		return listCount;
+		
+	}
+	
+	public ArrayList<Donation> selectByKeyword(PageInfo pi, String keyword) {
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Donation> list = new DonationDao().selectByKeyword(conn, pi, keyword);
+		
+		close(conn);
+		
+		return list;
+		
+	}
 
 }

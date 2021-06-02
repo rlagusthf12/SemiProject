@@ -48,4 +48,31 @@
 		 WHERE VOL_NO = ? 
 	</entry>
 	
+	<entry key="selectListCountByKeyword">
+		SELECT
+		       COUNT(*) COUNT
+		  FROM VOLUNTEER 
+		 WHERE VOL_TITLE LIKE ? 
+	</entry>
+	
+	<entry key="selectByKeyword">
+		SELECT *
+		  FROM (
+		        SELECT ROWNUM RNUM, A.*
+		          FROM (
+		                SELECT 
+		                       VOL_NO
+		                     , VOL_TITLE
+		                     , VOL_WRITEDATE
+		                     , MEM_ID
+		                     , VOL_COUNT
+		                  FROM VOLUNTEER
+		                  JOIN MEMBER USING(MEM_NO)
+		                 ORDER BY VOL_WRITEDATE DESC
+		                ) A
+                 WHERE VOL_TITLE LIKE ?
+		        )
+		 WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
 </properties>

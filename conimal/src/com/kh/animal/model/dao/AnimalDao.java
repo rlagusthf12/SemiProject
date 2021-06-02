@@ -185,7 +185,8 @@ public class AnimalDao {
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
-				a = new Animal(rset.getString("SH_NAME"),
+				a = new Animal(rset.getInt("AN_NO"),
+						       rset.getString("SH_NAME"),
 							   rset.getString("AN_GENDER"),
 							   rset.getString("AN_DATE"),
 							   rset.getString("AN_PLACE"),
@@ -212,7 +213,7 @@ public class AnimalDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, bk.getMemNo());
-			pstmt.setInt(1, bk.getBinfoNo());
+			pstmt.setInt(2, bk.getBinfoNo());
 			
 			result = pstmt.executeUpdate();
 			
@@ -223,6 +224,132 @@ public class AnimalDao {
 		}
 		
 		return result;
+		
+	}
+	
+	public int selectDogCountByKeyword(Connection conn, String keyword) {
+		
+		int listCount = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectDogCountByKeyword");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%" + keyword + "%");
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt("COUNT");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return listCount;
+		
+	}
+	
+	public ArrayList<Animal> selectDogListByKeyword(Connection conn, PageInfo pi, String keyword) {
+		
+		ArrayList<Animal> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectDogListByKeyword");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
+			pstmt.setString(1, "%" + keyword + "%");
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Animal(rset.getInt("AN_NO"),
+									rset.getString("AN_TITLE")));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+		
+	}
+	
+	public int selectCatCountByKeyword(Connection conn, String keyword) {
+		
+		int listCount = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectCatCountByKeyword");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%" + keyword + "%");
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt("COUNT");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return listCount;
+		
+	}
+	
+	public ArrayList<Animal> selectCatListByKeyword(Connection conn, PageInfo pi, String keyword) {
+		
+		ArrayList<Animal> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectCatListByKeyword");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
+			pstmt.setString(1, "%" + keyword + "%");
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Animal(rset.getInt("AN_NO"),
+									rset.getString("AN_TITLE")));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
 		
 	}
 

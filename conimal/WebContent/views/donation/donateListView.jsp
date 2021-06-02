@@ -83,6 +83,15 @@
 
 	<br><br>
 
+	<form action="<%=contextPath%>/search.do?currentPage=1" method="post">
+		<div class="input-group mx-auto mb-3" style="width: 250px;">
+			<input type="text" class="form-control" placeholder="Search" name="keyword">
+			<div class="input-group-append">
+			 	<button class="btn btn-primary" type="submit">검색</button>
+			</div>
+	  	</div>	
+	</form>
+
 	<div align="center" class="paging-area">
 		<ul class="pagination">
 			<%if(currentPage != 1) { %>

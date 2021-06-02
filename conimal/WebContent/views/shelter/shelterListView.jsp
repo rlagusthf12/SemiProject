@@ -44,18 +44,7 @@
 		<br><br>
 		
 		<h2 align="center">보호소 소개</h2>
-		
-		<!-- <div class="search-area">
-			<form action="" method="post" id="area2">
-				<input type="text" name="keyword">
-				<input type="submit" value="검색">
-			</form>
-			<select name="area" id="area1">
-				<option value="seoul">서울</option>
-				<option value="gyeonggi">경기</option>
-				<option value="busan">부산</option>
-			</select>
-		</div> -->
+		<!-- 
 		<div class="search-area">
 			<table>
 				<tr>
@@ -75,10 +64,25 @@
 				</tr>
 			</table>
 		</div>
-	
-		<br clear="both">
 		
+		<br clear="both">
+		-->
+		<form action="<%=contextPath%>/search.sh?currentPage=1" method="post">
+			<div class="input-group mt-3 mb-3" style="width: 300px; margin-left: 10px">
+				<div class="input-group-prepend">
+					<button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown">지역</button>
+				    <div class="dropdown-menu">
+				      	<a class="dropdown-item" href="#">Link 1</a>
+				      	<a class="dropdown-item" href="#">Link 2</a>
+				      	<a class="dropdown-item" href="#">Link 3</a>
+				    </div>
+				</div>
+			  	<input type="text" class="form-control" placeholder="보호소명" name="keyword">
+			  	<button class="btn btn-primary" type="submit">검색</button>
+			</div>
+		</form>
 		<div class="content-area">
+
 			
 			<%if(list.isEmpty()) {%>
 				조회된 결과가 없습니다
@@ -94,6 +98,7 @@
 		</div>
 		
 		<br><br>
+		
 		
 		<div align="center" class="paging-area">
 			<ul class="pagination">

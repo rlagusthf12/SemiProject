@@ -110,5 +110,53 @@ public class AnimalService {
 		return result;
 		
 	}
+	
+	public int selectDogCountByKeyword(String keyword) {
+		
+		Connection conn = getConnection();
+		
+		int listCount = new AnimalDao().selectDogCountByKeyword(conn, keyword);
+		
+		close(conn);
+		
+		return listCount;
+		
+	}
+	
+	public ArrayList<Animal> selectDogListByKeyword(PageInfo pi, String keyword) {
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Animal> list = new AnimalDao().selectDogListByKeyword(conn, pi, keyword);
+		
+		close(conn);
+		
+		return list;
+		
+	}
+	
+	public int selectCatCountByKeyword(String keyword) {
+		
+		Connection conn = getConnection();
+		
+		int listCount = new AnimalDao().selectCatCountByKeyword(conn, keyword);
+		
+		close(conn);
+		
+		return listCount;
+		
+	}
+	
+	public ArrayList<Animal> selectCatListByKeyword(PageInfo pi, String keyword) {
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Animal> list = new AnimalDao().selectCatListByKeyword(conn, pi, keyword);
+		
+		close(conn);
+		
+		return list;
+		
+	}
 
 }

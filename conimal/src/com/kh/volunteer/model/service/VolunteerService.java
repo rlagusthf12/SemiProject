@@ -64,5 +64,29 @@ public class VolunteerService {
 		return v;
 		
 	}
+	
+	public int selectListCountByKeyword(String keyword) {
+		
+		Connection conn = getConnection();
+		
+		int listCount = new VolunteerDao().selectListCountByKeyword(conn, keyword);
+		
+		close(conn);
+		
+		return listCount;
+		
+	}
+	
+	public ArrayList<Volunteer> selectByKeyword(PageInfo pi, String keyword) {
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Volunteer> list = new VolunteerDao().selectByKeyword(conn, pi, keyword);
+		
+		close(conn);
+		
+		return list;
+		
+	}
 
 }

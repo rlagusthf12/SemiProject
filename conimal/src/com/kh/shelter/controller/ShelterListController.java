@@ -66,6 +66,10 @@ public class ShelterListController extends HttpServlet {
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
 		
+//		System.out.println("listCount: " + listCount);
+//		System.out.println("currentPage: " + currentPage);
+//		System.out.println("maxPage: " + maxPage);
+		
 		request.getRequestDispatcher("views/shelter/shelterListView.jsp").forward(request, response);
 		
 	}

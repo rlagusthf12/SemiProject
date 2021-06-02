@@ -33,8 +33,8 @@ public class BookmarkController extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 		
-		int memNo = Integer.parseInt(request.getParameter("mno"));
 		int anNo = Integer.parseInt(request.getParameter("ano"));
+		int memNo = Integer.parseInt(request.getParameter("mno"));
 		
 		Bookmark bk = new Bookmark();
 		bk.setMemNo(memNo);
@@ -42,7 +42,13 @@ public class BookmarkController extends HttpServlet {
 		
 		int result = new AnimalService().insertBookMark(bk);
 		
-		response.getWriter().print(result);
+		if(result > 0) {
+			request.getSession().setAttribute("alertMsg", "즐겨찾기에 추가되었습니다");
+			response.sendRedirect(request.getContextPath() + "/detail.an?ano=" + anNo);
+		} else {
+			request.getSession().setAttribute("alertMsg", "즐겨찾기 추가 실패!");
+			response.sendRedirect(request.getContextPath() + "/detail.an?ano=" + anNo);
+		}
 		
 	}
 

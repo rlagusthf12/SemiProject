@@ -26,9 +26,10 @@ public class Animal {
 		this.anTitle = anTitle;
 	}
 
-	// 보호소명, 성별, 발견날짜, 발견장소, 글내용
-	public Animal(String shName, String anGender, String anDate, String anPlace, String anContent) {
+	// 글번호, 보호소명, 성별, 발견날짜, 발견장소, 글내용
+	public Animal(int anNo, String shName, String anGender, String anDate, String anPlace, String anContent) {
 		super();
+		this.anNo = anNo;
 		this.shName = shName;
 		this.anGender = anGender;
 		this.anDate = anDate;

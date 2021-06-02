@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<entry key="selectListCount">
+		SELECT
+		       COUNT(*) COUNT
+		  FROM DONATION     
+	</entry>
+	
+	<entry key="selectList">
+		SELECT *
+		  FROM (
+		        SELECT ROWNUM RNUM, A.*
+		          FROM (
+		                SELECT 
+		                       DO_NO
+		                     , DO_TITLE
+		                     , MEM_ID
+		                     , DO_COUNT
+		                     , DO_WRITEDATE
+		                  FROM DONATION
+		                  JOIN MEMBER USING(MEM_NO)
+		                 ORDER
+		                    BY DO_WRITEDATE DESC
+		                ) A
+		        )
+		 WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="increaseCount">
+		UPDATE
+		       DONATION
+		   SET DO_COUNT = DO_COUNT + 1
+		 WHERE DO_NO = ?    
+	</entry>
+	
+	<entry key="selectDontion">
+		SELECT
+		       DO_TITLE
+		     , SH_NAME
+		     , SH_PHONE
+		     , SH_ADDRESS
+		     , DO_CONTENT
+		  FROM DONATION
+		  JOIN SHELTER USING(MEM_NO)
+		 WHERE DO_NO = ?    
+	</entry>
+	
+	<entry key="selectListCountByKeyword">
+		SELECT
+		       COUNT(*) COUNT
+		  FROM VOLUNTEER 
+		 WHERE DO_TITLE LIKE ? 
+	</entry>
+	
+</properties>

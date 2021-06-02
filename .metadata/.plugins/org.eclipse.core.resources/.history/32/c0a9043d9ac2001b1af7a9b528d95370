@@ -1,0 +1,57 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"
+    import="java.util.ArrayList, com.kh.volunteer.model.vo.Volunteer"%>
+<%
+	ArrayList<Volunteer> list = (ArrayList<Volunteer>)request.getAttribute("list");
+%>    
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<%@ include file="../common/menubar.jsp" %>
+	
+	<br><br>
+	
+	<div class="content-area">
+
+		<table id="list-area" class="table table-striped">
+			<thead>
+				<tr>
+					<th>글번호</th>
+					<th width="600">글제목</th>
+					<th width="150">작성자</th>
+					<th>조회수</th>
+					<th width="150">작성일</th>
+				</tr>
+			</thead>
+			<tbody>
+				<%if(list.isEmpty()) {%>
+					<tr>
+						<td colspan="5">조회된 리스트가 없습니다</td>
+					</tr>
+				<%} else { %>
+					<%for(Volunteer v : list) { %>
+						<tr>
+							<td><%=v.getVolNo()        %></td>
+							<td><%=v.getVolTitle()     %></td>
+							<td><%=v.getMemNo()        %></td>
+							<td><%=v.getVolCount()     %></td>
+							<td><%=v.getVolWritedate() %></td>
+						</tr>
+					<%} %>
+				<%} %>
+			</tbody>
+		</table>
+
+	</div>
+
+	<br><br>
+	
+	<%@ include file="../common/footerbar.jsp" %>
+
+</body>
+</html>

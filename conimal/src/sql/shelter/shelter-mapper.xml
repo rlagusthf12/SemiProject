@@ -34,4 +34,28 @@
 		 WHERE MEM_NO = ? 
 	</entry>
 	
+	<entry key="selectListCountByKeyword">
+		SELECT
+		       COUNT(*) COUNT
+		  FROM SHELTER
+		 WHERE SH_NAME LIKE ? 
+	</entry>
+	
+	<entry key="selectListByKeyword">
+		SELECT *
+		  FROM (
+		        SELECT ROWNUM RNUM, A.*
+		          FROM (
+		                SELECT 
+		                       MEM_NO 
+		                     , SH_NAME
+		                  FROM SHELTER
+		                 ORDER
+		                    BY MEM_NO
+		                ) A
+                 WHERE SH_NAME LIKE ?       
+		        )
+		 WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
 </properties>

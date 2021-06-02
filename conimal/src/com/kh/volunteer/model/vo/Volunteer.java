@@ -33,7 +33,7 @@ public class Volunteer {
 	}
 	
 	
-
+    // 글번호, 글제목, 작성일, 작성자, 조회수
 	public Volunteer(int volNo, String volTitle, Date volWritedate, String memNo, int volCount) {
 		super();
 		this.volNo = volNo;

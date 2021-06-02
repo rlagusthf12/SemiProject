@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<entry key="selectListCount">
+		SELECT
+		       COUNT(*) COUNT
+		  FROM SHELTER
+	</entry>
+	
+	<entry key="selectList">
+		SELECT *
+		  FROM (
+		        SELECT ROWNUM RNUM, A.*
+		          FROM (
+		                SELECT 
+		                       MEM_NO 
+		                     , SH_NAME
+		                  FROM SHELTER
+		                 ORDER
+		                    BY MEM_NO
+		                ) A
+		        )
+		 WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="selectShelter">
+		SELECT
+		       SH_NAME
+		     , SH_ADDRESS
+		     , SH_PHONE
+		     , SH_ABOUT
+		  FROM SHELTER
+		 WHERE MEM_NO = ? 
+	</entry>
+	
+	<entry key="selectListCountByKeyword">
+		SELECT
+		       COUNT(*) COUNT
+		  FROM SHELTER
+		 WHERE SH_NAME = ? 
+	</entry>
+	
+	<entry key="selectListByKeyword">
+		SELECT *
+		  FROM (
+		        SELECT ROWNUM RNUM, A.*
+		          FROM (
+		                SELECT 
+		                       MEM_NO 
+		                     , SH_NAME
+		                  FROM SHELTER
+		                 ORDER
+		                    BY MEM_NO
+		                ) A
+                 WHERE SH_NAME LIKE ?       
+		        )
+		 WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+</properties>
