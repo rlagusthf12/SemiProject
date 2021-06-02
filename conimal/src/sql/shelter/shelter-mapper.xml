@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	
+	<entry key="insertShelter">
+		INSERT
+		  INTO SHELTER
+		  (
+		    MEM_NO
+		  , SH_NAME
+		  , SH_PHONE
+		  , SH_ADDRESS
+		  , SH_ABOUT
+		  , SH_LOCAL
+		  )
+		  VALUES
+		  (
+		    SEQ_UNO.NEXTVAL
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  )
+	</entry>
+	
+	<entry key="insertAttachment">
+	INSERT
+	  INTO ATTACHMENT
+	  (
+	    FILE_NO
+	  , REF_TYPE  
+	  , REF_BNO
+	  , ORIGIN_NAME
+	  , CHANGE_NAME
+	  , FILE_PATH
+	  )
+	  VALUES
+	  (
+	    SEQ_FNO.NEXTVAL
+	  , ?  
+	  , SEQ_BNO.CURRVAL
+	  , ?
+	  , ?
+	  , ?
+	  )
+	</entry>
+
+	
+	
+</properties>
