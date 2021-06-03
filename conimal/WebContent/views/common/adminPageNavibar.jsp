@@ -89,7 +89,7 @@
                 </ul>
             </li>
             <li>
-                <a href="">게시판 관리</a>
+                <a href="/conimal/list.bo?currentPage=1">게시판 관리</a>
                 <ul>
                     <li><a href="/conimal/list.bo?currentPage=1">게시판 글 조회</a></li>
                     <li><a href="/conimal/list.cu?currentPage=1">1:1 문의</a></li>

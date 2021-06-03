@@ -44,8 +44,8 @@
 	
     <div class="outer" align="center">
         <br>
-        <div data-text-content="true" style="font-size: 16px; font-weight: bold; color: rgb(127, 127, 127);" class="" spellcheck="false">통합 관리&gt; 1:1문의</div>
-        <div data-text-content="true" style="font-weight: bold; font-size: 32px; color: rgb(127, 127, 127);" class="" spellcheck="false">1:1문의</div>
+        <div data-text-content="true" style="font-size: 16px; font-weight: bold; color: rgb(127, 127, 127);" class="text-left" spellcheck="false">통합 관리&gt; 1:1문의</div>
+        <div data-text-content="true" style="font-weight: bold; font-size: 32px; color: rgb(127, 127, 127);" class="text-left" spellcheck="false">1:1문의</div>
         <br>
         <div class=table-responsive-sm>
 	        <table class="list-area table table-bordered" border="1" align="center">

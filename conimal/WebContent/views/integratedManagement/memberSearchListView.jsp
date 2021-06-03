@@ -1,9 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.util.ArrayList, com.kh.member.model.vo.Member, com.kh.common.model.vo.PageInfo" %>
+<%@ page import="java.util.ArrayList, com.kh.member.model.vo.Member,
+	com.kh.common.model.vo.PageInfo" %>
 <%
+	//ArrayList<Member> searchList = (ArrayList<Member>)request.getAttribute("searchList");
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
-	ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list");
+	ArrayList<Member> searchList = (ArrayList<Member>)request.getAttribute("searchList");
+	String keyword = (String)request.getAttribute("keyword");
 	
 	int currentPage = pi.getCurrentPage();
 	int startPage = pi.getStartPage();
@@ -20,6 +23,7 @@
 		margin: auto;
 		width: 1000px;
 		height: 1300px;
+		position: relative;
 	}
     table{
     	width: 700px;
@@ -36,36 +40,34 @@
 		background: gainsboro;
     }
 </style>
+</style>
 </head>
 <body>
 	<%@ include file="../common/menubar.jsp" %>
 	<%@ include file="../common/adminPageNavibar.jsp" %>
-	
+    
+
     <div class="outer" align="center">
 		<br>
         <div data-text-content="true" style="font-size: 16px; font-weight: bold; color: rgb(127, 127, 127);" class="text-left" spellcheck="false">통합 관리&gt; 회원 조회</div>
         <div data-text-content="true" style="font-weight: bold; font-size: 32px; color: rgb(127, 127, 127);" class="text-left" spellcheck="false">회원 조회</div>
-		
 		<!-- 
-			회원 검색기능--------------------------------------------------------------------------------------- 
-		    http://localhost:8888/conimal/list.me?search_op=id&keyword=dd
-		-->
-		
+			회원 검색기능---------------------------------------------------------------------------------------
+		!--> 
 		<nav class="navbar navbar-dark justify-content-center">
-			<form class="form-inline" action="<%=contextPath%>/listSearch.me">
+			<form class="form-inline" action="<%=contextPath%>/listSearch.me" method="post">
 				<div class="search">
 					<input type="hidden" name="currentPage" value="1">
-					<input type="text" name="keyword" class="form-control mr-sm-2" placeholder="검색할 아이디를 입력하세요" style="width:500px">
-					<button class="btn" type="submit" style="background-color: rgb(187, 208, 227)">검색</button>
+					<input type="text" name="keyword" class="form-control mr-sm-2" placeholder="검색할 아이디를 입력하세요" value="<%if(keyword!=null){ %><%=keyword%><%}%>" style="width:500px">
+					<button type="submit" class="btn" style="background-color: rgb(187, 208, 227)">검색</button>
 				</div>
 			</form>
 		</nav>
-
         <br>
 	
 		<div id=list-area class=table-responsive-sm>
 			<table border="1" class="list-area table table-bordered" align="center">
-				<% if(list.isEmpty()) { %>
+				<% if(searchList.isEmpty()) { %>
 					<tr>
 						<td colspan="6">조회된 회원이 없습니다.</td>
 					</tr>
@@ -78,10 +80,10 @@
 							<th>이름</th>
 							<th>이메일</th>
 							<th>가입일</th>
-						<tr>
+						</tr>
 					</thead>
 					<tbody class="text-center">
-						<% for (Member m : list) { %>
+						<% for (Member m : searchList) { %>
 							<tr>
 								<td><%=m.getUserNo()%></td>
 								<td>
@@ -95,20 +97,14 @@
 								</td>
 								<td><%=m.getUserId()%></td>
 								<td><%=m.getUserName()%></td>
-								<td>
-									<%if(m.getEmail()!=null){%>
-										<%=m.getEmail() %>
-									<%}else{ %>
-									
-									<%} %>
-								</td>
+								<td><%=m.getEmail()%></td>
 								<td><%=m.getEnrollDate()%></td>
 							</tr>
 						<% } %>
 					</tbody>
+					
 				<% } %>
 			</table>
-			
 		</div>
 		<br>
 		<script>
@@ -119,6 +115,7 @@
 			})
  		</script>
 		
+		
 		<!-- 
 			페이징바--------------------------------------------------------------------------------------- 
 		-->
@@ -126,29 +123,28 @@
 			
 			  <ul class="pagination justify-content-center" align="center">
 			  	<% if(currentPage != 1){ %>
-			    	<li class="page-item"><a class="page-link" href="<%=contextPath%>/list.me?currentPage=<%=currentPage-1%>">Previous</a></li>
+			    	<li class="page-item"><a class="page-link" href="<%=contextPath%>/listSearch.me?currentPage=<%=currentPage-1%>&keyword=<%=keyword%>">Previous</a></li>
 			    <% }else{ %>
-			    	<li class="page-item disabled"><a class="page-link" href="<%=contextPath%>/list.me?currentPage=<%=currentPage-1%>">Previous</a></li>
+			    	<li class="page-item disabled"><a class="page-link" href="<%=contextPath%>/listSearch.me?currentPage=<%=currentPage-1%>&keyword=<%=keyword%>">Previous</a></li>
 			    <% } %>
 			    
 			    <% for(int p=startPage; p<=endPage; p++){ %>
 			    	<%if(currentPage == p){ %>
-			    		<li class="page-item active"><a class="page-link" href="<%=contextPath%>/list.me?currentPage=<%= p %>"><%= p %></a></li>
+			    		<li class="page-item active"><a class="page-link" href="<%=contextPath%>/listSearch.me?currentPage=<%= p %>&keyword=<%=keyword%>"><%= p %></a></li>
 			    	<% }else{ %>
-			    		<li class="page-item"><a class="page-link" href="<%=contextPath%>/list.me?currentPage=<%= p %>"><%= p %></a></li>
+			    		<li class="page-item"><a class="page-link" href="<%=contextPath%>/listSearch.me?currentPage=<%= p %>&keyword=<%=keyword%>"><%= p %></a></li>
 			    	<% } %>
 			    <% } %>
 			    
 			    
 			    <% if(currentPage != maxPage){ %>
-			    	<li class="page-item"><a class="page-link" href="<%=contextPath%>/list.me?currentPage=<%=currentPage+1%>">Next</a></li>
+			    	<li class="page-item"><a class="page-link" href="<%=contextPath%>/listSearch.me?currentPage=<%=currentPage+1%>&keyword=<%=keyword%>">Next</a></li>
 			    <% }else{ %>
-			    	<li class="page-item disabled"><a class="page-link" href="<%=contextPath%>/list.me?currentPage=<%=currentPage+1%>">Next</a></li>
+			    	<li class="page-item disabled"><a class="page-link" href="<%=contextPath%>/listSearch.me?currentPage=<%=currentPage+1%>&keyword=<%=keyword%>">Next</a></li>
 			    <% } %>
 			  </ul>
 		</div>
 		<%@ include file="../common/footerbar.jsp" %>
-    </div>
-
+	</div>
 </body>
 </html>

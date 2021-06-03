@@ -42,8 +42,8 @@
     <div class="outer" align="center">
     
         <br>
-        <div data-text-content="true" style="font-size: 16px; font-weight: bold; color: rgb(127, 127, 127);" class="" spellcheck="false">통합 관리&gt; 신고 조회</div>
-        <div data-text-content="true" style="font-weight: bold; font-size: 32px; color: rgb(127, 127, 127);" class="" spellcheck="false">신고 조회</div>
+        <div data-text-content="true" style="font-size: 16px; font-weight: bold; color: rgb(127, 127, 127);" class="text-left" spellcheck="false">통합 관리&gt; 신고 조회</div>
+        <div data-text-content="true" style="font-weight: bold; font-size: 32px; color: rgb(127, 127, 127);" class="text-left" spellcheck="false">신고 조회</div>
         <br>
         
         <div class=table-responsive-sm>
@@ -58,7 +58,8 @@
 			                <th>No</th>
 			                <th>신고자 아이디</th>
 			                <th>게시판 이름</th>
-			                <th width="400px">신고 사유</th>
+			                <th>제목</th>
+			                <th>신고 사유</th>
 			                <th>신고 날짜</th>
 		            	</tr>
 		            </thead>
@@ -68,24 +69,27 @@
 				            <tr>
 				                <td><%=r.getReportUnique() %></td>
 				                <td><%=r.getMemberId() %></td>
-				                <td>
 				                	<% if(r.getRefBoardType().equals("POST")){ %>
-				                		자유게시판
+				                		<td>자유게시판</td>
+				                		<td><%=r.getCpostTitle() %></td>
 				                	<% }else if(r.getRefBoardType().equals("ANIMAL")){ %>
-				                		보호중인 동물들
+				                		<td>보호중인 아이들</td>
+				                		<td><%=r.getAnimalTitle() %></td>
 				                	<% }else if(r.getRefBoardType().equals("ADOPT")){ %>
-				                		입양 후기
+				                		<td>입양 후기</td>
+				                		<td><%=r.getAdoptTitle() %></td>
 				                	<% }else if(r.getRefBoardType().equals("DONATION")){ %>
-				                		후원
-				                	<% }else if(r.getRefBoardType().equals("SHELTER")){ %>
-				                		보호소 소개
+				                		<td>후원</td>
+				                		<td><%=r.getDonationTitle() %></td>
 				                	<% }else if(r.getRefBoardType().equals("VOLUNTEER")){ %>
-				                		자원봉사
+				                		<td>자원봉사</td>
+				                		<td><%=r.getVolunteerTitle() %></td>
 				                	<% } else {%>
-				                		
+				                		<td></td>
+				                		<td></td>
 				                	<% } %>
-				                </td>
-				                <td><%=r.getReportTypeNo() %></td>
+				                
+				                <td><%=r.getReportReason() %></td>
 				                <td><%=r.getReportDate() %></td>
 				            </tr>
 				        <% } %>

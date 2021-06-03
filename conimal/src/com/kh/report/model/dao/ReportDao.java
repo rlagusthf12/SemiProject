@@ -55,12 +55,13 @@ public class ReportDao {
 	 */
 	public ArrayList<Report> selectReportList(Connection conn, PageInfo pi){
 		// 여러행 조회 =>  ReultSet
-		int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
-		int endRow = startRow + pi.getBoardLimit() - 1;
-		
 		ArrayList<Report> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
+		
+		int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+		int endRow = startRow + pi.getBoardLimit() - 1;
+		
 		String sql = prop.getProperty("selectReportList");
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -71,7 +72,12 @@ public class ReportDao {
 				list.add(new Report(rset.getInt("report_unique"),
 									rset.getString("mem_id"),
 									rset.getString("ref_type"),
-									rset.getString("ref_no"),
+									rset.getInt("ref_no"),
+									rset.getString("cpost_title"),
+									rset.getString("adopt_title"),
+									rset.getString("an_title"),
+									rset.getString("do_title"),
+									rset.getString("vol_title"),
 									rset.getString("report_reason"),
 									rset.getDate("report_date")));
 			}

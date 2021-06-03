@@ -4,23 +4,34 @@ import java.sql.Date;
 
 public class Report {
 	
-	private int reportUnique;	 	 // 신고 고유번호
-	private String memberId;		 // 신고자 아이디
-	private String refBoardType; 	 // 게시판 타입 이름
-	private String refBoardNo;		 // 게시글 번호, 게시글 제목
-	private String reportReason;		 // 신고 사유
-	private Date reportDate;		 // 신고 날짜
+	private int reportUnique;	 	 		// 신고 고유번호
+	private String memberId;		 		// 신고자 아이디
+	private String refBoardType; 	 		// 게시판 타입 이름
+	private int refNo;						// 게시글 번호
+	private String cpostTitle;		 		// 게시글 제목
+	private String adoptTitle;	
+	private String animalTitle;	
+	private String donationTitle;	
+	private String volunteerTitle;	
+	private String reportReason;			 // 신고 사유
+	private Date reportDate;		 		// 신고 날짜
 	
 	public Report() {}
 
-	public Report(int reportUnique, String memberId, String refBoardType, String refBoardNo, String reportTypeNo,
+	public Report(int reportUnique, String memberId, String refBoardType, int refNo, String cpostTitle,
+			String adoptTitle, String animalTitle, String donationTitle, String volunteerTitle, String reportReason,
 			Date reportDate) {
 		super();
 		this.reportUnique = reportUnique;
 		this.memberId = memberId;
 		this.refBoardType = refBoardType;
-		this.refBoardNo = refBoardNo;
-		this.reportReason = reportTypeNo;
+		this.refNo = refNo;
+		this.cpostTitle = cpostTitle;
+		this.adoptTitle = adoptTitle;
+		this.animalTitle = animalTitle;
+		this.donationTitle = donationTitle;
+		this.volunteerTitle = volunteerTitle;
+		this.reportReason = reportReason;
 		this.reportDate = reportDate;
 	}
 
@@ -48,20 +59,60 @@ public class Report {
 		this.refBoardType = refBoardType;
 	}
 
-	public String getRefBoardNo() {
-		return refBoardNo;
+	public int getRefNo() {
+		return refNo;
 	}
 
-	public void setRefBoardNo(String refBoardNo) {
-		this.refBoardNo = refBoardNo;
+	public void setRefNo(int refNo) {
+		this.refNo = refNo;
 	}
 
-	public String getReportTypeNo() {
+	public String getCpostTitle() {
+		return cpostTitle;
+	}
+
+	public void setCpostTitle(String cpostTitle) {
+		this.cpostTitle = cpostTitle;
+	}
+
+	public String getAdoptTitle() {
+		return adoptTitle;
+	}
+
+	public void setAdoptTitle(String adoptTitle) {
+		this.adoptTitle = adoptTitle;
+	}
+
+	public String getAnimalTitle() {
+		return animalTitle;
+	}
+
+	public void setAnimalTitle(String animalTitle) {
+		this.animalTitle = animalTitle;
+	}
+
+	public String getDonationTitle() {
+		return donationTitle;
+	}
+
+	public void setDonationTitle(String donationTitle) {
+		this.donationTitle = donationTitle;
+	}
+
+	public String getVolunteerTitle() {
+		return volunteerTitle;
+	}
+
+	public void setVolunteerTitle(String volunteerTitle) {
+		this.volunteerTitle = volunteerTitle;
+	}
+
+	public String getReportReason() {
 		return reportReason;
 	}
 
-	public void setReportTypeNo(String reportTypeNo) {
-		this.reportReason = reportTypeNo;
+	public void setReportReason(String reportReason) {
+		this.reportReason = reportReason;
 	}
 
 	public Date getReportDate() {
@@ -75,8 +126,14 @@ public class Report {
 	@Override
 	public String toString() {
 		return "Report [reportUnique=" + reportUnique + ", memberId=" + memberId + ", refBoardType=" + refBoardType
-				+ ", refBoardNo=" + refBoardNo + ", reportTypeNo=" + reportReason + ", reportDate=" + reportDate + "]";
+				+ ", refNo=" + refNo + ", cpostTitle=" + cpostTitle + ", adoptTitle=" + adoptTitle + ", animalTitle="
+				+ animalTitle + ", donationTitle=" + donationTitle + ", volunteerTitle=" + volunteerTitle
+				+ ", reportReason=" + reportReason + ", reportDate=" + reportDate + "]";
 	}
+
+	
+	
+	
 	
 	
 	
