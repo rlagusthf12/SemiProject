@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+<fullyQualifiedTypeName name="java.util.Properties"/>
+<fullyQualifiedTypeName name="java.io.FileInputStream"/>
+<fullyQualifiedTypeName name="java.sql.Connection"/>
+<fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+<fullyQualifiedTypeName name="java.sql.ResultSet"/>
+<fullyQualifiedTypeName name="java.sql.Date"/>
+<fullyQualifiedTypeName name="com.google.gson.Gson"/>
+<fullyQualifiedTypeName name="com.kh.community.cPost.model.service.cPostService"/>
+<fullyQualifiedTypeName name="com.kh.member.model.vo.Member"/>
+<fullyQualifiedTypeName name="com.kh.community.cPost.model.vo.Cpost"/>
+<fullyQualifiedTypeName name="com.kh.community.cPost.model.vo.Reply"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="com.kh.community.cPost.model.vo.Attachment"/>
+<fullyQualifiedTypeName name="org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload"/>
+<fullyQualifiedTypeName name="com.oreilly.servlet.MultipartRequest"/>
+<fullyQualifiedTypeName name="com.kh.common.MyFileRenamePolicy"/>
+<fullyQualifiedTypeName name="com.kh.adopt.model.vo.Adopt"/>
+<fullyQualifiedTypeName name="com.kh.adopt.model.vo.Attachment"/>
+<fullyQualifiedTypeName name="java.io.File"/>
+<fullyQualifiedTypeName name="com.kh.adopt.model.service.AdoptService"/>
+</qualifiedTypeNameHistroy>

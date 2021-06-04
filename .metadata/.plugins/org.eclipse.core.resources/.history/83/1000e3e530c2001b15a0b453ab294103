@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="selectListCount">
+		SELECT
+				COUNT(*) COUNT 
+		FROM  ADOPT
+	</entry>
+	
+	<entry key="selectList">
+			SELECT * 
+				FROM(
+					      SELECT ROWNUM RNUM, A.*
+					        FROM (
+					           SELECT
+					                    ADOPT_NO
+					                  , MEM_NAME
+					                  , ADOPT_TITLE
+					                  , ADOPT_DATE
+					                  , COUNT
+					             FROM ADOPT B
+					             JOIN MEMBER M ON (ADOPT_WRITER = M.MEM_NO)
+		                         ORDER 
+					                BY ADOPT_DATE DESC
+					                ) A
+					      )
+					 WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="increaseCount">
+			
+		UPDATE
+		    ADOPT
+		 SET COUNT = COUNT +1
+		 WHERE ADOPT_NO = ?
+		   AND REF_TYPE = 'ADOPT'
+	
+	</entry>
+	
+	<entry key="selectAdopt">
+		SELECT 
+			    ADOPT_NO
+			  , ADOPT_WRITER
+			  , MEM_NO
+              , ADOPT_TITLE
+			  , COUNT
+              , ADOPT_CONTENT
+              , ADOPT_DATE
+            FROM ADOPT
+			WHERE ADOPT_NO = ?
+	</entry>
+	
+	
+</properties>

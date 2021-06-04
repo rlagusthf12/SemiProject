@@ -1,0 +1,78 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	.outer{
+	    margin-top: 50px;
+	    margin-bottom: 50px;
+	    margin: auto;
+	    width: 950px;
+	}
+	#toolbar{
+	    background: lightgray; 
+	    width: 900px; 
+	    height: 35px;
+	    text-align: center;
+	    vertical-align: middle;
+	    margin: auto;
+	}
+	.inner{
+	    margin: auto;
+	   
+	
+	}
+	#adoptImg>img{
+	    box-sizing: border-box;
+	    width: 900px;
+	    height: 300px;
+	    border: 1px solid lightgray;
+	    margin-left:20px;
+	}
+	#delBtn,#fileBtn{
+	    float: right;
+	}
+	#delBtn{margin-right: 35px;}
+	#fileBtn{margin-right: 10px;}
+	#adoptCan,#adoptDel{
+	    float: left;
+	    margin-left: 10px;
+	}
+	#adoptEnroll{
+	    margin-left: 320px;
+	    position: absolute;
+	}
+	#adoptTitle{
+		width: 520px;
+	    margin-left: 13px;
+	    height: 25px;
+	}
+	#textA{
+		margin:auto;
+		text-align:center;
+	}
+	#adoptConF{
+		margin-left:15px;
+	}
+	#titleBar{
+		margin-left: 20px;
+	}
+	textarea{
+		resize: vertical;
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+</body>
+</html>

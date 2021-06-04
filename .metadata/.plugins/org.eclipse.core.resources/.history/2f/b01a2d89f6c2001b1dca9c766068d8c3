@@ -1,0 +1,27 @@
+package com.kh.community.cPost.model.vo;
+
+import java.sql.Date;
+
+public class Reply {
+	
+	private int reNo;
+	private int cPostNo;
+	private int memNo;
+	private String cUserName;
+	private Date writtenDate;
+	private String replyContent;
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}

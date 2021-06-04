@@ -1,0 +1,5 @@
+package com.kh.community.cPost.model.vo;
+
+public class Reply {
+
+}

@@ -1,0 +1,22 @@
+package com.kh.community.cPost.model.vo;
+
+import java.sql.Date;
+
+public class Attachment {
+
+	private int fileNo;
+	private String refType;
+	private int refNo;
+	private String originName;
+	private String changeName;
+	private String filePath;
+	private Date uploadDate;
+	private int fileLevel;
+	
+	
+	
+	
+	
+	
+	
+}
