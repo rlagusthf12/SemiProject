@@ -69,6 +69,8 @@
 
 		</div>
 		
+		<br><br>
+		
 		<form action="<%=contextPath%>/search.cat?currentPage=1" method="post">
 			<div class="input-group mx-auto mb-3" style="width: 250px;">
 				<input type="text" class="form-control" placeholder="Search" name="keyword">
@@ -78,7 +80,6 @@
 		  	</div>	
 		</form>
 	
-		<br><br>
 		
 		<div align="center" class="paging-area">
 			<ul class="pagination">

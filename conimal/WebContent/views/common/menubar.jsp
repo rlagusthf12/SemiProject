@@ -211,13 +211,68 @@
                       </li>
                         <li><a href="">커뮤니티</a>
                         <ul>
-                            <li><a href="">자유 게시판</a></li>
+                            <li><a href="<%= contextPath%>/list.cp?currentPage=1">자유 게시판</a></li>
                             <li><a href="">공지사항</a></li>
                             <li><a href="">고객센터</a></li>
                         </ul>
                     </li>
                     </ul>
-            </div>            
+            </div>
+            
+        <!-- 신고버튼 클릭시 보여질 Modal -->
+		<div class="modal" id="reportForm">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		
+		      <!-- Modal Header -->
+		      <div class="modal-header">
+		        <h4 class="modal-title">신고하기</h4>
+		        <button type="button" class="close" data-dismiss="modal">&times;</button>
+		      </div>
+				
+			    <form action="<%=contextPath%>/report" method="post">
+			
+			      <!-- Modal body -->
+			      <div class="modal-body">
+			      	<div class="post-info">
+			      		<input type="text" name="postNo" id="postNo" value=""/>
+			      		<input type="text" name="postUser" id="postUser" value=""/>
+			      	</div>
+			      
+			      	<div class="form-check">
+					  <label class="form-check-label">
+					    <input type="radio" class="form-check-input" name="reportNo1">부적절한 홍보 게시글
+					  </label>
+					</div>
+					<div class="form-check">
+					  <label class="form-check-label">
+					    <input type="radio" class="form-check-input" name="reportNo2">음란성 또는 청소년에게 부적합한 내용
+					  </label>
+					</div>
+					<div class="form-check">
+					  <label class="form-check-label">
+					    <input type="radio" class="form-check-input" name="reportNo3">명예훼손/사생활 침해 및 저작권 침해 등
+					  </label>
+					</div>
+					<div class="form-check">
+					  <label class="form-check-label">
+					    <input type="radio" class="form-check-input" name="reportNo4">불법촬영물 등 신고
+					  </label>
+					</div>
+					
+			      </div>
+					
+			      <!-- Modal footer -->
+			      <div class="modal-footer">
+			      	<button type="submit" class="btn btn-primary">신고</button>
+			        <button type="button" class="btn btn-danger" data-dismiss="modal">취소</button>
+			      </div>
+		      
+		      </form>
+		
+		    </div>
+		  </div>
+		</div>         
         
            
 </body>
