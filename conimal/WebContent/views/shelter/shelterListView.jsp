@@ -72,15 +72,27 @@
 				<div class="input-group-prepend">
 					<button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown">지역</button>
 				    <div class="dropdown-menu">
-				      	<a class="dropdown-item" href="#">서울</a>
-				      	<a class="dropdown-item" href="#">경기도</a>
-				      	<a class="dropdown-item" href="#">강원도</a>
-				      	<a class="dropdown-item" href="#">충청도</a>
-				      	<a class="dropdown-item" href="#">전라도</a>
-				      	<a class="dropdown-item" href="#">경상도</a>
-				      	<a class="dropdown-item" href="#">제주</a>
+				      	<a class="dropdown-item" href="<%=contextPath%>/place.sh?place=1">서울</a>
+				      	<a class="dropdown-item" href="<%=contextPath%>/search.sh?currentPage=1&place=2">경기도</a>
+				      	<a class="dropdown-item" href="<%=contextPath%>/search.sh?currentPage=1&place=3">강원도</a>
+				      	<a class="dropdown-item" href="<%=contextPath%>/search.sh?currentPage=1&place=4">충청도</a>
+				      	<a class="dropdown-item" href="<%=contextPath%>/search.sh?currentPage=1&place=5">전라도</a>
+				      	<a class="dropdown-item" href="<%=contextPath%>/search.sh?currentPage=1&place=6">경상도</a>
+				      	<a class="dropdown-item" href="<%=contextPath%>/search.sh?currentPage=1&place=7">제주</a>
 				    </div>
 				</div>
+				<!--
+				<select class="form-select" aria-label="Default select example">
+				  <option selected>지역</option>
+				  <option value="1">서울</option>
+				  <option value="2">경기도</option>
+				  <option value="3">강원도</option>
+				  <option value="4">충정도</option>
+				  <option value="5">전라도</option>
+				  <option value="6">경상도</option>
+				  <option value="7">제주</option>
+				</select>
+				 -->
 			  	<input type="text" class="form-control" placeholder="보호소명" name="keyword">
 			  	<button class="btn btn-primary" type="submit">검색</button>
 			</div>

@@ -132,15 +132,24 @@
             <button onclick="location.href='<%= contextPath%>/list.cp?currentPage=1'" id="btn1" class="submitB" style=" text-align:center; width: 55px;  font-size:13px; background:lightgray; border: 25px; border-radius: 3px;" > 목록 </button>
             <button id="btn2" class="submitB" style=" text-align:center; width: 55px;  font-size:13px; background:lightgray; border: 25px; border-radius: 3px;" > 이전글 </button>
             <button id="btn3" class="submitB" style=" text-align:center; width: 55px;  font-size:13px; background:lightgray; border: 25px; border-radius: 3px;" > 다음글 </button>
-            <button type="submit" id="btn4" class="report-button btn-danger" data-toggle="modal" data-target="#reportForm" data-postNo="<%=c.getcPostNo()%>" data-postUser="<%=c.getcUserName()%>" style="float: right; margin-right:20px; text-align:center; width: 70px;  font-size:13px;  border: 25px; border-radius: 3px;" > 신고하기 </button>
-           
+           	<%if(loginUser != null) {%>
+            	<button type="submit" id="btn4" class="report-button btn-danger" data-toggle="modal" data-target="#reportForm" style="float: right; margin-right:20px; text-align:center; width: 70px;  font-size:13px;  border: 25px; border-radius: 3px;" > 신고하기 </button>
+             	<!--
+           		<button type="submit" id="btn4" class="report-button btn-danger" onclick="location.href='<%=contextPath%>/report.sh?cno=<%=c.getcPostNo()%>&memNo=<%=loginUser.getMemNo()%>'" style="float: right; margin-right:20px; text-align:center; width: 70px;  font-size:13px;  border: 25px; border-radius: 3px;" > 신고하기 </button>
+           		-->
+           	<%} %>
+
             <script>
-            	$(document).on("click", ".report-button", function () {
-            		var postNo = $(this).data('postNo');
-            		$(".post-info #postNo").val(postNo);
-            		var postUser = $(this).data('postUser');
-            		$(".post-info #postUser").val(postUser);
-            	}); 
+            
+            	$(function(){
+            		$(document).on("click", ".report-button", function () {
+                		//var postNo = $(this).data('postNo');
+                		$(".post-info #postNo").val(<%=c.getcPostNo()%>);
+                		//var postUser = $(this).data('postUser');
+                		$(".post-info #memNo").val(<%=loginUser.getMemNo()%>);
+                	}); 
+            	})
+            	
             </script>
            
            

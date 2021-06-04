@@ -1,0 +1,15 @@
+package com.kh.report.model.dao;
+
+import java.util.Properties;
+
+public class ReportDao {
+	
+	private Properties prop = new Properties();
+	
+	public ReportDao() {
+		
+		prop.loadFromXML(new FileInputStream(ReportDao.class.getResource("/sql/report/report-mapper.xml").getPath()));
+		
+	}
+
+}

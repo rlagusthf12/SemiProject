@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<entry key="insertReport">
+		INSERT
+		  INTO REPORT
+		     (
+		       REEPORT_UNIQUE
+		     , MEM_NO
+		     , REF_TYPE
+		     , REF_NO
+		     , REPORT_NO
+		     , REPORT_DATE
+		     )
+		VALUES
+		     (
+		       SEQ_RNO.NEXTVAL
+		     , ?
+		     , 'POST'
+		     , ?
+		     , ?
+		     , SYSDATE
+		     )
+	</entry>
+	
+</properties>

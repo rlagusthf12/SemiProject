@@ -2,5 +2,26 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 
+	<entry key="insertReport">
+		INSERT
+		  INTO REPORT
+		     (
+		       REPORT_UNIQUE
+		     , MEM_NO
+		     , REF_TYPE
+		     , REF_NO
+		     , REPORT_NO
+		     , REPORT_DATE
+		     )
+		VALUES
+		     (
+		       SEQ_RNO.NEXTVAL
+		     , ?
+		     , 'POST'
+		     , ?
+		     , ?
+		     , SYSDATE
+		     )
+	</entry>
 	
 </properties>

@@ -235,28 +235,30 @@
 			      <!-- Modal body -->
 			      <div class="modal-body">
 			      	<div class="post-info">
-			      		<input type="text" name="postNo" id="postNo" value=""/>
-			      		<input type="text" name="postUser" id="postUser" value=""/>
+			      		<!-- 게시글 번호 -->
+			      		<input type="hidden" name="postNo" id="postNo" value=""/>
+			      		<!-- 신고자 번호 -->
+			      		<input type="hidden" name="memNo" id="memNo" value=""/>
 			      	</div>
 			      
 			      	<div class="form-check">
 					  <label class="form-check-label">
-					    <input type="radio" class="form-check-input" name="reportNo1">부적절한 홍보 게시글
+					    <input type="radio" class="form-check-input" name="reportNo" value="1">부적절한 홍보 게시글
 					  </label>
 					</div>
 					<div class="form-check">
 					  <label class="form-check-label">
-					    <input type="radio" class="form-check-input" name="reportNo2">음란성 또는 청소년에게 부적합한 내용
+					    <input type="radio" class="form-check-input" name="reportNo" value="2">음란성 또는 청소년에게 부적합한 내용
 					  </label>
 					</div>
 					<div class="form-check">
 					  <label class="form-check-label">
-					    <input type="radio" class="form-check-input" name="reportNo3">명예훼손/사생활 침해 및 저작권 침해 등
+					    <input type="radio" class="form-check-input" name="reportNo" value="3">명예훼손/사생활 침해 및 저작권 침해 등
 					  </label>
 					</div>
 					<div class="form-check">
 					  <label class="form-check-label">
-					    <input type="radio" class="form-check-input" name="reportNo4">불법촬영물 등 신고
+					    <input type="radio" class="form-check-input" name="reportNo" value="4">불법촬영물 등 신고
 					  </label>
 					</div>
 					
