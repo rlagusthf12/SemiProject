@@ -50,7 +50,14 @@ public class MemberDao {
 							   rset.getString("email"),
 							   rset.getDate("enroll_date"),
 							   rset.getString("status"),
-							   rset.getInt("mem_code"));
+							   rset.getInt("mem_code"),
+							   rset.getString("sh_name"),
+							   rset.getString("sh_phone"),
+							   rset.getString("sh_address"),
+							   rset.getString("sh_about"),
+							   rset.getString("admission"),
+							   rset.getString("sh_local"),
+							   rset.getString("ref_type"));
 			}
 			
 		} catch (SQLException e) {
@@ -64,18 +71,19 @@ public class MemberDao {
 		
 	}
 	
-	public int insertMember(Connection conn, Member m) {
+	public int insertSh(Connection conn, Member m) {
 		// insert문 => 처리된 행수 
 		int result = 0;
 		PreparedStatement pstmt = null;
-		String sql = prop.getProperty("insertMember");
+		String sql = prop.getProperty("insertSh");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, m.getMemId());
 			pstmt.setString(2, m.getMemPwd());
 			pstmt.setString(3, m.getMemName());
-			pstmt.setInt(4, m.getMemCode());
+			pstmt.setString(4, m.getEmail());
+			pstmt.setInt(5, m.getMemCode());
 			
 			
 			result = pstmt.executeUpdate();
@@ -90,6 +98,12 @@ public class MemberDao {
 		
 	}
 	
+	/**
+	 * 보호소 마이페이지 정보수정
+	 * @param conn
+	 * @param m
+	 * @return
+	 */
 	public int updateMember(Connection conn, Member m) {
 		// update문 => 처리된 행 수
 		int result = 0;
@@ -98,9 +112,8 @@ public class MemberDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, m.getMemName());
+			pstmt.setString(1, m.getMemId());
 			pstmt.setString(2, m.getEmail());
-			pstmt.setString(3, m.getMemId());
 			
 			result = pstmt.executeUpdate();
 			
@@ -114,6 +127,12 @@ public class MemberDao {
 		
 	}
 	
+	/**
+	 * 보호소 마이페이지 정보수정(아이디조회)
+	 * @param conn
+	 * @param memId
+	 * @return
+	 */
 	public Member selectMember(Connection conn, String memId) {
 		// select문 => ResultSet 객체(한행)
 		Member updateMem = null;
@@ -204,7 +223,7 @@ public class MemberDao {
 	
 	public int insertShelter(Connection conn, Member m) {
 		
-		int result2 = 0;
+		int result1 = 0;
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("insertShMember");
 		
@@ -213,14 +232,14 @@ public class MemberDao {
 			pstmt.setString(1, m.getMemId());
 			pstmt.setString(2, m.getMemPwd());
 
-			result2 = pstmt.executeUpdate();
+			result1 = pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close(pstmt);
 		}
-		return result2;
+		return result1;
 	}
 		
 	

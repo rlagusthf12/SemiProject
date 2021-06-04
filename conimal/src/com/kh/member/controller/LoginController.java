@@ -40,6 +40,7 @@ public class LoginController extends HttpServlet {
 		
 		Member loginUser = new MemberService().loginMember(memId, memPwd);
 		
+		
 		if(loginUser == null) { // 로그인실패 => 에러페이지 응답
 			request.setAttribute("errorMsg", "로그인 실패했습니다.");
 			
@@ -50,7 +51,7 @@ public class LoginController extends HttpServlet {
 			
 			HttpSession session = request.getSession();
 			session.setAttribute("loginUser", loginUser);
-			session.setAttribute("alertMsg", "성공적으로 로그인되었습니다!");
+			session.setAttribute("alertMsg", "로그인에 성공했습니다.");
 			
 			response.sendRedirect(request.getContextPath());
 			

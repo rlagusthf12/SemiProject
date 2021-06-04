@@ -3,7 +3,7 @@
 <properties>
 
 	<entry key="loginMember">
-		SELECT
+	   SELECT
 		       MEM_NO
 		     , MEM_ID
 		     , MEM_PWD
@@ -12,13 +12,21 @@
 		     , ENROLL_DATE
 		     , STATUS
 		     , MEM_CODE
+             , SH_NAME
+             , SH_PHONE
+             , SH_ADDRESS
+             , SH_ABOUT
+             , ADMISSION
+             , SH_LOCAL
+             , REF_TYPE
 		  FROM MEMBER
+          LEFT JOIN SHELTER USING(MEM_NO)
 		 WHERE MEM_ID = ?
 		   AND MEM_PWD = ?
 		   AND STATUS = 'Y'
 	</entry>
 	
-	<entry key="insertMember">
+	<entry key="insertSh">
 		INSERT
 		  INTO MEMBER
 		  (
@@ -26,8 +34,9 @@
 		  , MEM_ID
 		  , MEM_PWD
 		  , MEM_NAME
+		  , EMAIL
 		  , MEM_CODE
-		  
+		  , STATUS
 		  )
 		  VALUES
 		  (
@@ -35,15 +44,16 @@
 		  , ?
 		  , ?
 		  , ?
-		  , ?		  
+		  , ?
+		  , ?
+		  , 'N'		  
 		  )
 	</entry>
 	
 	<entry key="updateMember">
 		UPDATE
 		       MEMBER
-		   SET MEM_NAME = ?
-		     , EMAIL = ?
+		   SET EMAIL = ?
 		 WHERE MEM_ID = ?
 	</entry>
 	

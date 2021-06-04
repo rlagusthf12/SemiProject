@@ -14,10 +14,21 @@ public class Shelter {
 
 	public Shelter() {}
 	
-	public Shelter(int memNo, String shName, String shPhone, String shAddress, String shAbout
+	
+	
+	public Shelter(String shPhone, String shAddress, String shAbout, String shLocal) {
+		super();
+		this.shPhone = shPhone;
+		this.shAddress = shAddress;
+		this.shAbout = shAbout;
+		this.shLocal = shLocal;
+	}
+
+
+
+	public Shelter(String shName, String shPhone, String shAddress, String shAbout
 			,String shLocal) {
 		super();
-		this.memNo = memNo;
 		this.shName = shName;
 		this.shPhone = shPhone;
 		this.shAddress = shAddress;

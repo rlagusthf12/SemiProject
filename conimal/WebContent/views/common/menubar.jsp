@@ -5,6 +5,12 @@
 	String contextPath = request.getContextPath();
 	Member loginUser = (Member)session.getAttribute("loginUser");
 	String alertMsg = (String)session.getAttribute("alertMsg");
+	int memcode=0;
+	
+	/*
+	if(loginUser!=null){
+	int memcode =loginUser.getMemCode();}
+	*/ 
 %>    
 <!DOCTYPE html>
 <html>
@@ -166,12 +172,14 @@
                                 // 단순한 정적인 페이지 요청이라고 해도 반드시 servlet거쳐갈 것! => url에서 서블릿 매핑값만 노출됨
                                 location.href="<%= contextPath%>/enrollForm.me";
                             }
+                            
                         </script>
                         
                          	<!-- 로그인 후에 보여지는 로그인 form -->
                             <div id="user-info">
                                 <b><%=loginUser.getMemName() %>님</b>, 방문을 환영합니다. <br><br>
                                 <div align="center">
+                              <%--<% if(memcode==2){ %> --%> 
                                 <a href="<%= contextPath %>/myPage.me" id="myPage" style="font-style: normal; text-decoration: none; color: black;">마이페이지</a> |
                                 <a href="<%= contextPath %>/logout.me"id="logout" style="font-style: normal; text-decoration: none; color: black;">로그아웃</a>
                                 </div>
@@ -187,7 +195,7 @@
                         <li><a href="<%=contextPath%>/list.sh?currentPage=1">보호소</a></li>
                         <li><a href="">입양문의</a>
                             <ul>
-                                <li><a href="<%=contextPath%>/list.dog?currentPage=1">보호중인 동물</a></li>
+                                <li><a href="<%=contextPath%>/list.ao">보호중인 동물</a></li>
                                 <li><a href="<%=contextPath%>/process.ad">입양 절차</a></li>
                                 <li><a href="">입양 신청</a></li>
                                 <li><a href="">입양 후기</a></li>
@@ -201,8 +209,8 @@
                         </li>
                         <li><a href="">후원 &amp; 자원봉사</a>
                         <ul>
-                            <li><a href="<%=contextPath%>/list.vo?currentPage=1">자원봉사</a></li>
-                            <li><a href="<%=contextPath%>/list.do?currentPage=1">후원</a></li>
+                            <li><a href="<%=contextPath%>/list.vo">자원봉사</a></li>
+                            <li><a href="<%=contextPath%>/list.do">후원</a></li>
                         </ul>
                       </li>
                         <li><a href="">커뮤니티</a>

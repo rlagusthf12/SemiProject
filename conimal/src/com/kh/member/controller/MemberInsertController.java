@@ -47,7 +47,7 @@ public class MemberInsertController extends HttpServlet {
 		Member m = new Member(memId, memPwd, memName, email);
 		
 		// 3) 요청처리 (서비스 메소드 호출 및 결과 돌려받기)
-		int result = new MemberService().insertMember(m); //insert하고자 하는 내용을 담은 맴버객체 넘겨야지
+		int result = new MemberService().insertSh(m); //insert하고자 하는 내용을 담은 맴버객체 넘겨야지
 		
 		// 4) 처리 결과를 갖고 사용자가 보게될 응답뷰 지정
 		if(result>0) { // 성공=> /jsp	 url재요청 => index.jsp

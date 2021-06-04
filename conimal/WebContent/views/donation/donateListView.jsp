@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList, com.kh.donation.model.vo.Donation"%>
+<%
+	ArrayList<Donation> list = (ArrayList<Donation>)request.getAttribute("list");
+%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -69,6 +72,20 @@
 		<button>3</button>
 		<button>4</button>
 	</div>
+	
+		<!-- 현재 로그인한 사용자일 경우 -->
+		<% if(loginUser != null && loginUser.getMemCode() == 2){ %>
+			<div align="right" style="width:1100px;">
+				<a href="<%=contextPath %>/enrollForm.do" class="btn btn-secondary">글쓰기</a>
+			</div>
+		<% } %>
+			<script>
+					function donationPage(){
+						location.href = "<%=contextPath%>/doWriteForm.me";
+					}
+			</script>	
+	
+	<br><br>
 
 	<%@ include file="../common/footerbar.jsp" %>
 

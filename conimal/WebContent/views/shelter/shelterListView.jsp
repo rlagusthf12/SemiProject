@@ -116,20 +116,6 @@
 		<button>3</button>
 		<button>4</button>
 	</div>
-
-	<div align="right" style="width:1100px;">
-		<button type="submit" onclick="animalPage();">글쓰기</button>
-	</div>
-	
-		<script>
-				function animalPage(){
-					//location.href = "<%=contextPath%>/views/animal/animalWriteForm.jsp";
-					// 웹 애플리케이션의 디렉토리 구조가 url에 노출되면 보안에 위험
-					
-					// 단순한 정적인 페이지 요청이라고 해도 반드시 servlet거쳐갈것 => url에 서블릿 매핑값만 노출됨
-					location.href = "<%=contextPath%>/anWriteForm.me";
-				}
-		</script>	
 	
 	<br><br>
 	

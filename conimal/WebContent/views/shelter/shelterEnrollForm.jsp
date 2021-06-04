@@ -65,37 +65,49 @@
                 </tr>
                 <tr>
                     <th>연락처</th>
-                        <td><input type="text" name="shPhone" placeholder="(-) 포함하여 연락처를 입력하세요."></td>
+                        <td><input type="text" name="shPhone" placeholder="(-) 포함하여 연락처를 입력하세요." required></td>
+                </tr>
+                <tr>
+                    <th>이메일</th>
+                        <td><input type="text" name="email" placeholder="이메일을 입력하세요."></td>
                 </tr>
                 <tr>
                     <th>주소</th>
                         <td>
-                             <input type="text" name="shLocal" placeholder="지역을 입력하세요.">
-                            <input type="text" name="shAddress" placeholder="주소를 입력하세요.">
+                            <select id="city_select" name="shLocal" title="시/도별 선택 리스트">
+                                <option value="서울">서울</option>
+                                <option value="경기도">경기도</option>
+                                <option value="강원도">강원도</option>
+                                <option value="충청도">충청도</option>
+                                <option value="전라도">전라도</option>
+                                <option value="경상도">경상도</option>
+                                <option value="제주">제주</option>
+                            </select>
+                            <input type="text" name="shAddress" placeholder="주소를 입력하세요." required>
                         </td>
                 </tr>
                 <tr>
                     <th>소개글 </th>
-                        <td><textarea name="shAbout" cols="50" rows="10" placeholder="내용을 입력하세요. 보호소소개란에 글이 게시됩니다."></textarea></td>
+                        <td><textarea name="shAbout" cols="50" rows="5" placeholder="내용을 입력하세요. 보호소소개란에 글이 게시됩니다." required></textarea></td>
                 </tr>
                 <tr>
                     <th>필수서류</th>
                         <td>
-                            <input type="file"><br><br>
-                            <input type="file"><br><br>
-                            <input type="file">
+                            <input type="file" name="upfile1" ><br><br>
+                            <input type="file" name="upfile2" ><br><br>
+                            <input type="file" name="upfile3" >
                         </td>
                 </tr>
                 <tr>
                     <th colspan="2"> 
-                        <p>
+                        <p> <br>
                             ※ 사업자 등록증 사본 1부 / 대표자 명의 통장 사본 1부 / 법인 인감증명서 1부<br>
                             ※ 최근 3개월 이내 발급하신 서류를 깨끗하게 스캔해서 준비해주세요.
                         </p>
                     </th>
                 </tr>
             </table>
-
+ 
             <br><br>
             
             <div class="enroll" align="center">

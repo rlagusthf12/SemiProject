@@ -15,7 +15,7 @@
 		  )
 		  VALUES
 		  (
-		    ?		  
+		    SEQ_UNO.CURRVAL	  
 		  , ?
 		  , ?
 		  , ?
@@ -44,6 +44,15 @@
 	  , ?
 	  , ?
 	  )
+	</entry>
+	
+		<entry key="updateShelter">
+		UPDATE
+		       SHELTER
+		   SET SH_PHONE = ?
+		   	 , SH_ADDRESS = ?
+		   	 , SH_ABOUT = ?
+		   	 , SH_LOCAL = ?
 	</entry>
 
 	

@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList, com.kh.volunteer.model.vo.Volunteer"%>
+<%
+	ArrayList<Volunteer> list = (ArrayList<Volunteer>)request.getAttribute("list");
+%>    
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -69,6 +73,20 @@
 		<button>3</button>
 		<button>4</button>
 	</div>
+	
+		<!-- 현재 로그인한 사용자일 경우 -->
+		<% if(loginUser != null && loginUser.getMemCode() == 2){ %>
+			<div align="right" style="width:1100px;">
+				<a href="<%=contextPath %>/enrollForm.vo" class="btn btn-secondary">글쓰기</a>
+			</div>
+		<% } %>
+			<script>
+					function volunteerPage(){
+						location.href = "<%=contextPath%>/volWriteForm.me";
+					}
+			</script>	
+	
+	<br><br>
 
 	<%@ include file="../common/footerbar.jsp" %>
 

@@ -27,10 +27,10 @@ public class MemberService {
 	 * @param m		회원가입폼에 작성된 사용자가 입력한 값들이 담겨있는 Member 객체
 	 * @return		처리된 행수
 	 */
-	public int insertMember(Member m) {
+	public int insertSh(Member m) {
 		
 		Connection conn = getConnection();
-		int result = new MemberDao().insertMember(conn, m);
+		int result = new MemberDao().insertSh(conn, m);
 		
 		if(result > 0) {
 			commit(conn);
@@ -44,11 +44,16 @@ public class MemberService {
 		
 	}
 	
+	/**
+	 * 보호소 마이페이지 정보수정
+	 * @param m
+	 * @return
+	 */
 	public Member updateMember(Member m) {
 		Connection conn = getConnection();
 		int result = new MemberDao().updateMember(conn, m);
 		
-		Member updateMem = null;
+		Member updateMem = null; // 처음에 null로 초기화
 		if(result > 0) {
 			commit(conn);
 			// 갱신된 회원 객체 다시 조회해오기
@@ -70,6 +75,7 @@ public class MemberService {
 		Member updateMem = null;
 		if(result > 0) {
 			commit(conn);
+			// 갱신된 회원 객체 다시 조회해오기(이미 있는 기능 호출하기)
 			updateMem = new MemberDao().selectMember(conn, memId);
 		}else {
 			rollback(conn);
@@ -98,6 +104,11 @@ public class MemberService {
 		return 0;
 	}
 	
+	/**
+	 * 보호소 회원가입
+	 * @param m
+	 * @return
+	 */
 	public int insertShMember(Member m) {
 		
 		Connection conn = getConnection();

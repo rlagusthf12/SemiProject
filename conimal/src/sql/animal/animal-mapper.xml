@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<entry key="selectAnimalList">
+		SELECT
+		       AN_NO
+		     , AN_TITLE
+		     , AN_PLACE
+		     , AN_DATE
+		     , AN_SPECIES
+		     , AN_WRITEDATE
+		     , AN_CONTENT
+		  FROM ANIMAL A
+		  JOIN MEMBER M USING(MEM_NO)
+	</entry>
+	
+	<entry key="insertAnimal">
+		INSERT
+		  INTO ANIMAL
+		  (
+		    AN_NO
+		  , AN_TITLE
+		  , AN_PLACE
+		  , AN_DATE
+		  , AN_SPECIES
+		  , AN_GENDER
+		  , AN_CONTENT
+		  , MEM_NO
+		  )
+		  VALUES
+		  (
+		    SEQ_ANO.NEXTVAL
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  )
+	</entry>
+
+	
+</properties>

@@ -2,6 +2,10 @@ package com.kh.member.model.vo;
 
 import java.sql.Date;
 
+/**
+ * @author JY
+ *
+ */
 public class Member {
 	
 	private int memNo;
@@ -13,15 +17,158 @@ public class Member {
 	private String status;
 	private int memCode;
 	
+	private String shName;
+	private String shPhone;
+	private String shAddress;
+	private String shAbout;
+	private String admission;
+	private String shLocal;
+	private String refType;
+	
+	
+	
 	public Member() {}
 	
 	
+	
+	
+	public Member(int memNo, String memId, String memPwd, String memName, String email, Date enrollDate, String status,
+			int memCode, String shName, String shPhone, String shAddress, String shAbout, String admission,
+			String shLocal, String refType) {
+		super();
+		this.memNo = memNo;
+		this.memId = memId;
+		this.memPwd = memPwd;
+		this.memName = memName;
+		this.email = email;
+		this.enrollDate = enrollDate;
+		this.status = status;
+		this.memCode = memCode;
+		this.shName = shName;
+		this.shPhone = shPhone;
+		this.shAddress = shAddress;
+		this.shAbout = shAbout;
+		this.admission = admission;
+		this.shLocal = shLocal;
+		this.refType = refType;
+	}
 
-	public Member(String memId, String memPwd, String memName, int memCode) {
+
+
+	
+
+	public String getShName() {
+		return shName;
+	}
+
+
+
+
+	public void setShName(String shName) {
+		this.shName = shName;
+	}
+
+
+
+
+	public String getShPhone() {
+		return shPhone;
+	}
+
+
+
+
+	public void setShPhone(String shPhone) {
+		this.shPhone = shPhone;
+	}
+
+
+
+
+	public String getShAddress() {
+		return shAddress;
+	}
+
+
+
+
+	public void setShAddress(String shAddress) {
+		this.shAddress = shAddress;
+	}
+
+
+
+
+	public String getShAbout() {
+		return shAbout;
+	}
+
+
+
+
+	public void setShAbout(String shAbout) {
+		this.shAbout = shAbout;
+	}
+
+
+
+
+	public String getAdmission() {
+		return admission;
+	}
+
+
+
+
+	public void setAdmission(String admission) {
+		this.admission = admission;
+	}
+
+
+
+
+	public String getShLocal() {
+		return shLocal;
+	}
+
+
+
+
+	public void setShLocal(String shLocal) {
+		this.shLocal = shLocal;
+	}
+
+
+
+
+	public String getRefType() {
+		return refType;
+	}
+
+
+
+
+	public void setRefType(String refType) {
+		this.refType = refType;
+	}
+
+
+
+
+	public Member(String memId, String email) {
+		super();
+		this.memId = memId;
+		this.email = email;
+	}
+
+
+
+	public Member(String memId, String memPwd, String memName, String email, int memCode) {
 		super();
 		this.memId = memId;
 		this.memPwd = memPwd;
 		this.memName = memName;
+		this.email = email;
 		this.memCode = memCode;
 	}
 
