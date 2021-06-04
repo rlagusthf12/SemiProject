@@ -121,6 +121,42 @@ public int selectListCountByKeyword(String keyword) {
 		return list;
 		
 	}
+public int insertShelter(Member m, Shelter sh) {
+		
+		Connection conn = getConnection();
+		int result1 = new MemberDao().insertSh(conn, m);
+		int result2 = new ShelterDao().insertShelter(conn, sh);
+		
+		if(result1 > 0 && result2 > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result1 * result2;
+		
+	}
+	
+	public Shelter updateShelter(Shelter sh) {
+		Connection conn = getConnection();
+		int result = new ShelterDao().updateShelter(conn, sh);
+		
+		Shelter updateSh = null;
+		if(result > 0) {
+			commit(conn);
+		
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return updateSh;
+		
+	}
+
 
 	
 

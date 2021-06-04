@@ -148,7 +148,39 @@ public class AnimalDao {
 		return list;
 		
 	}
-	
+
+public ArrayList<Animal> selectAnimalList(Connection conn){
+		// select문 => ResultSet객체 (여러행)
+		ArrayList<Animal> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectAnimalList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Animal(rset.getInt("an_no"),
+						            rset.getString("an_title"),
+						            rset.getString("an_place"),
+						            rset.getString("an_date"),
+						            rset.getString("an_species"),
+						            rset.getDate("an_writedate"),
+						            rset.getString("an_content")));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+		
+	}	
+
 	public int increaseCount(Connection conn, int animalNo) {
 		
 		int result = 0;

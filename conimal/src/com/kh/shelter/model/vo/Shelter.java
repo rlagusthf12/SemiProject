@@ -40,6 +40,16 @@ public class Shelter {
 		this.shName = shName;
 	}
 
+	public Shelter(String shName, String shPhone, String shAddress, String shAbout
+			,String shLocal) {
+		super();
+		this.shName = shName;
+		this.shPhone = shPhone;
+		this.shAddress = shAddress;
+		this.shAbout = shAbout;
+		this.shLocal= shLocal;
+		
+	}
 	// 보호소명, 주소, 연락처, 소개글
 	public Shelter(String shName, String shAddress, String shPhone,  String shAbout) {
 		super();
@@ -47,6 +57,25 @@ public class Shelter {
 		this.shAddress = shAddress;
 		this.shPhone = shPhone;
 		this.shAbout = shAbout;
+	}
+public Shelter(String shPhone, String shAddress, String shAbout, String shLocal) {
+		super();
+		this.shPhone = shPhone;
+		this.shAddress = shAddress;
+		this.shAbout = shAbout;
+		this.shLocal = shLocal;
+	}
+public Shelter(int memNo, String shName, String shPhone, String shAddress, String shAbout, String admission,
+			String shLocal, String refType) {
+		super();
+		this.memNo = memNo;
+		this.shName = shName;
+		this.shPhone = shPhone;
+		this.shAddress = shAddress;
+		this.shAbout = shAbout;
+		this.admission = admission;
+		this.shLocal = shLocal;
+		this.refType = refType;
 	}
 
 	public  String getMemNo() {

@@ -56,6 +56,19 @@ public class Volunteer {
 		this.volContent = volContent;
 	}
 
+	public Volunteer(int volNo, String volTitle, String spreiod, String volContent, Date volWritedate, String memNo,
+			String refType, int volCount) {
+		super();
+		this.volNo = volNo;
+		this.volTitle = volTitle;
+		this.spreiod = spreiod;
+		this.volContent = volContent;
+		this.volWritedate = volWritedate;
+		this.memNo = memNo;
+		this.refType = refType;
+		this.volCount = volCount;
+	}
+
 	public int getVolNo() {
 		return volNo;
 	}

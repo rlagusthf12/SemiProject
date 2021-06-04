@@ -44,7 +44,41 @@ public class MemberService {
 		close(conn);
 		return result;
 	}
-	
+
+public int insertSh(Member m) {
+		
+		Connection conn = getConnection();
+		int result = new MemberDao().insertSh(conn, m);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+		
+	}
+	public Member updateMember(Member m) {
+		Connection conn = getConnection();
+		int result = new MemberDao().updateMember(conn, m);
+		
+		Member updateMem = null; // 처음에 null로 초기화
+		if(result > 0) {
+			commit(conn);
+			// 갱신된 회원 객체 다시 조회해오기
+			updateMem = new MemberDao().selectMember(conn, m.getMemId());
+			
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return updateMem;
+	}
 	public int idCheck(String checkId) {
 		Connection conn = getConnection();
 		int count = new MemberDao().idCheck(conn, checkId);
@@ -60,6 +94,39 @@ public class MemberService {
 		
 		close(conn);
 		return m;
+	}
+public Member updatePwdMember(String memId, String memPwd, String updatePwd) {
+		Connection conn = getConnection();
+		int result = new MemberDao().updatePwdMember(conn, memId, memPwd, updatePwd);
+		
+		Member updateMem = null;
+		if(result > 0) {
+			commit(conn);
+			// 갱신된 회원 객체 다시 조회해오기(이미 있는 기능 호출하기)
+			updateMem = new MemberDao().selectMember(conn, memId);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return updateMem;
+		
+	}
+public int insertShMember(Member m) {
+		
+		Connection conn = getConnection();
+		int result2 = new MemberDao().insertShelter(conn, m);
+		
+		if(result2 > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result2;
 	}
 	
 	// PWD찾기용 Service구문
@@ -86,6 +153,17 @@ public class MemberService {
 		close(conn);
 		return result;
 	}
+public int deleteMember(String memId, String memPwd) {
+		Connection conn = getConnection();
+		int result = new MemberDao().deleteMember(conn, memId, memPwd);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
 
 /**
 	 * 총 회원 수를 알려주는 메소드
@@ -107,6 +185,21 @@ public class MemberService {
 		ArrayList<Member> list = new MemberDao().selectMemberList(pi, conn);
 		close(conn);
 		return list;
+	}
+public int insertShMember(Member m) {
+		
+		Connection conn = getConnection();
+		int result2 = new MemberDao().insertShelter(conn, m);
+		
+		if(result2 > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result2;
 	}
 	
 	/**

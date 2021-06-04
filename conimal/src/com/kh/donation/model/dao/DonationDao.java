@@ -80,6 +80,40 @@ public int selectListCount(Connection conn) {
 		return listCount;
 		
 	}
+
+	
+	public ArrayList<Donation> selectPostList(Connection conn){
+		
+		ArrayList<Donation> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectPostList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Donation(rset.getInt("do_no"),
+                        rset.getString("do_title"),
+                        rset.getString("do_content"),
+                        rset.getDate("do_writedate"),
+                        rset.getString("do_admission"),
+                        rset.getString("mem_no"),
+                        rset.getString("ref_type"),
+                        rset.getInt("do_count")));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+		
+	}
 	
 	public ArrayList<Donation> selectDonationList(Connection conn,String keyword,PageInfo pi){
 		

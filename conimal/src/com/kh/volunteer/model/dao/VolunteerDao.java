@@ -210,5 +210,34 @@ public class VolunteerDao {
 		return list;
 		
 	}
+public ArrayList<Volunteer> selectVolunteerList(Connection conn){
+		
+		ArrayList<Volunteer> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectVolunteerList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Volunteer(rset.getInt("vol_no"),
+						               rset.getString("vol_title"),
+						               rset.getDate("vol_writedate"),
+						               rset.getString("mem_no"),
+						               rset.getInt("vol_count")));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+		
+	}
 
 }

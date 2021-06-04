@@ -138,4 +138,14 @@ public int selectListCountByKeyword(String keyword) {
 		
 	}
 
+	
+	public ArrayList<Donation> selectPostList(){
+		
+		Connection conn = getConnection();
+		ArrayList<Donation> list = new DonationDao().selectPostList(conn);
+		
+		close(conn);
+		return list;
+	}
+
 }

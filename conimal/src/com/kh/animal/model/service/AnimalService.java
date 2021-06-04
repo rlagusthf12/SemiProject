@@ -26,6 +26,15 @@ public class AnimalService {
 		return listCount;
 		
 	}
+public ArrayList<Animal> selectAnimalList(){
+		
+		Connection conn = getConnection();
+		ArrayList<Animal> list = new AnimalDao().selectAnimalList(conn);
+
+		close(conn);
+		return list;
+	
+	}
 	
 	public int selectCatCount() {
 		

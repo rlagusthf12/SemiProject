@@ -36,6 +36,33 @@ public class Animal {
 		this.anPlace = anPlace;
 		this.anContent = anContent;
 	}
+public Animal(int anNo, String anTitle, String anPlace, String anDate, String anSpecies, Date anWritedate,
+			String anContent) {
+		super();
+		this.anNo = anNo;
+		this.anTitle = anTitle;
+		this.anPlace = anPlace;
+		this.anDate = anDate;
+		this.anSpecies = anSpecies;
+		this.anWritedate = anWritedate;
+		this.anContent = anContent;
+	}
+
+public Animal(int anNo, String anTitle, String anPlace, String anDate, String anSpecies, String anGender,
+			Date anWritedate, String anContent, String memNo, String refType, int anCount) {
+		super();
+		this.anNo = anNo;
+		this.anTitle = anTitle;
+		this.anPlace = anPlace;
+		this.anDate = anDate;
+		this.anSpecies = anSpecies;
+		this.anGender = anGender;
+		this.anWritedate = anWritedate;
+		this.anContent = anContent;
+		this.memNo = memNo;
+		this.refType = refType;
+		this.anCount = anCount;
+	}
 
 	public int getAnNo() {
 		return anNo;
