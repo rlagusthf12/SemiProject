@@ -1,9 +1,0 @@
-127.0.0.1 - - [24/May/2021:22:31:04 +0900] "GET / HTTP/1.1" 404 807
-0:0:0:0:0:0:0:1 - - [24/May/2021:22:31:21 +0900] "GET /localhost HTTP/1.1" 404 816
-0:0:0:0:0:0:0:1 - - [24/May/2021:22:31:22 +0900] "GET /favicon.ico HTTP/1.1" 404 818
-0:0:0:0:0:0:0:1 - - [24/May/2021:22:31:57 +0900] "GET /conimal HTTP/1.1" 302 -
-0:0:0:0:0:0:0:1 - - [24/May/2021:22:32:07 +0900] "GET /conimal/ HTTP/1.1" 200 11235
-0:0:0:0:0:0:0:1 - - [24/May/2021:22:32:08 +0900] "GET /conimal/resources/images/mainLogo.png HTTP/1.1" 200 8120
-0:0:0:0:0:0:0:1 - - [24/May/2021:22:32:43 +0900] "GET /conimal/cPostMainForm.jsp HTTP/1.1" 404 809
-0:0:0:0:0:0:0:1 - - [24/May/2021:22:33:10 +0900] "GET /conimal/views/board/cPostMainForm.jsp HTTP/1.1" 200 14772
-0:0:0:0:0:0:0:1 - - [24/May/2021:22:33:11 +0900] "GET /conimal/views/board/resources/images/mainLogo.png HTTP/1.1" 404 876
