@@ -117,8 +117,6 @@
         <br>
         <div class="inner">
             <button  onclick="location.href='<%= contextPath%>/list.ad?currentPage=1'" id="btn1" class="submitB" style=" text-align:center; width: 55px;  font-size:13px; background:lightgray; border: 25px; border-radius: 3px;" > 목록 </button>
-            <button id="btn2" class="submitB" style=" text-align:center; width: 55px;  font-size:13px; background:lightgray; border: 25px; border-radius: 3px;" > 이전글 </button>
-            <button id="btn3" class="submitB" style=" text-align:center; width: 55px;  font-size:13px; background:lightgray; border: 25px; border-radius: 3px;" > 다음글 </button>
             <button type="submit" id="btn4" class="btn-danger" style="float: right; margin-right:20px; text-align:center; width: 70px;  font-size:13px;  border: 25px; border-radius: 3px;" > 신고하기 </button>
             
             <br><br>
