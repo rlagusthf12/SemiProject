@@ -1,11 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="com.kh.attachment.model.vo.Attachment,com.kh.banner.model.service.BannerService"%>
-    <% Attachment at = (Attachment)request.getAttribute("at"); 
-    	if(at==null){
-    		String refType="MAINPAGE";
-    		at= new BannerService().selectBanner(refType);
-    	}
-    %>
+    <% Attachment at = new BannerService().selectBanner("MAINPAGE"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -96,7 +91,8 @@
                
             <div class="body">
             <div class="imgsilde">
-                <img src="<%=contextPath %>/<%=at.getFilePath() + at.getChangeName()%>" class="img1" width= "1200px"  height= "235px" >
+             <img src="<%=contextPath %>/<%=at.getFilePath() + at.getChangeName()%>" class="img1" width= "1200px"  height= "235px" >
+               
             </div>
               <% if(memcode==1){ %>
             <button onclick="location.href='<%=contextPath%>/bannerUpdateForm.main'" class="banner">배너 수정</button>

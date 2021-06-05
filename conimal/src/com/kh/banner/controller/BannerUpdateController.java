@@ -1,5 +1,6 @@
 package com.kh.banner.controller;
 
+import java.io.File;
 import java.io.IOException;
 
 
@@ -62,13 +63,17 @@ public class BannerUpdateController extends HttpServlet {
 					
 			
 			int result = new BannerService().updateBanner(at);
-			
+		
 			
 			if(result > 0) {
-				request.getSession().setAttribute("alertMsg", "배너 등록 성공");
+				request.getSession().setAttribute("alertMsg", "배너 등록 성공");			
 				response.sendRedirect(request.getContextPath());
 				
 			} else {
+				if(at != null) {
+					// 삭제시키고자하는 파일 객체 생성 => delete메소드 호출
+					new File(savePath + at.getChangeName()).delete();
+				}
 				request.setAttribute("errorMsg", "게시글 작성 실패!");
 				request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 				

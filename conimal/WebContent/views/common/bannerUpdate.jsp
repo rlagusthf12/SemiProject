@@ -11,8 +11,7 @@
 <style>
 	.body>form{
 		width: 652px;
-        height: 1240px;
-        margin: 0 auto;
+        height: 1240px;     
         margin-top:30px;
 	}
  
@@ -54,17 +53,12 @@
     width: 100px; height: 40px;
   }
   
-	textarea{
-	resize:none;
-	width:99%;
-	height:400px;
-	border-radius:4px;
-	}
+
 	
 	.attachment{
-	width:741px;
+	width:1200px;
 	height:40px;
-	margin:30px;
+	margin-top:30px;		
 	}
 	.attachmentbtn{
 	padding: 10px 25px;
@@ -75,10 +69,10 @@
 	 line-height: 2.5em;  
 	background-color: rgb(224, 224, 224);
 	
+	
 	}
 	.attachment>input{
-	 width: 580px; height: 40px;
-	 margin-left:20px;
+	 width: 580px; height: 40px;	
 	 border-radius:4px;
 	 border:0px;
 	
@@ -87,21 +81,35 @@
 	display:none;
 	
 	}
+	.bannerImg{
+	width:1835px;
+	height:240px;
+	}
+	.enrollbtn{
+	margin-top:130px;
+	}
 </style>
 </head>
 <body>
   <%@ include file="../common/menubar.jsp" %>
   <div class="body">  
-  <form id ="updatebanner" action="<%=contextPath%>/bannerUpdateController.main" method="post" enctype="multipart/form-data">  
+ 
   <div class="head1">
    <br><h2 align="center">배너 등록</h2><br> 
   </div>
+  <div class="bannerImg">
+    <img src="<%=contextPath %>/<%=at.getFilePath() + at.getChangeName()%>" id="BannerImg" width= "1200px"  height= "235px">
+   </div>
+    
+   <form id ="updatebanner" action="<%=contextPath%>/bannerUpdateController.main" method="post" enctype="multipart/form-data">  
 	<div class="body1" align="center">
-  <img src="<%=contextPath %>/<%=at.getFilePath() + at.getChangeName()%>" id="BannerImg" width= "1200px"  height= "235px">
+
    <div class="attachment">
    <input type="file" name="upfile" id="inputfile" onchange="loadImg(this);">   
-  <label class="attachmentbtn" for="inputfile">첨부 파일</label>
+  <label class="attachmentbtn" for="inputfile">이미지 변경</label>
+  
    </div>  
+    <button type="submit" class="enrollbtn">등록</button>
   </div>
     <script>
                 function loadImg(inputFile){
@@ -126,11 +134,7 @@
                 	}
                 	
                 }
-            </script>
- 
-  <div class="foot1">
-  <button type="submit" class="enrollbtn">등록</button>
-  </div>
+            </script> 
   
   </form>
   </div>
