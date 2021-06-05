@@ -88,12 +88,13 @@ public class VolunteerService {
 		return list;
 		
 	}
-public ArrayList<Volunteer> selectVolunteerList(){
+	public ArrayList<Volunteer> selectVolunteerList(){
 		
 		Connection conn = getConnection();
 		ArrayList<Volunteer> list = new VolunteerDao().selectVolunteerList(conn);
 		
 		close(conn);
 		return list;
-
+		
+	}
 }

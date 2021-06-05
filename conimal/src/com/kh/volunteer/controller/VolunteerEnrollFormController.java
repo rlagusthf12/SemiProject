@@ -1,4 +1,4 @@
-package com.kh.member.controller;
+package com.kh.volunteer.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class JoinChooseFormController
+ * Servlet implementation class VolunteerEnrollFormController
  */
-@WebServlet("/joinChooseForm.me")
-public class JoinChooseFormController extends HttpServlet {
+@WebServlet("/enrollForm.vo")
+public class VolunteerEnrollFormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public JoinChooseFormController() {
+    public VolunteerEnrollFormController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,9 +27,7 @@ public class JoinChooseFormController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		request.setCharacterEncoding("UTF-8");
-		
-		request.getRequestDispatcher("views/member/joinChooseForm.jsp").forward(request, response);
+		request.getRequestDispatcher("views/volunteer/volunteerEnrollForm.jsp").forward(request, response);
 	
 	}
 

@@ -9,7 +9,8 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import com.kh.common.model.vo.PageInfo;
-import com.kh.community.notice.model.dao.NoticeDao;
+import com.kh.member.model.dao.MemberDao;
+import com.kh.member.model.vo.Member;
 import com.kh.shelter.model.dao.ShelterDao;
 import com.kh.shelter.model.vo.Shelter;
 

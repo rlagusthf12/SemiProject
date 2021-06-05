@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.common.model.vo.PageInfo;
-import com.kh.member.model.service.MemberService;
 import com.kh.report.model.service.ReportService;
 import com.kh.report.model.vo.Report;
 

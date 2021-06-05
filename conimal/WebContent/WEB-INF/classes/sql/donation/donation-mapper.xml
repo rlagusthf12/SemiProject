@@ -166,4 +166,42 @@
 		 WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
+	<entry key="selectPostList">SELECT DO_NO, 
+									   DO_TITLE, 
+									   DO_CONTENT, 
+									   DO_WRITEDATE,
+									   DO_ADMISSION,
+									   MEM_NO, 
+									   REF_TYPE, 
+									   DO_COUNT
+									   FROM DONATION D JOIN MEMBER M USING(MEM_NO)
+									   ORDERBY DO_WRITEDATE DESC 
+  </entry>
+  
+  <entry key="insertSh">INSERT INTO MEMBER(
+  									MEM_NO, 
+  									MEM_ID, 
+  									MEM_PWD, 
+  									MEM_NAME, 
+  									EMAIL, 
+  									MEM_CODE, 
+  									STATUS)
+  						VALUES(SEQ_UNO.NEXTVAL, 
+  											  ?, 
+  											  ?, 
+  											  ?, 
+  											  ?, 
+  											  ?, 
+  											  'N')
+  </entry>
+
+<entry key="updateMember">UPDATE MEMBER SET EMAIL = ?WHERE MEM_ID = ? </entry>
+
+
+
+<entry key="updatePwdMember">UPDATE MEMBER SET MEM_PWD = ?WHERE MEM_ID = ?AND MEM_PWD = ? </entry>
+
+<entry key="deleteMember">UPDATE MEMBER SET STATUS = 'N'WHERE MEM_ID = ?AND MEM_PWD = ? </entry>
+
+	
 </properties>

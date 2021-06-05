@@ -72,7 +72,12 @@
 		                ) A
                  WHERE VOL_TITLE LIKE ?
 		        )
-		 WHERE RNUM BETWEEN ? AND ?
+		 WHERE RNUM BETWEEN ? AND ?		 
 	</entry>
+	
+	<entry key="selectVolunteerList">
+	SELECT VOL_NO, VOL_TITLE, VOL_WRITEDATE, MEM_NO, VOL_COUNT
+	FROM VOLUNTEER V JOIN MEMBER M USING(MEM_NO)
+	ORDER BY VOL_WRITEDATE DESC </entry>
 	
 </properties>

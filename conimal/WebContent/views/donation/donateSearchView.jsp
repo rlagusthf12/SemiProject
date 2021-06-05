@@ -61,7 +61,7 @@
 							<td><%=d.getDoTitle()     %></td>
 							<td><%=d.getMemNo()        %></td>
 							<td><%=d.getDoCount()     %></td>
-							<td><%=d.getDoWritedate() %></td>
+							<td><%=d.getDoWriteDate() %></td>
 						</tr>
 					<%} %>
 				<%} %>

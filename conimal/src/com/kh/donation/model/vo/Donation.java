@@ -44,6 +44,7 @@ public Donation(int doNo, String doTitle, String memNo, int doCount, Date doWrit
 		this.memNo = memNo;
 		this.doCount = doCount;
 		this.doWriteDate = doWriteDate;
+		
 	}
 public Donation(String doTitle, String shName, String shPhone, String shAddress, String doContent) {
 		super();
@@ -53,13 +54,15 @@ public Donation(String doTitle, String shName, String shPhone, String shAddress,
 		this.shAddress = shAddress;
 		this.doContent = doContent;
 	}
-	public Donation(int doNo, String doTitle, String doContent, Date doWritedate, String doAdmission, String memNo,
+
+	
+	public Donation(int doNo, String doTitle, String doContent, Date doWriteDate, String doAdmission, String memNo,
 			String refType, int doCount) {
 		super();
 		this.doNo = doNo;
 		this.doTitle = doTitle;
 		this.doContent = doContent;
-		this.doWritedate = doWritedate;
+		this.doWriteDate = doWriteDate;
 		this.doAdmission = doAdmission;
 		this.memNo = memNo;
 		this.refType = refType;

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import com.kh.common.model.vo.PageInfo;
 import com.kh.donation.model.dao.DonationDao;
 import com.kh.donation.model.vo.Donation;
-import com.kh.shelter.model.dao.ShelterDao;
+
 
 public class DonationService {
 	

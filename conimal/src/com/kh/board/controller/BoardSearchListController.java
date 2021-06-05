@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.kh.board.model.service.BoardService;
 import com.kh.board.model.vo.Board;
 import com.kh.common.model.vo.PageInfo;
-import com.kh.member.model.service.MemberService;
+
 
 /**
  * Servlet implementation class BoardSearchListController

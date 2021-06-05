@@ -11,15 +11,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
-import com.kh.adopt.model.vo.Adopt;
-import com.kh.animal.model.vo.Animal;
+
 import com.kh.board.model.vo.Board;
-import com.kh.c_post.model.vo.C_Post;
 import com.kh.common.model.vo.PageInfo;
-import com.kh.donation.model.vo.Donation;
 import com.kh.member.model.dao.MemberDao;
-import com.kh.member.model.vo.Member;
-import com.kh.volunteer.model.vo.Volunteer;
 
 public class BoardDao {
 

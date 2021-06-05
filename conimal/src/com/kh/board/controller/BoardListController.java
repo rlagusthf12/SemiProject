@@ -9,15 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.adopt.model.vo.Adopt;
-import com.kh.animal.model.vo.Animal;
+
 import com.kh.board.model.service.BoardService;
 import com.kh.board.model.vo.Board;
-import com.kh.c_post.model.vo.C_Post;
 import com.kh.common.model.vo.PageInfo;
-import com.kh.donation.model.vo.Donation;
-import com.kh.member.model.service.MemberService;
-import com.kh.volunteer.model.vo.Volunteer;
+
 
 /**
  * Servlet implementation class BoardListController

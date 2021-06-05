@@ -51,13 +51,7 @@ public class Shelter {
 		
 	}
 	// 보호소명, 주소, 연락처, 소개글
-	public Shelter(String shName, String shAddress, String shPhone,  String shAbout) {
-		super();
-		this.shName = shName;
-		this.shAddress = shAddress;
-		this.shPhone = shPhone;
-		this.shAbout = shAbout;
-	}
+
 public Shelter(String shPhone, String shAddress, String shAbout, String shLocal) {
 		super();
 		this.shPhone = shPhone;
@@ -65,7 +59,7 @@ public Shelter(String shPhone, String shAddress, String shAbout, String shLocal)
 		this.shAbout = shAbout;
 		this.shLocal = shLocal;
 	}
-public Shelter(int memNo, String shName, String shPhone, String shAddress, String shAbout, String admission,
+public Shelter(String memNo, String shName, String shPhone, String shAddress, String shAbout, String admission,
 			String shLocal, String refType) {
 		super();
 		this.memNo = memNo;

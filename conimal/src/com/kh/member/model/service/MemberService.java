@@ -186,21 +186,7 @@ public int deleteMember(String memId, String memPwd) {
 		close(conn);
 		return list;
 	}
-public int insertShMember(Member m) {
-		
-		Connection conn = getConnection();
-		int result2 = new MemberDao().insertShelter(conn, m);
-		
-		if(result2 > 0) {
-			commit(conn);
-		}else {
-			rollback(conn);
-		}
-		
-		close(conn);
-		
-		return result2;
-	}
+
 	
 	/**
 	 * 관리자 회원조회 화면 검색기능

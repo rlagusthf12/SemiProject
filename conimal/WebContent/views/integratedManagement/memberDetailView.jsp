@@ -44,7 +44,7 @@
         <br><br>
         <div class="memberDetail">
             <form action="<%=contextPath%>/update.me" method="post">
-                <table class="table" id="memberDetail" border="1" align="center">
+                <table class="table" id="memberDetail" border="1">
                 	<input type="hidden" name="mno" value="<%=m.getMemNo()%>">
                     <tr>
                         <th width="100px">아이디</th>
@@ -65,15 +65,15 @@
                     <%if(m.getMemCode() == 2){ %> <!-- 회원이 보호소라면 추가정보 출력 -->
                     	<tr>
                     		<th>연락처</th>
-                    		<td><input type="text" name="shPhone" value="<%=m.getShelterPhone() %>"></td>
+                    		<td><input type="text" name="shPhone" value="<%=m.getShPhone() %>"></td>
                     	</tr>
                     	<tr>
                     		<th>주소</th>
-                    		<td><input type="text" name="shAddress" value="<%=m.getShelterAddress() %>"></td>
+                    		<td><input type="text" name="shAddress" value="<%=m.getShAddress() %>"></td>
                     	</tr>
                     	<tr>
                     		<th>소개글</th>
-                    		<td><input type="text" name="shAbout" value="<%=m.getShelterAbout()%>"></td>
+                    		<td><input type="text" name="shAbout" value="<%=m.getShAbout()%>"></td>
                     	</tr>
                     <%} %>
                 </table>
@@ -114,6 +114,7 @@
 		        	
 	      </div>
 		</div>
+    </div>
     </div>
     
     

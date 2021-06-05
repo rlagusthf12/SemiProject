@@ -75,6 +75,24 @@ public class Member {
 		this.memNo = memNo;
 		this.memPwd = memPwd;
 	}
+	
+	public Member(String memId, String email) {
+		super();
+		this.memId = memId;
+		this.email = email;
+	}
+
+
+
+	public Member(String memId, String memPwd, String memName, String email, int memCode) {
+		super();
+		this.memId = memId;
+		this.memPwd = memPwd;
+		this.memName = memName;
+		this.email = email;
+		this.memCode = memCode;
+	}
+
 
 	public String getShName() {
 		return shName;
@@ -172,49 +190,6 @@ public class Member {
 	}
 
 
-
-
-	public Member(String memId, String email) {
-		super();
-		this.memId = memId;
-		this.email = email;
-	}
-
-
-
-	public Member(String memId, String memPwd, String memName, String email, int memCode) {
-		super();
-		this.memId = memId;
-		this.memPwd = memPwd;
-		this.memName = memName;
-		this.email = email;
-		this.memCode = memCode;
-	}
-
-
-
-	public Member(String memId, String memPwd, String memName, String email) {
-		super();
-		this.memId = memId;
-		this.memPwd = memPwd;
-		this.memName = memName;
-		this.email = email;
-	}
-
-
-
-	public Member(int memNo, String memId, String memPwd, String memName, String email, Date enrollDate, String status,
-			int memCode) {
-		super();
-		this.memNo = memNo;
-		this.memId = memId;
-		this.memPwd = memPwd;
-		this.memName = memName;
-		this.email = email;
-		this.enrollDate = enrollDate;
-		this.status = status;
-		this.memCode = memCode;
-	}
 
 	public int getMemNo() {
 		return memNo;

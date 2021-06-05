@@ -4,8 +4,6 @@ import static com.kh.common.JDBCTemplate.*;
 import static com.kh.common.JDBCTemplate.getConnection;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import com.kh.common.model.vo.PageInfo;

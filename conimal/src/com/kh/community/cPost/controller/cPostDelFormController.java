@@ -9,9 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.community.cPost.model.service.cPostService;
-import com.kh.community.cPost.model.vo.Attachment;
-import com.kh.community.cPost.model.vo.Cpost;
-import com.kh.community.cPost.model.vo.Reply;
 
 /**
  * Servlet implementation class cPostDelFormController
