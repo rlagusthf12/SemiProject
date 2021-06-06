@@ -47,20 +47,25 @@ public class ShMemberUpdateController extends HttpServlet {
 		String shLocal = request.getParameter("shLocal");
 		String memNo = request.getParameter("memNo");
 		
-		Member m = new Member(memId, email);	
-		Member updateMem = new MemberService().updateMember(m);
-		Shelter sh = new Shelter(shPhone, shAddress, shAbout, shLocal, memNo);
-		Shelter updateSh = new ShelterService().updateShelter(sh);
+		
+		Member m = new Member(memId, email);			
+		int result = new MemberService().updateMember(m);
+
+		Shelter sh = new Shelter(shName,shPhone, shAddress, shAbout, shLocal, memNo);
+		sh = new ShelterService().updateShelter(sh);
+		
+		Member m1 = new MemberService().selectMember(Integer.parseInt(memNo));
+		System.out.println(m1);
+		
 		
 		// 돌려받은 처리결과 가지고 사용자가 보게될 응답 뷰 지정
-		if(updateMem == null || updateSh == null) { // 실패
+		if(result<=0&&sh == null) { // 실패
 			request.setAttribute("errorMsg", "회원정보 수정에 실패했습니다.");
 			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 		}else { // 성공
 			
 			HttpSession session = request.getSession();
-			session.setAttribute("loginUser", updateMem);
-			session.setAttribute("loginUser", updateSh);
+			session.setAttribute("loginUser",m1);			
 			session.setAttribute("alertMsg", "성공적으로 회원정보를 수정했습니다");
 			
 			// 응답페이지 => /jsp/myPage.me url 재요청 => 마이페이지

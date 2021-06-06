@@ -156,17 +156,17 @@ public ArrayList<Shelter> selectList(Connection conn, PageInfo pi) {
 		
 	}
 	
-	public Shelter selectShelter1(Connection conn, String memNo) {
+	public Shelter selectShelter(Connection conn, String memNo) {
 		
 		PreparedStatement pstmt =null;
 		ResultSet rset = null;
 		Shelter sh =null;
-		String sql = prop.getProperty("selectShelter1");
+		String sql = prop.getProperty("selectShelter");
 		
 		try {
 			
 			pstmt= conn.prepareStatement(sql);
-			pstmt.setInt(1, Integer.parseInt(memNo));
+			pstmt.setString(1, memNo);
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
@@ -192,36 +192,7 @@ public ArrayList<Shelter> selectList(Connection conn, PageInfo pi) {
 		
 		
 	}
-public Shelter selectShelter(Connection conn, int shelterNo) {
-		
-		Shelter s = null;
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		String sql = prop.getProperty("selectShelter");
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, shelterNo);
-			
-			rset = pstmt.executeQuery();
-			
-			if(rset.next()) {
-				s = new Shelter(rset.getString("SH_NAME"),
-								rset.getString("SH_ADDRESS"),
-								rset.getString("SH_PHONE"),
-								rset.getString("SH_ABOUT"));
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(rset);
-			close(pstmt);
-		}
-		
-		return s;
-		
-	}
+
 	
 	
 	public int approveShelter(Connection conn, String memNo, String admission) {

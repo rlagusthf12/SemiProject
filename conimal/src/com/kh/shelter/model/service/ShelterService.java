@@ -56,24 +56,13 @@ public ArrayList<Shelter> selectList(PageInfo pi) {
 		
 	}
 	
-	public Shelter selectShelter1(String memNo) {
+	public Shelter selectShelter(String memNo) {
 		Connection conn = getConnection();
-		Shelter n = new ShelterDao().selectShelter1(conn, memNo);		
+		Shelter n = new ShelterDao().selectShelter(conn, memNo);		
 		close(conn);
 		return n;
 	}
-public Shelter selectShelter(int shelterNo) {
-		
-		Connection conn = getConnection();
-		
-		Shelter s = new ShelterDao().selectShelter(conn, shelterNo);
-		
-		close(conn);
-		
-		return s;
-		
-	}
-	
+
 	
 	
 	public int approveShelter(String memNo, String admission) {
@@ -143,7 +132,7 @@ public int insertShelter(Member m, Shelter sh) {
 	public Shelter updateShelter(Shelter sh) {
 		Connection conn = getConnection();
 		int result = new ShelterDao().updateShelter(conn, sh);
-		int memNo = Integer.parseInt(sh.getMemNo());
+		String memNo = sh.getMemNo();
 		Shelter updateSh = new ShelterDao().selectShelter(conn, memNo);
 		if(result > 0) {
 			commit(conn);

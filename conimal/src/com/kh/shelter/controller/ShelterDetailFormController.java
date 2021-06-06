@@ -33,7 +33,7 @@ public class ShelterDetailFormController extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		String memNo = request.getParameter("memNo");		
-		Shelter sh = new ShelterService().selectShelter1(memNo);
+		Shelter sh = new ShelterService().selectShelter(memNo);
 		request.setAttribute("sh", sh);
 		request.getRequestDispatcher("views/shelter/shelterEnroll/shelterEnrollDetail.jsp").forward(request, response);
 	}

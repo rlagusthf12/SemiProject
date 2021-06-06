@@ -272,13 +272,4 @@
 	</entry>
 
 
-<entry key="insertSh">INSERTINTO MEMBER(MEM_NO, MEM_ID, MEM_PWD, MEM_NAME, EMAIL, MEM_CODE, STATUS)VALUES(SEQ_UNO.NEXTVAL, ?, ?, ?, ?, ?, 'N') </entry>
-
-<entry key="updateMember">UPDATEMEMBERSET EMAIL = ?WHERE MEM_ID = ? </entry>
-
- 
-<entry key="updatePwdMember">UPDATE MEMBER SET MEM_PWD = ? WHERE MEM_ID = ? AND MEM_PWD = ? </entry>
-
-<entry key="deleteMember">UPDATE MEMBER SET STATUS = 'N' WHERE MEM_ID = ? AND MEM_PWD = ? </entry>
-	
 </properties>

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="com.kh.shelter.model.vo.Shelter"%>
 
+    
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -87,17 +89,14 @@
 <body>
 
 	<%@ include file="../common/menubar.jsp" %>
-	
-	<%
-		String memName = loginUser.getMemName(); 
-		String memId = loginUser.getMemId();
-		String shPhone = loginUser.getShPhone();
+<%		String memName = loginUser.getMemName(); 
+		String memId =(loginUser.getMemId() == null) ? "" : loginUser.getMemId();
+		String shPhone =(loginUser.getShPhone() == null) ? "" : loginUser.getShPhone();
 		String email = (loginUser.getEmail() == null) ? "" : loginUser.getEmail();
-		String shAddress = loginUser.getShAddress();
-		String shLocal = loginUser.getShLocal();
-		String shAbout = loginUser.getShAbout();
-	%>
-
+		String shAddress =(loginUser.getShAddress() == null) ? "" : loginUser.getShAddress();
+		String shLocal =(loginUser.getShLocal() == null) ? "" :loginUser.getShLocal();
+		String shAbout =(loginUser.getShAbout() == null) ? "" : loginUser.getShAbout(); 
+%>
     <div class="body">
 
         <div id="left">
@@ -115,16 +114,17 @@
 
             <div class="wrap">
                 <form action="<%= contextPath %>/updatesh.me" id="side1-form" method="post">
+                   <input type="hidden" name="memNo" value="<%=loginUser.getMemNo()%>">               
                     <h2 align="center">정보수정</h2>
                     <br>
                     <table>
                         <tr>
                             <th>보호소명</th>
-                                <td><input type="text" id="shName" placeholder="이름을 입력해주세요." required readonly value="<%=memName%>"></td>
+                                <td><input type="text" name="shName" placeholder="이름을 입력해주세요." required readonly value="<%=memName%>"></td>
                         </tr>
                         <tr>
                             <th>아이디</th>
-                                <td><input type="text" id="memId" placeholder="아이디를 입력하세요." required readonly value="<%=memId%>"></td>
+                                <td><input type="text" name="memId" placeholder="아이디를 입력하세요." required readonly value="<%=memId%>"></td>
                         </tr>
                         <tr>
                             <th>비밀번호</th>

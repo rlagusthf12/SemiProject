@@ -33,7 +33,20 @@
 		  FROM DONATION     
 	</entry>
 	
-<entry key="selectPostList">SELECTDO_NO, DO_TITLE, DO_CONTENT, DO_WRITEDATE, DO_ADMISSION, MEM_NO, REF_TYPE, DO_COUNTFROM DONATION DJOIN MEMBER M USING(MEM_NO)ORDERBY DO_WRITEDATE DESC </entry>
+<entry key="selectPostList">
+SELECT DO_NO, 
+	   DO_TITLE,
+	   DO_CONTENT,
+	   DO_WRITEDATE, 
+	   DO_ADMISSION,
+	    MEM_NO,
+	     REF_TYPE, 
+	     DO_COUNT
+	     FROM DONATION D JOIN MEMBER M 
+	     USING(MEM_NO)
+	     ORDER BY DO_WRITEDATE DESC
+ </entry>
+ 
 <entry key="selectDonationList">
 	 
  SELECT *

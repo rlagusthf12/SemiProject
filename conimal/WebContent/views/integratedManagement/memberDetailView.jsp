@@ -38,7 +38,7 @@
 <body>
 	<%@ include file="../common/adminPageNavibar.jsp" %>
 	<%@ include file="../common/menubar.jsp" %>
-    
+ 
     <div class="outer">
         <a href="<%=contextPath%>/list.me?currentPage=1" class="btn" style="background-color: rgb(187, 208, 227)">목록</a>
         <br><br>

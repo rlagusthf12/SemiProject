@@ -40,25 +40,30 @@ public class Shelter {
 		this.shName = shName;
 	}
 
-	public Shelter(String shName, String shPhone, String shAddress, String shAbout
-			,String shLocal) {
-		super();
+		// 보호소명, 주소, 연락처, 소개글
+	
+	
+	public Shelter (String shName, String shPhone, String shAddress, String shAbout,String shLocal, String memNo) {
+		
 		this.shName = shName;
 		this.shPhone = shPhone;
 		this.shAddress = shAddress;
 		this.shAbout = shAbout;
-		this.shLocal= shLocal;
+		this.shLocal= shLocal;		
+		this.memNo = memNo;
 		
 	}
-	// 보호소명, 주소, 연락처, 소개글
-
-public Shelter(String shPhone, String shAddress, String shAbout, String shLocal) {
-		super();
+public Shelter (String shName, String shPhone, String shAddress, String shAbout,String shLocal) {
+		
+		this.shName = shName;
 		this.shPhone = shPhone;
 		this.shAddress = shAddress;
 		this.shAbout = shAbout;
-		this.shLocal = shLocal;
+		this.shLocal= shLocal;			
+		
 	}
+	
+
 public Shelter(String memNo, String shName, String shPhone, String shAddress, String shAbout, String admission,
 			String shLocal, String refType) {
 		super();
