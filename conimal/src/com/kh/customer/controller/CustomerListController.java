@@ -17,7 +17,7 @@ import com.kh.member.model.service.MemberService;
 /**
  * Servlet implementation class customerListController
  */
-@WebServlet("/list.cu")
+@WebServlet("/list.ca")
 public class CustomerListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -44,7 +44,7 @@ public class CustomerListController extends HttpServlet {
 		int startPage;		// 페이징바의 시작 수
 		int endPage;		// 페이징바의 끝 수
 		
-		listCount = new MemberService().selectListCount();
+		listCount = new CustomerService().selectListCount();
 		currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		pageLimit = 10;
 		boardLimit = 15;

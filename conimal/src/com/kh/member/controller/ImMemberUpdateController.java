@@ -1,4 +1,4 @@
-package com.kh.customer.controller;
+package com.kh.member.controller;
 
 import java.io.IOException;
 
@@ -8,20 +8,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.customer.model.service.CustomerService;
-import com.kh.customer.model.vo.Customer;
+import com.kh.member.model.service.MemberService;
+import com.kh.member.model.vo.Member;
 
 /**
- * Servlet implementation class UpdateAnswerController
+ * Servlet implementation class MemberUpdateController
  */
-@WebServlet("/update.ca")
-public class UpdateAnswerController extends HttpServlet {
+@WebServlet("/updateMember.im")
+public class ImMemberUpdateController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UpdateAnswerController() {
+    public ImMemberUpdateController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,22 +32,24 @@ public class UpdateAnswerController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		request.setCharacterEncoding("UTF-8");
+		int memNo = Integer.parseInt(request.getParameter("mno"));
+		String MemName = (String)request.getParameter("MemName");
+		String email = (String)request.getParameter("email");
+		Member m = new Member();
+		m.setMemNo(memNo);
+		m.setMemName(MemName);
+		m.setEmail(email);
 		
-		int queNo = Integer.parseInt(request.getParameter("cno"));
-		String ansContent = request.getParameter("ansContent");
+		int result = new MemberService().imUpdateMember(m);
 		
-		Customer c = new Customer();	
-		c.setQueNo(queNo);
-		c.setAnsContent(ansContent);
-		
-		int result = new CustomerService().updateAnswer(c);
-		
-		if(result > 0) {
-			request.getSession().setAttribute("alertMsg", "답변을 등록했습니다.");
-			response.sendRedirect(request.getContextPath() + "/detail.ca?cno=" + c.getQueNo());
-		}else {
+		if(result>0) {
+			request.getSession().setAttribute("alertMsg", "정보 수정이 완료되었습니다.");
+			response.sendRedirect(request.getContextPath() + "/detail.me?mno=" + memNo);
+		} else {
 			
 		}
+		
+		
 	}
 
 	/**

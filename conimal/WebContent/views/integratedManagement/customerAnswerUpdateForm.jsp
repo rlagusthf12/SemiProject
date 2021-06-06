@@ -56,7 +56,7 @@
     	<div data-text-content="true" style="font-size: 16px; font-weight: bold; color: rgb(127, 127, 127);" class="text-left" spellcheck="false">통합 관리&gt; 1:1문의</div>
         <div data-text-content="true" style="font-weight: bold; font-size: 32px; color: rgb(127, 127, 127);" class="text-left" spellcheck="false">1:1문의</div>
     	<br>
-        <a href="<%=contextPath%>/list.cu?currentPage=1" class="btn btn-float text-left" style="background-color: rgb(187, 208, 227)">목록</a>
+        <a href="<%=contextPath %>/list.ca?currentPage=1" class="btn btn-float text-left" style="background-color: rgb(187, 208, 227)">목록</a>
         <br><br>
         <div class="customerDetail">
 			<input type="hidden" name="cno" value="<%=c.getQueNo()%>">
@@ -82,7 +82,7 @@
             <h3 style="font-weight: bold; font-size: 25px; color: rgb(127, 127, 127); margin-left: 150px;">문의 답변 작성</h3>
                 
             	<div class="answer-area">
-                    <form action="<%=contextPath%>/update.an" method="post">
+                    <form action="<%=contextPath%>/update.ca" method="post">
                         <input type="hidden" name="cno" value="<%=c.getQueNo()%>">
                         <%if(c.getAnsContent()!=null){%>
                         	<textarea name="ansContent" cols="88" rows="20" style="resize: none;"><%=c.getAnsContent() %></textarea>

@@ -50,7 +50,7 @@
 	        <table class="list-area table table-bordered" border="1" align="center">
 	        	<% if(list.isEmpty()){ %>
 	        		<tr>
-	                	<td colspan="5">조회된 회원이 없습니다.</td>
+	                	<td colspan="5">조회된 문의내역이 없습니다.</td>
 	            	</tr>
 	            <% }else{ %>
 		            <thead class="thead-light text-center">

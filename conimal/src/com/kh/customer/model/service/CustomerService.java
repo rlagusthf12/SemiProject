@@ -11,6 +11,13 @@ import com.kh.customer.model.vo.Customer;
 
 public class CustomerService {
 	
+	public int selectListCount() {
+		Connection conn = getConnection();
+		int listCount = new CustomerDao().selectListCount(conn);
+		close(conn);
+		return listCount;
+	}
+	
 	public ArrayList<Customer> selectCustomerList(PageInfo pi){
 		Connection conn = getConnection();
 		ArrayList<Customer> list = new CustomerDao().selectCustomerList(conn, pi);

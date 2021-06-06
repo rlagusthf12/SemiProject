@@ -33,6 +33,10 @@
     	display: block;
     	text-align: center;
     }
+    .list-area>tbody>tr:hover{
+	   	cursor: pointer;
+		background: gainsboro;
+    }
 </style>
 </head>
 <body>
@@ -68,6 +72,7 @@
 		            <tbody class="text-center">
 		            	<% for(Report r : list){ %>
 				            <tr>
+				            	<input type="hidden" class="refNo" value="<%=r.getRefNo() %>">
 				                <td><%=r.getReportUnique() %></td>
 				                <td><%=r.getMemberId() %></td>
 				                	<% if(r.getRefBoardType().equals("POST")){ %>
@@ -89,7 +94,6 @@
 				                		<td></td>
 				                		<td></td>
 				                	<% } %>
-				                
 				                <td><%=r.getReportReason() %></td>
 				                <td><%=r.getReportDate() %></td>
 				            </tr>
@@ -101,12 +105,26 @@
         <br>
 
 		<script>
-			// 해당 게시글 바로가기 수정해야함
 			$(function(){
-				$(".list-area>tbody>tr").click(function(){
-					location.href = "<%=contextPath%>/detail." + $(this).children().eq(0).text();
-				})
-			})
+					
+	          		$(".list-area>tbody>tr").click(function(){
+	          			var refType = $(this).children().eq(3).text();
+	          			console.log(refType);
+		      			var refNo = $(this).children(".refNo").val();
+		      			console.log(refNo);
+	          			if(refType == "자유게시판"){
+	          				location.href = "<%=contextPath%>/detail.cp?cno=" + refNo;
+	          			}else if(refType == "보호중인 아이들"){
+	          				location.href = "<%=contextPath%>/detail.an?ano=" + refNo;
+	          			}else if(refType == "입양 후기"){
+	          				location.href = "<%=contextPath%>/detail.ad?ano=" + refNo;
+	          			}else if(refType == "후원"){
+	          				location.href = "<%=contextPath%>/detail.do?dno=" + refNo;
+	          			}else if(refType == "자원봉사"){
+	          				location.href = "<%=contextPath%>/detail.vo?vno=" + refNo;
+	          			}
+	          		})
+	          	})
 		</script>
 
         <!-- 
