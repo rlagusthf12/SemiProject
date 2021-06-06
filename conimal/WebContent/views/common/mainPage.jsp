@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="com.kh.attachment.model.vo.Attachment,com.kh.banner.model.service.BannerService"%>
-    <% Attachment at = new BannerService().selectBanner("MAINPAGE"); %>
+    pageEncoding="UTF-8" import="com.kh.attachment.model.vo.Attachment,com.kh.banner.model.service.BannerService
+    							,com.kh.animal.model.vo.Animal, com.kh.animal.model.service.AnimalService
+    							,java.util.ArrayList"%>
+    <% Attachment at = new BannerService().selectBanner("MAINPAGE");
+    	ArrayList<Animal> list = new AnimalService().selectAnimalList();%>
 <!DOCTYPE html>
 <html>
 <head>
