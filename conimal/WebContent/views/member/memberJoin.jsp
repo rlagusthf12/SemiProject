@@ -89,7 +89,7 @@
             </div>
             
             <div class="petJoin" id="petJoin">
-                <a style="color:black; font-size:20px; font-weight:bold" href="">보호소</a> 
+                <a style="color:black; font-size:20px; font-weight:bold" href="<%=contextPath%>/shEnrollForm.me">보호소</a> 
             </div>
             <br>
             

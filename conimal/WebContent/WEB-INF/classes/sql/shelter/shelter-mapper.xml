@@ -124,18 +124,24 @@
 	</entry>
 	
 	<entry key="insertShelter">
-		INSERTINTO SHELTER
+		INSERT INTO SHELTER
 					(MEM_NO, 
 					 SH_NAME, 	
 					 SH_PHONE, 
 					 SH_ADDRESS, 
 					 SH_ABOUT, 
 					 SH_LOCAL)
-					 VALUES(SEQ_UNO.CURRVAL, ?, ?, ?, ?, ?) 
+					 VALUES
+					 (SEQ_UNO.CURRVAL,
+					  ?, 
+					  ?, 
+					  ?, 
+					  ?, 
+					  ?) 
 	</entry>
 
 	<entry key="insertAttachment">
-		INSERTINTO ATTACHMENT(FILE_NO, 
+		INSERT INTO ATTACHMENT(FILE_NO, 
 							  REF_TYPE, 
 							  REF_BNO, 
 							  ORIGIN_NAME, 
@@ -148,8 +154,17 @@
 				   		  				?, 
 				   		  				?)
 	 </entry>
+	 
+	 <entry key="updateShelter">
+	 UPDATE SHELTER
+	    SET SH_PHONE = ?
+	    , SH_ADDRESS = ?
+	    , SH_ABOUT = ?
+	    , SH_LOCAL = ?
+	  WHERE MEM_NO = ?
+	 </entry>
 
-	<entry key="updateShelter">UPDATESHELTERSET SH_PHONE = ?, SH_ADDRESS = ?, SH_ABOUT = ?, SH_LOCAL = ? </entry>
+
 	
 	
 

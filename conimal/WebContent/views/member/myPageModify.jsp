@@ -115,6 +115,7 @@
 
             <div class="wrap">
                 <form action="<%= contextPath %>/updatesh.me" id="side1-form" method="post">
+                    <input type="hidden" name="memNo" value="<%=loginUser.getMemNo()%>">
                     <h2 align="center">정보수정</h2>
                     <br>
                     <table>

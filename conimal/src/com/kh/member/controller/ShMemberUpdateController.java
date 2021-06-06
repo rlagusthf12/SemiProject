@@ -45,10 +45,11 @@ public class ShMemberUpdateController extends HttpServlet {
 		String shAddress = request.getParameter("shAddress");
 		String shAbout = request.getParameter("shAbout");
 		String shLocal = request.getParameter("shLocal");
+		String memNo = request.getParameter("memNo");
 		
 		Member m = new Member(memId, email);	
 		Member updateMem = new MemberService().updateMember(m);
-		Shelter sh = new Shelter(shPhone, shAddress, shAbout, shLocal);
+		Shelter sh = new Shelter(shPhone, shAddress, shAbout, shLocal, memNo);
 		Shelter updateSh = new ShelterService().updateShelter(sh);
 		
 		// 돌려받은 처리결과 가지고 사용자가 보게될 응답 뷰 지정
@@ -63,7 +64,7 @@ public class ShMemberUpdateController extends HttpServlet {
 			session.setAttribute("alertMsg", "성공적으로 회원정보를 수정했습니다");
 			
 			// 응답페이지 => /jsp/myPage.me url 재요청 => 마이페이지
-			response.sendRedirect(request.getContextPath() + "/myPage/me");
+			response.sendRedirect(request.getContextPath() + "/myPage.me");
 			
 		}
 	

@@ -367,7 +367,8 @@ public int insertShelter(Connection conn, Shelter sh) {
 			pstmt.setString(2, sh.getShAddress());
 			pstmt.setString(3, sh.getShAbout());
 			pstmt.setString(4, sh.getShLocal());
-
+			pstmt.setString(5, sh.getMemNo());
+			
 			result = pstmt.executeUpdate();
 			
 		} catch (SQLException e) {

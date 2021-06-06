@@ -13,6 +13,7 @@ import java.util.Properties;
 
 import com.kh.common.model.vo.PageInfo;
 import com.kh.member.model.vo.Member;
+import com.kh.shelter.model.vo.Shelter;
 
 public class MemberDao {
 	
@@ -32,7 +33,7 @@ public class MemberDao {
 	
 	// 로그인 요청 서비스
 	
-public Member loginMember(Connection conn, String memId, String memPwd) {
+	public Member loginMember(Connection conn, String memId, String memPwd) {
 		// select문 => ResultSet 객체 (한행) => Member객체 
 		Member m = null;
 		PreparedStatement pstmt = null;
@@ -76,7 +77,7 @@ public Member loginMember(Connection conn, String memId, String memPwd) {
 		
 	}
 	
-	/** 
+	/**사용자 
 	 * 회원가입용 서비스
 	 */
 		public int insertMember(Connection conn, Member m) {
@@ -211,7 +212,14 @@ public Member loginMember(Connection conn, String memId, String memPwd) {
 		return m;
 				
 	}
-public int insertSh(Connection conn, Member m) {
+	
+	/**
+	 * 보호소 회원가입용
+	 * @param conn
+	 * @param m
+	 * @return
+	 */
+	public int insertSh(Connection conn, Member m) {
 		// insert문 => 처리된 행수 
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -509,12 +517,12 @@ public int insertSh(Connection conn, Member m) {
 	 * @param memId
 	 * @return
 	 */
-	public Member selectMember(Connection conn, String memId) {
+	public Member selectMember1(Connection conn, String memId) {
 		// select문 => ResultSet 객체(한행)
 		Member updateMem = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String sql = prop.getProperty("selectMember");
+		String sql = prop.getProperty("selectMember1");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -530,7 +538,14 @@ public int insertSh(Connection conn, Member m) {
 									   rset.getString("email"),
 									   rset.getDate("enroll_date"),
 									   rset.getString("status"),
-									   rset.getInt("mem_code"));
+									   rset.getInt("mem_code"),
+									   rset.getString("sh_name"),
+									   rset.getString("sh_phone"),
+									   rset.getString("sh_address"),
+									   rset.getString("sh_about"),
+									   rset.getString("admission"),
+									   rset.getString("sh_local"),
+									   rset.getString("ref_type"));
 			}
 			
 		} catch (SQLException e) {

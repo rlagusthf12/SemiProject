@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import com.kh.common.model.vo.PageInfo;
 import com.kh.member.model.dao.MemberDao;
 import com.kh.member.model.vo.Member;
+import com.kh.shelter.model.vo.Shelter;
 
 
 public class MemberService {
@@ -25,7 +26,7 @@ public class MemberService {
 	}
 
 	
-	/**
+	/**사용자
 	 * 회원가입용 서비스 
 	 * @param m		회원가입폼에 작성된 사용자가 입력한 값들이 담겨있는 Member 객체
 	 * @return		처리된 행수
@@ -44,41 +45,7 @@ public class MemberService {
 		close(conn);
 		return result;
 	}
-
-public int insertSh(Member m) {
-		
-		Connection conn = getConnection();
-		int result = new MemberDao().insertSh(conn, m);
-		
-		if(result > 0) {
-			commit(conn);
-		}else {
-			rollback(conn);
-		}
-		
-		close(conn);
-		
-		return result;
-		
-	}
-	public Member updateMember(Member m) {
-		Connection conn = getConnection();
-		int result = new MemberDao().updateMember(conn, m);
-		
-		Member updateMem = null; // 처음에 null로 초기화
-		if(result > 0) {
-			commit(conn);
-			// 갱신된 회원 객체 다시 조회해오기
-			updateMem = new MemberDao().selectMember(conn, m.getMemId());
-			
-		}else {
-			rollback(conn);
-		}
-		
-		close(conn);
-		
-		return updateMem;
-	}
+	
 	public int idCheck(String checkId) {
 		Connection conn = getConnection();
 		int count = new MemberDao().idCheck(conn, checkId);
@@ -95,39 +62,8 @@ public int insertSh(Member m) {
 		close(conn);
 		return m;
 	}
-public Member updatePwdMember(String memId, String memPwd, String updatePwd) {
-		Connection conn = getConnection();
-		int result = new MemberDao().updatePwdMember(conn, memId, memPwd, updatePwd);
-		
-		Member updateMem = null;
-		if(result > 0) {
-			commit(conn);
-			// 갱신된 회원 객체 다시 조회해오기(이미 있는 기능 호출하기)
-			updateMem = new MemberDao().selectMember(conn, memId);
-		}else {
-			rollback(conn);
-		}
-		
-		close(conn);
-		
-		return updateMem;
-		
-	}
-public int insertShMember(Member m) {
-		
-		Connection conn = getConnection();
-		int result2 = new MemberDao().insertShelter(conn, m);
-		
-		if(result2 > 0) {
-			commit(conn);
-		}else {
-			rollback(conn);
-		}
-		
-		close(conn);
-		
-		return result2;
-	}
+
+
 	
 	// PWD찾기용 Service구문
 	public Member searchPwdMember(String memName, String email, String memId) {
@@ -137,6 +73,82 @@ public int insertShMember(Member m) {
 		close(conn);
 		return m;
 	}
+
+	/**
+	 * 보호소 회원가입용 서비스
+	 * @param m
+	 * @return
+	 */
+	public int insertSh(Member m) {
+		
+		Connection conn = getConnection();
+		int result = new MemberDao().insertSh(conn, m);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+		
+	}
+
+	/**
+	 * 보호소 마이페이지 정보수정
+	 * @param m
+	 * @return
+	 */
+	public Member updateMember(Member m) {
+		Connection conn = getConnection();
+		int result = new MemberDao().updateMember(conn, m);
+		
+		Member updateMem = null; // 처음에 null로 초기화
+		if(result > 0) {
+			commit(conn);
+			// 갱신된 회원 객체 다시 조회해오기
+			updateMem = new MemberDao().selectMember1(conn, m.getMemId());
+			
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return updateMem;
+	}
+	
+	/**
+	 * 보호소 비밀번호번경 서비스
+	 * @param memId
+	 * @param memPwd
+	 * @param updatePwd
+	 * @return
+	 */
+	public Member updatePwdMember(String memId, String memPwd, String updatePwd) {
+		Connection conn = getConnection();
+		int result = new MemberDao().updatePwdMember(conn, memId, memPwd, updatePwd);
+		
+		Member updateMem = null;
+		if(result > 0) {
+			commit(conn);
+			// 갱신된 회원 객체 다시 조회해오기(이미 있는 기능 호출하기)
+			updateMem = new MemberDao().selectMember1(conn, memId);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return updateMem;
+		
+	}
+	
+
+	
+
 	
 	// 비밀번호 변경 서비스
 	public int changePwdMember(Member m) {
@@ -153,7 +165,15 @@ public int insertShMember(Member m) {
 		close(conn);
 		return result;
 	}
-public int deleteMember(String memId, String memPwd) {
+	
+		
+	/**
+	 * 보호소/사용자 회원 탈퇴 메소드
+	 * @param memId
+	 * @param memPwd
+	 * @return
+	 */
+	public int deleteMember(String memId, String memPwd) {
 		Connection conn = getConnection();
 		int result = new MemberDao().deleteMember(conn, memId, memPwd);
 		if(result > 0) {
@@ -165,7 +185,7 @@ public int deleteMember(String memId, String memPwd) {
 		return result;
 	}
 
-/**
+	/**
 	 * 총 회원 수를 알려주는 메소드
 	 * @return 총 회원 수
 	 */
