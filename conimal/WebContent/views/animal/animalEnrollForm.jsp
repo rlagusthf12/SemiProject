@@ -83,7 +83,7 @@
                         </td>
                 </tr>
                 <tr>
-                    <th>모집기간</th>
+                    <th>보호중인 동물</th>
                         <td>
                             <input type="radio" name="animal" id="dog"> <label for="dog">강아지</label>
                             <input type="radio" name="animal" id="cat"> <label for="cat">고양이</label>

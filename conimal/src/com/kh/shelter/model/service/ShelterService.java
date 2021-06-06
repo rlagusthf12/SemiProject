@@ -143,8 +143,8 @@ public int insertShelter(Member m, Shelter sh) {
 	public Shelter updateShelter(Shelter sh) {
 		Connection conn = getConnection();
 		int result = new ShelterDao().updateShelter(conn, sh);
-		
-		Shelter updateSh = null;
+		int memNo = Integer.parseInt(sh.getMemNo());
+		Shelter updateSh = new ShelterDao().selectShelter(conn, memNo);
 		if(result > 0) {
 			commit(conn);
 		

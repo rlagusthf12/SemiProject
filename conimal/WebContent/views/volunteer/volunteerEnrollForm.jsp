@@ -18,7 +18,7 @@
         table td{width:500px;}
       
         table input{line-height:25px;}
-        #title, #name, #phone, #email{width:350px;}
+        #title, #name, #phone, #email, #speriod{width:350px;}
 
 
         table p{font-size:13px;}
@@ -70,11 +70,7 @@
                 </tr>
                 <tr>
                     <th>모집기간
-                        <td>
-                            <input type="radio" name="period" id="radioA"> <label for="radioA">상시모집</label>
-                            <input type="radio" name="period" id="radioB"> <label for="radioB">직접선택</label>
-                            <input type="date">~<input type="date">
-                        </td>
+                        <td><input type="text" id="speriod" placeholder="모집기간을 입력하세요."></td>
                     </th>
                 </tr>
                 <tr>

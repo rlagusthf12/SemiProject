@@ -53,7 +53,10 @@
                 </tr>
                 <tr>
                     <th>아이디</th>
-                        <td><input type="text" name="memId" placeholder="아이디를 입력하세요." required>&nbsp; <button>중복확인</button> </td>
+                        <td>
+                        <input type="text" name="memId" placeholder="아이디를 입력하세요." onclick="idCheck();" required>
+                        <button type="button" class="btn btn-dark"  style="margin-left: 10px;">중복확인</button>
+                        </td>
                 </tr>
                 <tr>
                     <th>비밀번호 </th>
@@ -61,7 +64,7 @@
                 </tr>
                 <tr>
                     <th>비밀번호 확인 </th>
-                        <td><input type="password" placeholder="비밀번호를 재입력하세요." required></td>
+                        <td><input type="password" name="memPwd2" placeholder="비밀번호를 재입력하세요." required></td>
                 </tr>
                 <tr>
                     <th>연락처</th>

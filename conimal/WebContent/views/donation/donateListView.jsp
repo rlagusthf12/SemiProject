@@ -118,6 +118,22 @@
 		</ul>
 	</div>
 
+	<!-- 현재 로그인한 사용자일 경우 -->
+	<% if(loginUser != null && loginUser.getMemCode() == 2){ %>
+		<div align="right" style="width:1150px;">
+			<a href="<%=contextPath %>/enrollForm.do" class="btn btn-secondary">글쓰기</a>
+		</div>
+	<% } %>
+		<script>
+			function donationPage(){
+							
+			// 단순한 정적인 페이지 요청이라고 해도 반드시 servlet거쳐갈것 => url에 서블릿 매핑값만 노출됨
+				location.href = "<%=contextPath%>/doWriteForm.me";
+			}
+		</script>	
+
+	<br><br>			
+
 	<%@ include file="../common/footerbar.jsp" %>
 
 </body>
