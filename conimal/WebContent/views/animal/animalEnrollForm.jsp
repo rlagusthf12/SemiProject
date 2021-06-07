@@ -85,7 +85,7 @@
                 <tr>
                     <th>보호중인 동물</th>
                         <td>
-                            <input type="radio" name="animal" id="dog" value="강아지"> <label for="dog">강아지</label>
+                            <input type="radio" name="animal" id="dog" value="강아지" checked> <label for="dog">강아지</label>
                             <input type="radio" name="animal" id="cat" value="고양이"> <label for="cat">고양이</label>
                             <input type="radio" name="animal" id="etc" value="그 외 반려동물"> <label for="etc">그 외 반려동물</label>
                         </td>
@@ -93,7 +93,7 @@
                 <tr>
                     <th>성별</th>
                         <td>
-                            <input type="radio" name="gender" id="male" value="수컷"> <label for="male">수컷</label>
+                            <input type="radio" name="gender" id="male" value="수컷" checked> <label for="male">수컷</label>
                             <input type="radio" name="gender" id="female" value="암컷"> <label for="female">암컷</label>
                             <input type="radio" name="gender" id="unkown" value="모르겠음"> <label for="unkown">모르겠음</label>
                         </td> 
