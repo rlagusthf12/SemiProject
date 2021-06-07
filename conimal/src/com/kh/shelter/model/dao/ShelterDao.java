@@ -351,7 +351,32 @@ public int insertShelter(Connection conn, Shelter sh) {
 		return result;
 		
 	}
-
+	
+public ArrayList<Shelter> selectAllShelters(Connection conn){
+		
+		ArrayList<Shelter> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectAllShelters");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Shelter(rset.getString("mem_no"),
+									rset.getString("sh_name")));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+			
+		}
+		return list;
+	}
 	
 
 }

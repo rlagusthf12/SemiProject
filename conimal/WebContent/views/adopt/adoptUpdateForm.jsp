@@ -92,16 +92,7 @@
 				
 				<div id="titleBar">
                 	 제목 <input style="margin-right:10px;" name="adoptTitle" type="text" id="adoptTitle" value="<%= a.getAdoptTitle() %>" required>
-               		 <!--  
-               		 보호소 번호만 가지고는 여기서 %를 이용한 구문으로 보호소 명을 가져올 수 가 없음
-               		 따라서 shelter라는 객체를 생성해서 가져와서 써야만함 마치 loginUser 처럼!!
-           	 	보호소명 <select name="shelterNo">
-           	 			checked되었던 보호소명이 뜰 수 있도록 하던가 아니면 아예 수정이 불가능하게 하던가
-           	 			<option value="도그보호소">도그보호소</option>
-           	 			<option>마루보호소</option>
-           	 
-           	 	   	  </select>
-           	 	    -->
+               		
 			   </div>
            	      
                 <br><br>

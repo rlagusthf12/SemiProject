@@ -102,7 +102,7 @@
         border:1px solid rgb(180, 178, 178) ;
     }
     .adoptContent th{ width: 100px; vertical-align: middle; text-align: center;}
-    
+     #btn1{margin-left: 15px;}
     
 </style>
 

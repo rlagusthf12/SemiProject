@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import ="java.util.ArrayList, com.kh.shelter.model.vo.*"%>   
+<%
+	
+	ArrayList<Shelter> Shelters  = (ArrayList<Shelter>)request.getAttribute("Shelters");
+	
+
+%>      
 <!DOCTYPE html>
 <html>
 <head>
@@ -85,8 +92,13 @@
                 	 제목 <input style="margin-right:10px;" name="adoptTitle" type="text" id="adoptTitle" placeholder="제목을 입력하세요." required>
                		 
            	 	보호소명 <select name="shelterNo">
-           	 			<option value="도그보호소">도그보호소</option>
-           	 			<option>마루보호소</option>
+           	 			<%if(Shelters ==null){ %> 
+               		 		<option>조회된거 없음</option>
+               		 	<%}else{ %>
+               		 		<%for(Shelter sh : Shelters){ %>
+               		 				<option name="shelterNo" value="<%=sh.getMemNo()%>"><%=sh.getShName() %></option>
+               		 		<%} %>		
+               		 	<%} %>
            	 
            	 	   	  </select>
            	 	   	  <br>

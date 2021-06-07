@@ -147,7 +147,12 @@ public int insertShelter(Member m, Shelter sh) {
 		
 	}
 
-
+	public ArrayList<Shelter> selectAllShelters () {
+		Connection conn = getConnection();
+		ArrayList<Shelter> list = new ShelterDao().selectAllShelters(conn);
+		close(conn);
+		return list;
+	}
 	
 
 }

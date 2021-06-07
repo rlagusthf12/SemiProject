@@ -43,16 +43,16 @@ public class AdoptDetailController extends HttpServlet {
 			if(result>0) { // 유효한 게시글 => 게시글,첨부파일 조회 => 상세조회 페이지
 				
 				Adopt a = AdoptService.selectAdopt(adoptNo);
-				ArrayList<Attachment> list = new AdoptService().selectAttachmentList(adoptNo); // null일수도 있지롱
+				Attachment at = new AdoptService().selectAttachment(adoptNo); // null일수도 있지롱
 				
 				request.setAttribute("a", a);
-				request.setAttribute("list", list);
+				request.setAttribute("at", at);
 				
 				request.getRequestDispatcher("views/adopt/adoptDetailView.jsp").forward(request, response);
 												
 				
 			}else { //에러 페이지
-				request.getSession().setAttribute("errorMsg", "자유게시판 상세 조회에 실패했습니다.");
+				request.getSession().setAttribute("errorMsg", "입양후기글 상세 조회에 실패했습니다.");
 			}
 	
 	
