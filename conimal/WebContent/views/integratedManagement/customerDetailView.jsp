@@ -53,7 +53,7 @@
         <div data-text-content="true" style="font-weight: bold; font-size: 32px; color: rgb(127, 127, 127);" class="text-left" spellcheck="false">1:1문의</div>
         <br>
     	
-        <a href="<%=contextPath%>/list.cu?currentPage=1" class="btn btn-float" style="background-color: rgb(187, 208, 227)">목록</a>
+        <a href="<%=contextPath%>/list.ca?currentPage=1" class="btn btn-float" style="background-color: rgb(187, 208, 227)">목록</a>
         <br><br>
         <div class="customerDetail">
 

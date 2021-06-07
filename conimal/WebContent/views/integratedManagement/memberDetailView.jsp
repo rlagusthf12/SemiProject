@@ -44,15 +44,16 @@
         <br><br>
         <div class="memberDetail">
             <form action="<%=contextPath%>/updateMember.im" method="post">
+            	<input type="hidden" name="memCode" value="<%=m.getMemCode() %>">
                 <table class="table" id="memberDetail" border="1">
                 	<input type="hidden" name="mno" value="<%=m.getMemNo()%>">
                     <tr>
                         <th width="100px">아이디</th>
-                        <td width="400px"><%=m.getMemId() %></td>
+                        <td><%=m.getMemId() %></td>
                     </tr>
                     <tr>
                         <th>이름</th>
-                        <td><input type="text" name="MemName" value="<%=m.getMemName() %>"></td>
+                        <td><input type="text" name="memName" value="<%=m.getMemName() %>"></td>
                     </tr>
                     <tr>
                         <th>이메일</th>
@@ -73,13 +74,15 @@
                     	</tr>
                     	<tr>
                     		<th>소개글</th>
-                    		<td><input type="text" name="shAbout" value="<%=m.getShAbout()%>"></td>
+                    		<td>
+                    			<textarea rows="20" cols="70" style="resize:none" name="shAbout"><%=m.getShAbout()%></textarea>
+                    		</td>
                     	</tr>
                     <%} %>
                 </table>
                 <br>
                 <div class=button-area align="center">
-                    <button class="btn btn-sm" style="background-color: rgb(187, 208, 227)">정보수정</button>
+                    <button type="submit" class="btn btn-sm" style="background-color: rgb(187, 208, 227)">정보수정</button>
                     <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteForm">회원탈퇴</button>
                 </div>
                 <br>

@@ -221,13 +221,17 @@ public class MemberService {
 	public int imUpdateMember(Member m) {
 		Connection conn = getConnection();
 		int result = new MemberDao().imUpdateMember(conn, m);
+		int result2 = 1;
+		if(m.getMemCode()==2) {
+			result2 = new MemberDao().imUpdateShelter(conn, m);
+		}
 		close(conn);
-		if(result>0) {
+		if(result*result2>0) {
 			commit(conn);
 		}else {
 			rollback(conn);
 		}
-		return result;
+		return result*result2;
 	}
 	
 	public Member selectMember(int memNo) {
