@@ -1,6 +1,6 @@
 package com.kh.animal.model.dao;
 
-import static com.kh.common.JDBCTemplate.*;
+import static com.kh.common.JDBCTemplate.close;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -12,8 +12,8 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.kh.animal.model.vo.Animal;
-import com.kh.animal.model.vo.Attachment;
 import com.kh.animal.model.vo.Bookmark;
+import com.kh.attachment.model.vo.Attachment;
 import com.kh.common.model.vo.PageInfo;
 
 public class AnimalDao {

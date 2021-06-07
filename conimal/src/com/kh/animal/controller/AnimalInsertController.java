@@ -13,7 +13,7 @@ import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import com.kh.animal.model.service.AnimalService;
 import com.kh.animal.model.vo.Animal;
-import com.kh.animal.model.vo.Attachment;
+import com.kh.attachment.model.vo.Attachment;
 import com.kh.common.MyFileRenamePolicy;
 import com.oreilly.servlet.MultipartRequest;
 
@@ -51,24 +51,27 @@ public class AnimalInsertController extends HttpServlet {
 			String anTitle = multiRequest.getParameter("title");
 			String anPlace = multiRequest.getParameter("place");
 			String anDate = multiRequest.getParameter("anDate");
-			String anSpecies = multiRequest.getParameter("animal");
-			String anGender = multiRequest.getParameter("gender");
+			String anSpecies[] = multiRequest.getParameterValues("animal");
+			String anGender[] = multiRequest.getParameterValues("gender");
 			String anContent = multiRequest.getParameter("content");
+			String memNo = multiRequest.getParameter("memNo");
+			
 			
 			Animal an = new Animal();
 			an.setAnTitle(anTitle);
 			an.setAnPlace(anPlace);
 			an.setAnDate(anDate);
-			an.setAnSpecies(anSpecies);
-			an.setAnGender(anGender);
+			an.setAnSpecies(anSpecies[0]);
+			an.setAnGender(anGender[0]);
 			an.setAnContent(anContent);
+			an.setMemNo(memNo);
 			
 			Attachment at = null;
 			
-			 // => 첨부파일이 있었을 경우 원본명 / 첨부파일이 없었을 경우 null
-			 if(multiRequest.getOriginalFileName("upfile") != null) {
-				 
-				 at = new Attachment();
+			// => 첨부파일이 있었을 경우 원본명 / 첨부파일이 없었을 경우 null
+			if(multiRequest.getOriginalFileName("upfile") != null) {
+				
+				at = new Attachment();
 				 at.setOriginName(multiRequest.getOriginalFileName("upfile")); // 원본명
 				 at.setChangeName(multiRequest.getFilesystemName("upfile")); // 수정명(실제 서버에 업로드되어있는 파일명)
 				 at.setFilePath("resources/board_upfiles/");

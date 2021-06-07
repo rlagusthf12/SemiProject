@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.ArrayList, com.kh.animal.model.vo.Animal"%>
-<%
-	ArrayList<Animal> list = (ArrayList<Animal>)request.getAttribute("list");
-%>    
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,6 +47,7 @@
         <h2 align="center">보호중인 동물 등록하기</h2>
         <br>
         <form action="<%=contextPath %>/insert.ao" id="animal-form" method="post" enctype="multipart/form-data">
+          <input type="hidden" name="memNo" value="<%= loginUser.getMemNo() %>">
             <h3 align="center">등록 정보 입력</h3>
             <hr>
             <table>
@@ -87,17 +85,17 @@
                 <tr>
                     <th>보호중인 동물</th>
                         <td>
-                            <input type="radio" name="animal" id="dog"> <label for="dog">강아지</label>
-                            <input type="radio" name="animal" id="cat"> <label for="cat">고양이</label>
-                            <input type="radio" name="animal" id="etc"> <label for="etc">그 외 반려동물</label>
+                            <input type="radio" name="animal" id="dog" value="강아지"> <label for="dog">강아지</label>
+                            <input type="radio" name="animal" id="cat" value="고양이"> <label for="cat">고양이</label>
+                            <input type="radio" name="animal" id="etc" value="그 외 반려동물"> <label for="etc">그 외 반려동물</label>
                         </td>
                 </tr>
                 <tr>
                     <th>성별</th>
                         <td>
-                            <input type="radio" name="gender" id="male"> <label for="male">수컷</label>
-                            <input type="radio" name="gender" id="female"> <label for="female">암컷</label>
-                            <input type="radio" name="gender" id="unkown"> <label for="unkown">모르겠음</label>
+                            <input type="radio" name="gender" id="male" value="수컷"> <label for="male">수컷</label>
+                            <input type="radio" name="gender" id="female" value="암컷"> <label for="female">암컷</label>
+                            <input type="radio" name="gender" id="unkown" value="모르겠음"> <label for="unkown">모르겠음</label>
                         </td> 
                 </tr>
                 <tr>
@@ -122,18 +120,7 @@
     
     </div>
     
-    <script type="text/javascript">
-		$(document).ready(function() {
-		     var inputValue = $("input[name='animal']:checked").val();
-		     alert(inputValue);
-		});
-		
-		$(document).ready(function() {
-		     var inputValue = $("input[name='gender']:checked").val();
-		     alert(inputValue);
-		});
-		
-	</script>
+
 
     <br><br>
 
