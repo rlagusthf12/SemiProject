@@ -20,7 +20,7 @@
         table td{width:500px;}
       
         table input{line-height:25px;}
-        #title, #name, #phone{width:350px;}
+        #title, #name, #phone, #anDate{width:350px;}
         #place{width:250px;}
 
 
@@ -43,29 +43,27 @@
 		<%
 		String shName = loginUser.getShName(); 
 		String memId = loginUser.getMemId();
-		//String shPhone = loginUser.getShPhone();
-		String email = (loginUser.getEmail() == null) ? "" : loginUser.getEmail();
-		//String shAbout = loginUser.getShAbout();
+		String shPhone = loginUser.getShPhone();
 	%>
 
     <div class="body">
         <h2 align="center">보호중인 동물 등록하기</h2>
         <br>
-        <form action="" id="animal-form" method="post">
+        <form action="<%=contextPath %>/insert.ao" id="animal-form" method="post" enctype="multipart/form-data">
             <h3 align="center">등록 정보 입력</h3>
             <hr>
             <table>
                 <tr>
                     <th>제목 </th>
-                        <td><input type="text" id="title" placeholder="제목을 입력해주세요." required> </td>
+                        <td><input type="text" name="title" id="title" placeholder="제목을 입력해주세요." required> </td>
                 </tr>
                 <tr>
                     <th>보호소명</th>
-                        <td><input type="text" id="memName" required></td>
+                        <td><input type="text" name="name" id="name" value="<%=shName%>"></td>
                 </tr>
                 <tr>
                     <th>연락처</th>
-                        <td><input type="phone" id="phone" placeholder="연락처를 입력하세요."></td>
+                        <td><input type="text" name="phone" id="phone" value="<%=shPhone%>"></td>
                 </tr>
                 <tr>
                     <th>발견한 장소</th>
@@ -79,8 +77,12 @@
                                 <option value="6">경상도</option>
                                 <option value="7">제주</option>
                             </select>
-                            <input type="text" id="place" placeholder="내용을 입력하세요.">
+                            <input type="text" name="place" id="place" placeholder="내용을 입력하세요." required>
                         </td>
+                </tr>
+                <tr>
+                    <th>발견한 날짜</th>
+                        <td><input type="text" name="anDate" id="anDate" placeholder="예) 2020-06-06" required> </td>
                 </tr>
                 <tr>
                     <th>보호중인 동물</th>
@@ -100,7 +102,7 @@
                 </tr>
                 <tr>
                     <th>상세설명</th>
-                        <td><textarea name="" id="" cols="50" rows="10" placeholder="내용을 입력하세요."></textarea></td>
+                        <td><textarea name="content" id="content" cols="50" rows="10" placeholder="내용을 입력하세요. (건강상태, 색깔 등 자세하게)"></textarea></td>
                 </tr>
                 <tr>
                     <th>사진첨부</th>
@@ -113,11 +115,25 @@
             </table>
             <br><br>
             <div class="enroll" align="center">
-                <button>등록하기</button>
+                <button type="submit" id="btn">등록하기</button>
             </div>
 
         </form>
+    
     </div>
+    
+    <script type="text/javascript">
+		$(document).ready(function() {
+		     var inputValue = $("input[name='animal']:checked").val();
+		     alert(inputValue);
+		});
+		
+		$(document).ready(function() {
+		     var inputValue = $("input[name='gender']:checked").val();
+		     alert(inputValue);
+		});
+		
+	</script>
 
     <br><br>
 

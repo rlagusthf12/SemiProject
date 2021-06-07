@@ -1,6 +1,6 @@
 package com.kh.animal.model.dao;
 
-import static com.kh.common.JDBCTemplate.close;
+import static com.kh.common.JDBCTemplate.*;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.kh.animal.model.vo.Animal;
+import com.kh.animal.model.vo.Attachment;
 import com.kh.animal.model.vo.Bookmark;
 import com.kh.common.model.vo.PageInfo;
 
@@ -384,5 +385,56 @@ public ArrayList<Animal> selectAnimalList(Connection conn){
 		return list;
 		
 	}
+	
+	public int insertAnimal(Connection conn, Animal an) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertAnimal");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, an.getAnTitle());
+			pstmt.setString(2, an.getAnPlace());
+			pstmt.setString(3, an.getAnDate());
+			pstmt.setString(4, an.getAnSpecies());
+			pstmt.setString(5, an.getAnGender());
+			pstmt.setString(6, an.getAnContent());
+			pstmt.setString(7, an.getMemNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	public int insertAttachment(Connection conn, Attachment at) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertAttachment");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, at.getOriginName());
+			pstmt.setString(2, at.getChangeName());
+			pstmt.setString(3, at.getFilePath());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+		
+	}
+	
+	
 
 }

@@ -1,15 +1,13 @@
 package com.kh.animal.model.service;
 
-import static com.kh.common.JDBCTemplate.close;
-import static com.kh.common.JDBCTemplate.commit;
-import static com.kh.common.JDBCTemplate.getConnection;
-import static com.kh.common.JDBCTemplate.rollback;
+import static com.kh.common.JDBCTemplate.*;
 
 import java.sql.Connection;
 import java.util.ArrayList;
 
 import com.kh.animal.model.dao.AnimalDao;
 import com.kh.animal.model.vo.Animal;
+import com.kh.animal.model.vo.Attachment;
 import com.kh.animal.model.vo.Bookmark;
 import com.kh.common.model.vo.PageInfo;
 
@@ -165,6 +163,30 @@ public ArrayList<Animal> selectAnimalList(){
 		close(conn);
 		
 		return list;
+		
+	}
+	
+	public int insertAnimal(Animal an, Attachment at) {
+		
+		Connection conn = getConnection();
+		
+		int result1 = new AnimalDao().insertAnimal(conn, an);
+		
+		int result2 = 1; // 0으로 해서는 안됨
+		if(at != null) {
+			result2 = new AnimalDao().insertAttachment(conn, at);
+		}
+		
+		// 트랜잭션 처리
+		if(result1 > 0 && result2 > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result1 * result2;
 		
 	}
 
