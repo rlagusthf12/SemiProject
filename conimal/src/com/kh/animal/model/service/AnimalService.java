@@ -1,9 +1,6 @@
 package com.kh.animal.model.service;
 
-import static com.kh.common.JDBCTemplate.close;
-import static com.kh.common.JDBCTemplate.commit;
-import static com.kh.common.JDBCTemplate.getConnection;
-import static com.kh.common.JDBCTemplate.rollback;
+import static com.kh.common.JDBCTemplate.*;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -169,11 +166,11 @@ public ArrayList<Animal> selectAnimalList(){
 		
 	}
 	
-	public int insertAnimal(Animal an, Attachment at) {
+	public int insertAnimal(Animal a, Attachment at) {
 		
 		Connection conn = getConnection();
 		
-		int result1 = new AnimalDao().insertAnimal(conn, an);
+		int result1 = new AnimalDao().insertAnimal(conn, a);
 		
 		int result2 = 1; // 0으로 해서는 안됨
 		if(at != null) {

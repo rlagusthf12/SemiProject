@@ -121,14 +121,17 @@
 					 SH_PHONE, 
 					 SH_ADDRESS, 
 					 SH_ABOUT, 
-					 SH_LOCAL)
+					 SH_LOCAL,
+					 ADMISSION)
 					 VALUES
 					 (SEQ_UNO.CURRVAL,
 					  ?, 
 					  ?, 
 					  ?, 
 					  ?, 
-					  ?) 
+					  ?,
+					  'N'
+					  ) 
 	</entry>
 
 	<entry key="insertAttachment">
