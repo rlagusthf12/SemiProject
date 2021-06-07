@@ -69,6 +69,10 @@
 	}
 	textarea{
 		resize: vertical;
+	}
+	#file1{
+		display:none;
+	}
 </style>
 </head>
 <body>
@@ -87,12 +91,11 @@
             <form id="adoptConF" action="<%=contextPath%>/update.ad" method="post" enctype="multipart/form-data">
             	<input type="hidden" name="ano" value="<%=a.getAdoptNo()%>">
             	<input type="hidden" name="adoptWriter" value="<%=loginUser.getMemNo()%>">
-            	<input type="hidden" name="memNo" value="<%=a.getMemNo()%>">
 				<input type="hidden" name="memName" value="<%=loginUser.getMemName()%>">
 				
 				<div id="titleBar">
                 	 제목 <input style="margin-right:10px;" name="adoptTitle" type="text" id="adoptTitle" value="<%= a.getAdoptTitle() %>" required>
-               		
+               		 보호소명 <input name="shelterNo" readonly placeholder="<%= a.getMemNo() %>">
 			   </div>
            	      
                 <br><br>
@@ -102,18 +105,19 @@
                 <br>
 
                 <div id="adoptImg" style="margin: auto;">
-                    <img src="" id="mainImg" >
+                     <img src="<%=contextPath%>/<%=at.getFilePath() + at.getChangeName() %>" id="mainImg" >
+                    
                     <br><Br>
                 </div>
                 <div id="fileBtn">
-                	<%if(at != null){ %>
-                           <%= at.getOriginName() %>(사진을 수정하고자 한다면 이미지 부분을 클릭해주세요.)
+                	<br>
+	                <input style="margin-left:680px;" type="file" id="file1" name="file1" onchange="loadImg(this, 1);">
+                 	<label class="btnImg" for="file1" >
+                 		<%= at.getOriginName() %>(사진을 수정하고자 한다면 이미지 부분을 클릭해주세요.)
 		            		<input type="hidden" name="originFileNo" value="<%=at.getFileNo()%>">
                             <input type="hidden" name="originFileName" value="<%=at.getChangeName()%>">
-                   <% } %> 
-                 <br>
-	                <input style="margin-left:680px;" type="file" id="file1" name="file1" onchange="loadImg(this, 1);"required>
-	            </div>
+                 	</label>
+               </div>
                 <br><br>
                
                 <textarea name="content" style="margin-left: 20px; width:900px; height:300px" required>
