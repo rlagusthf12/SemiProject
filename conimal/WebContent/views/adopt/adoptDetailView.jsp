@@ -120,15 +120,7 @@
             <%if(loginUser != null) {%>
             	<button type="submit" id="btn4" class="report-button btn-danger" data-toggle="modal" data-target="#reportForm" style="float: right; margin-right:20px; text-align:center; width: 70px;  font-size:13px;  border: 25px; border-radius: 3px;" > 신고하기 </button>
            	<%} %>
-            <script>
-            	$(function(){
-            		$(document).on("click", ".report-button", function () {
-                		$(".post-info #postNo").val(<%=a.getAdoptNo()%>);
-                		$(".post-info #refType").val("ADOPT");
-                		$(".post-info #memNo").val(<%=loginUser.getMemNo()%>);
-                	}); 
-            	})
-            </script>
+           
             <br><br>
             <h5 id="adoptTitle" style="text-align:left; font-weight: bolder; margin-left: 10px;"> <%=a.getAdoptTitle() %></h5>
          
@@ -160,11 +152,8 @@
 		            <tr style="border:1px solid rgb(180, 178, 178)">
 		                <th style="border:1px solid rgb(180, 178, 178)" >첨부파일</th>
 		                <td id="img1" colspan="3">
-		                      <% if(list.isEmpty()){ %>
-		                       		첨부파일이 없습니다. 
-		                       <%}else{ %>
-			                       <img src="<%=contextPath%>/<%=list.get(0).getFilePath() + list.get(0).getChangeName() %>" width=790px; height=341px;>
-							   <% } %> 
+		                      <img src="<%=contextPath%>/<%=at.getFilePath() + at.getChangeName() %>" width=790px; height=341px;>
+							
 		                </td>
 		            </tr>
                 
@@ -176,7 +165,7 @@
         <br>
         <button onclick="location.href='<%= contextPath%>/list.ad?currentPage=1'" id="toContent" class="submitB" style=" text-align:center; margin: auto; width: 80px; height: 30px;  font-size:15px; background:lightgray; border: 25px; border-radius: 3px;" > 목록으로 </button>
         <br>
-        <% if(loginUser != null && (loginUser.getMemNo()==Integer.parseInt(a.getAdoptWriter()))){ %>
+        <% if(loginUser != null && (loginUser.getMemName().equals(a.getAdoptWriter()))){ %>
         	<button  onclick="updateAdopt();" id="modiAdopt" class="submitB" style=" text-align:center; margin-left:20px; width: 50px; height: 30px;  font-size:10px; background:lightgray; border: 25px; border-radius: 3px;" > 수정</button>
         <%} %>
     </div>

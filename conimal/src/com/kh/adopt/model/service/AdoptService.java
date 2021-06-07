@@ -91,7 +91,7 @@ public class AdoptService {
 	public int updateAdopt(Adopt a, Attachment at) {
 		Connection conn = getConnection();
 		
-		int result1 = new AdoptDao().updateCpost(conn,a);
+		int result1 = new AdoptDao().updateAdopt(conn,a);
 		
 		int result2 = 1; //0으로 초기화 하면 안됨
 		if(at != null) { // 새로이 첨부된 파일이 있을 경우

@@ -34,7 +34,7 @@ public class AdoptDetailController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		int adoptNo = Integer.parseInt(request.getParameter("ano"));
-	
+		
 		AdoptService AdoptService = new AdoptService();
 		// 조회 수 증가 
 		int result = AdoptService.increaseCount(adoptNo);
