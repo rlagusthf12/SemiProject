@@ -90,17 +90,15 @@
 				
 				<div id="titleBar">
                 	 제목 <input style="margin-right:10px;" name="adoptTitle" type="text" id="adoptTitle" placeholder="제목을 입력하세요." required>
-               		 
-           	 	보호소명 <select name="shelterNo">
-           	 			<%if(Shelters ==null){ %> 
+		           	 	보호소명 <select name="shelterNo" >
+               		 	<%if(Shelters ==null){ %> 
                		 		<option>조회된거 없음</option>
                		 	<%}else{ %>
                		 		<%for(Shelter sh : Shelters){ %>
                		 				<option name="shelterNo" value="<%=sh.getMemNo()%>"><%=sh.getShName() %></option>
                		 		<%} %>		
                		 	<%} %>
-           	 
-           	 	   	  </select>
+               		 		  </select>
            	 	   	  <br>
 			   </div>
            	      

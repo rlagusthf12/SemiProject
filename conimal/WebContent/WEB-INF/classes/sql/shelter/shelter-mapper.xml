@@ -154,7 +154,12 @@
 	    , SH_LOCAL = ?
 	  WHERE MEM_NO = ?
 	 </entry>
-
+	<entry key="selectAllShelters">
+		SELECT 
+		      MEM_NO
+		    , SH_NAME
+		FROM SHELTER
+	</entry>
 
 	
 	
