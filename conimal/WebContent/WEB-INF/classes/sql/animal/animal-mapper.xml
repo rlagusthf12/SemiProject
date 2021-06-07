@@ -152,4 +152,49 @@
 		 WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
+	<entry key="insertAnimal">
+		INSERT
+		  INTO ANIMAL
+		     (  AN_NO
+		     , AN_TITLE
+		     , AN_PLACE
+		     , AN_DATE
+		     , AN_SPECIES
+		     , AN_GENDER
+		     , AN_CONTENT
+		     , MEM_NO
+		     )
+		     VALUES
+		     (
+		     SEQ_ANO.NEXTVAL
+		     , ?
+		     , ?
+		     , ?
+		     , ?
+		     , ?
+		     , ?
+		     , ?
+		     )
+	</entry>
+
+	<entry key="insertAttachment">
+		INSERT
+		  INTO ATTACHMENT
+		     ( FILE_NO
+		     , REF_BNO
+		     , ORIGIN_NAME
+		     , CHANGE_NAME
+		     , FILE_PATH
+		     )
+		     VALUES
+		     (
+		     SEQ_FNO.NEXTVAL
+		     , SEQ_ANO.CURRVAL
+		     , ?
+		     , ?
+		     , ?
+		     )
+	</entry>
+	
+	
 </properties>

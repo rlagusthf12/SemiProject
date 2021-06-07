@@ -25,7 +25,6 @@
 		margin:auto;
 		width: 1000px;
 		height: 1200px;
-        
 	}
     .outer>h2{
         text-align: left;
@@ -36,6 +35,10 @@
     .pagination{
     	display: block;
     	text-align: center;
+    }
+    .list-area>tbody>tr:hover{
+   	cursor: pointer;
+	background: gainsboro;
     }
 </style>
 </head>
@@ -109,6 +112,26 @@
 		            </tbody>
 	        	</table>
 	          </div>
+	          
+	          <script>
+	          	$(function(){ // 자유게시판이면 => / 보호중인아이들이면 => 
+	          		$(".list-area>tbody>tr").click(function(){
+	          			var refType = $(this).children().eq(1).text();
+	          			if(refType == "자유게시판"){
+	          				location.href = "<%=contextPath%>/detail.cp?cno=" + $(this).children().eq(0).text();
+	          			}else if(refType == "보호중인 아이들"){
+	          				location.href = "<%=contextPath%>/detail.an?ano=" + $(this).children().eq(0).text();
+	          			}else if(refType == "입양 후기"){
+	          				location.href = "<%=contextPath%>/detail.ad?ano=" + $(this).children().eq(0).text();
+	          			}else if(refType == "후원"){
+	          				location.href = "<%=contextPath%>/detail.do?dno=" + $(this).children().eq(0).text();
+	          			}else if(refType == "자원봉사"){
+	          				location.href = "<%=contextPath%>/detail.vo?vno=" + $(this).children().eq(0).text();
+	          			}
+	          		})
+	          	})
+	          	
+	          </script>
 	          
 	        	<!-- 
 					페이징바--------------------------------------------------------------------------------------- 

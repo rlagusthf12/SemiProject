@@ -309,8 +309,9 @@ public class MemberDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, m.getMemId());
-			pstmt.setString(2, m.getEmail());
+			pstmt.setString(1, m.getEmail());
+			pstmt.setString(2, m.getMemId());
+		
 			
 			result = pstmt.executeUpdate();
 			
@@ -470,6 +471,42 @@ public class MemberDao {
 		return m;
 	}
 	
+	public Member selectMember1(Connection conn, String memId) {
+		// select문 한 행 조회 => ResultSet
+		Member m = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectMember1");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memId);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				m = new Member(rset.getInt("mem_no"),
+							   rset.getString("mem_id"),
+							   rset.getString("mem_pwd"),
+							   rset.getString("mem_name"),
+							   rset.getString("email"),
+							   rset.getDate("enroll_date"),
+							   rset.getString("status"),
+							   rset.getInt("mem_code"),
+							   rset.getString("sh_name"),
+							   rset.getString("sh_phone"),
+							   rset.getString("sh_address"),
+							   rset.getString("sh_about"),
+							   rset.getString("admission"),
+							   rset.getString("sh_local"),
+							   rset.getString("ref_type"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return m;
+	}
+	
 	
 	public int imDeleteMember(Connection conn, int memNo) {
 		// update문 => int result
@@ -517,16 +554,16 @@ public class MemberDao {
 	 * @param memId
 	 * @return
 	 */
-	public Member selectMember1(Connection conn, String memId) {
+	public Member selectMember(Connection conn, String memNo) {
 		// select문 => ResultSet 객체(한행)
 		Member updateMem = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String sql = prop.getProperty("selectMember1");
+		String sql = prop.getProperty("selectMember");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, memId);
+			pstmt.setString(1, memNo);
 			
 			rset = pstmt.executeQuery();
 			

@@ -1,4 +1,4 @@
-package com.kh.shelter.controller;
+package com.kh.member.controller;
 
 import java.io.IOException;
 
@@ -8,20 +8,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.shelter.model.service.ShelterService;
-import com.kh.shelter.model.vo.Shelter;
+import com.kh.member.model.service.MemberService;
+import com.kh.member.model.vo.Member;
 
 /**
- * Servlet implementation class ShelterDetailFormController
+ * Servlet implementation class MemberUpdateController
  */
-@WebServlet("/Detail.sh")
-public class ShelterDetailFormController extends HttpServlet {
+@WebServlet("/updateMember.im")
+public class ImMemberUpdateController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ShelterDetailFormController() {
+    public ImMemberUpdateController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,12 +30,26 @@ public class ShelterDetailFormController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		
-		String memNo = request.getParameter("memNo");		
-		Shelter sh = new ShelterService().selectShelter(memNo);
-		request.setAttribute("sh", sh);
-		request.getRequestDispatcher("views/shelter/shelterEnroll/shelterEnrollDetail.jsp").forward(request, response);
+		request.setCharacterEncoding("UTF-8");
+		int memNo = Integer.parseInt(request.getParameter("mno"));
+		String MemName = (String)request.getParameter("MemName");
+		String email = (String)request.getParameter("email");
+		Member m = new Member();
+		m.setMemNo(memNo);
+		m.setMemName(MemName);
+		m.setEmail(email);
+		
+		int result = new MemberService().imUpdateMember(m);
+		
+		if(result>0) {
+			request.getSession().setAttribute("alertMsg", "정보 수정이 완료되었습니다.");
+			response.sendRedirect(request.getContextPath() + "/detail.me?mno=" + memNo);
+		} else {
+			
+		}
+		
+		
 	}
 
 	/**

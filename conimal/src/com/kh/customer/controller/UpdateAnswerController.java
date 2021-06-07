@@ -14,7 +14,7 @@ import com.kh.customer.model.vo.Customer;
 /**
  * Servlet implementation class UpdateAnswerController
  */
-@WebServlet("/update.an")
+@WebServlet("/update.ca")
 public class UpdateAnswerController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -44,7 +44,7 @@ public class UpdateAnswerController extends HttpServlet {
 		
 		if(result > 0) {
 			request.getSession().setAttribute("alertMsg", "답변을 등록했습니다.");
-			response.sendRedirect(request.getContextPath() + "/detail.an?cno=" + c.getQueNo());
+			response.sendRedirect(request.getContextPath() + "/detail.ca?cno=" + c.getQueNo());
 		}else {
 			
 		}

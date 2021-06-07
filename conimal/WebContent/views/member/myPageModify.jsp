@@ -96,6 +96,7 @@
 		String shAddress = loginUser.getShAddress();
 		String shLocal = loginUser.getShLocal();
 		String shAbout = loginUser.getShAbout();
+		int memNo = loginUser.getMemNo();
 	%>
 
     <div class="body">
@@ -114,18 +115,18 @@
 
 
             <div class="wrap">
-                <form action="<%= contextPath %>/updatesh.me" id="side1-form" method="post">
-                    <input type="hidden" name="memNo" value="<%=loginUser.getMemNo()%>">
+                <form action="<%= contextPath %>/update.me" id="side1-form" method="post">
+                 <input type="hidden" name="mno" value="<%=memNo%>">
                     <h2 align="center">정보수정</h2>
                     <br>
                     <table>
                         <tr>
                             <th>이름</th>
-                                <td><input type="text" id="shName" placeholder="이름을 입력해주세요." required readonly value="<%=memName%>"></td>
+                                <td><input type="text" name="memName" placeholder="이름을 입력해주세요." required readonly value="<%=memName%>"></td>
                         </tr>
                         <tr>
                             <th>아이디</th>
-                                <td><input type="text" id="memId" placeholder="아이디를 입력하세요." required readonly value="<%=memId%>"></td>
+                                <td><input type="text" name="memId" placeholder="아이디를 입력하세요." required readonly value="<%=memId%>"></td>
                         </tr>
                         <tr>
                             <th>비밀번호</th>

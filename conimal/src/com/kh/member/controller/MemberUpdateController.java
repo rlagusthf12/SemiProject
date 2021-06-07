@@ -33,8 +33,8 @@ public class MemberUpdateController extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 		int memNo = Integer.parseInt(request.getParameter("mno"));
-		String MemName = (String)request.getParameter("MemName");
-		String email = (String)request.getParameter("email");
+		String MemName = request.getParameter("memName");
+		String email = request.getParameter("email");
 		Member m = new Member();
 		m.setMemNo(memNo);
 		m.setMemName(MemName);

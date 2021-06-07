@@ -76,25 +76,25 @@
             <li><a href="/conimal/list.me?currentPage=1">회원조회</a></li>
             <li><a href="/conimal/list.re?currentPage=1">신고조회</a></li>
             <li>
-                <a href="">보호소 관리</a>
+                <a href="/conimal/Main.sh?currentPage=1">보호소 관리</a>
                 <ul>
-                    <li><a>보호소 등록 관리</a></li>
-                    <li><a href="">후원 등록 관리</a></li>
+                    <li><a href="/conimal/Main.sh?currentPage=1">보호소 등록 관리</a></li>
+                    <li><a href="/conimal/Main.do?currentPage=1">후원 등록 관리</a></li>
                 </ul>
             </li>
 
             <li>
-                <a href="">사이트소개 관리</a>
+                <a href="/conimal/Main.intro">사이트소개 관리</a>
                 <ul>
-                    <li><a href="">사이트 소개</a></li>
-                    <li><a href="">공지사항</a></li>
+                    <li><a href="/conimal/Main.intro">사이트 소개</a></li>
+                    <li><a href="/conimal/Main.no?currentPage=1">공지사항</a></li>
                 </ul>
             </li>
             <li>
                 <a href="/conimal/list.bo?currentPage=1">게시판 관리</a>
                 <ul>
                     <li><a href="/conimal/list.bo?currentPage=1">게시판 글 조회</a></li>
-                    <li><a href="/conimal/list.cu?currentPage=1">1:1 문의</a></li>
+                    <li><a href="/conimal/list.ca?currentPage=1">1:1 문의</a></li>
                 </ul>
             </li>
             

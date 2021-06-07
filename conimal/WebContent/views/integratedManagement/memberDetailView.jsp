@@ -38,12 +38,12 @@
 <body>
 	<%@ include file="../common/adminPageNavibar.jsp" %>
 	<%@ include file="../common/menubar.jsp" %>
-    
+ 
     <div class="outer">
         <a href="<%=contextPath%>/list.me?currentPage=1" class="btn" style="background-color: rgb(187, 208, 227)">목록</a>
         <br><br>
         <div class="memberDetail">
-            <form action="<%=contextPath%>/update.me" method="post">
+            <form action="<%=contextPath%>/updateMember.im" method="post">
                 <table class="table" id="memberDetail" border="1">
                 	<input type="hidden" name="mno" value="<%=m.getMemNo()%>">
                     <tr>
@@ -105,7 +105,7 @@
 	        
 	        <b>탈퇴 후 복구가 불가능합니다. <br>정말로 해당 회원을 탈퇴 시키겠습니까?</b> <br><br>
 	        
-	        <form action="<%= contextPath %>/delete.me" method="post">
+	        <form action="<%= contextPath %>/deleteMember.im" method="post">
 	        	<input type="hidden" name="memNo" value="<%=m.getMemNo()%>">
 	        	<!-- value=>memNo값 전달 -->
 	        	<br><br>

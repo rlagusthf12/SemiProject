@@ -31,7 +31,7 @@ public class ShelterDetailController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int shelterNo = Integer.parseInt(request.getParameter("sno"));
+		String shelterNo = request.getParameter("sno");
 		
 		ShelterService sService = new ShelterService();
 		

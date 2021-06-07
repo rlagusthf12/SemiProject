@@ -1,4 +1,4 @@
-package com.kh.shelter.controller;
+package com.kh.member.controller;
 
 import java.io.IOException;
 
@@ -8,20 +8,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.shelter.model.service.ShelterService;
-import com.kh.shelter.model.vo.Shelter;
+import com.kh.member.model.service.MemberService;
 
 /**
- * Servlet implementation class ShelterDetailFormController
+ * Servlet implementation class MemberDeleteController
  */
-@WebServlet("/Detail.sh")
-public class ShelterDetailFormController extends HttpServlet {
+@WebServlet("/deleteMember.im")
+public class ImMemberDeleteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ShelterDetailFormController() {
+    public ImMemberDeleteController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,12 +29,19 @@ public class ShelterDetailFormController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		
-		String memNo = request.getParameter("memNo");		
-		Shelter sh = new ShelterService().selectShelter(memNo);
-		request.setAttribute("sh", sh);
-		request.getRequestDispatcher("views/shelter/shelterEnroll/shelterEnrollDetail.jsp").forward(request, response);
+		request.setCharacterEncoding("UTF-8");
+		
+		int memNo = Integer.parseInt(request.getParameter("memNo"));
+		int result = new MemberService().imDeleteMember(memNo);
+		
+		if(result>0) {
+			request.getSession().setAttribute("alertMsg", "해당 회원이 탈퇴처리 되었습니다.");
+			response.sendRedirect(request.getContextPath()+"/list.me?currentPage=1");
+		}else {
+			
+		}
+		
 	}
 
 	/**
