@@ -181,7 +181,7 @@
 		INSERT
 		  INTO ATTACHMENT
 		     ( FILE_NO
-		     , REF_BNO
+		     , REF_NO
 		     , ORIGIN_NAME
 		     , CHANGE_NAME
 		     , FILE_PATH

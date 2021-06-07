@@ -386,20 +386,20 @@ public ArrayList<Animal> selectAnimalList(Connection conn){
 		
 	}
 	
-	public int insertAnimal(Connection conn, Animal an) {
+	public int insertAnimal(Connection conn, Animal a) {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("insertAnimal");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, an.getAnTitle());
-			pstmt.setString(2, an.getAnPlace());
-			pstmt.setString(3, an.getAnDate());
-			pstmt.setString(4, an.getAnSpecies());
-			pstmt.setString(5, an.getAnGender());
-			pstmt.setString(6, an.getAnContent());
-			pstmt.setString(7, an.getMemNo());
+			pstmt.setString(1, a.getAnTitle());
+			pstmt.setString(2, a.getAnPlace());
+			pstmt.setString(3, a.getAnDate());
+			pstmt.setString(4, a.getAnSpecies());
+			pstmt.setString(5, a.getAnGender());
+			pstmt.setString(6, a.getAnContent());
+			pstmt.setString(7, a.getMemNo());
 			
 			result = pstmt.executeUpdate();
 			
