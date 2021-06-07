@@ -8,9 +8,20 @@
 		  FROM ANIMAL
 		 WHERE AN_SPECIES = '강아지'
 	</entry>
-	<entry key="selectAnimalList">SELECTAN_NO, AN_TITLE, AN_PLACE, AN_DATE, AN_SPECIES, AN_WRITEDATE, AN_CONTENTFROM ANIMAL AJOIN MEMBER M USING(MEM_NO) </entry>
+	<entry key="selectAnimalList">
+		SELECT 
+		AN_NO, AN_TITLE, AN_PLACE, AN_DATE, AN_SPECIES, AN_WRITEDATE, AN_CONTENT
+		FROM ANIMAL A
+		JOIN MEMBER M USING(MEM_NO) 
+	</entry>
 
-<entry key="insertAnimal">INSERTINTO ANIMAL(AN_NO, AN_TITLE, AN_PLACE, AN_DATE, AN_SPECIES, AN_GENDER, AN_CONTENT, MEM_NO)VALUES(SEQ_ANO.NEXTVAL, ?, ?, ?, ?, ?, ?, ?) </entry>
+	<entry key="insertAnimal">
+		INSERT
+		INTO ANIMAL
+		(AN_NO, AN_TITLE, AN_PLACE, AN_DATE, AN_SPECIES, AN_GENDER, AN_CONTENT, MEM_NO)
+		VALUES
+		(SEQ_ANO.NEXTVAL, ?, ?, ?, ?, ?, ?, ?) 
+	</entry>
 	
 	<entry key="selectCatCount">
 		SELECT

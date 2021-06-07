@@ -132,7 +132,19 @@
             <button onclick="location.href='<%= contextPath%>/list.cp?currentPage=1'" id="btn1" class="submitB" style=" text-align:center; width: 55px;  font-size:13px; background:lightgray; border: 25px; border-radius: 3px;" > 목록 </button>
             <button id="btn2" class="submitB" style=" text-align:center; width: 55px;  font-size:13px; background:lightgray; border: 25px; border-radius: 3px;" > 이전글 </button>
             <button id="btn3" class="submitB" style=" text-align:center; width: 55px;  font-size:13px; background:lightgray; border: 25px; border-radius: 3px;" > 다음글 </button>
-            <button type="submit" id="btn4" class="btn-danger" style="float: right; margin-right:20px; text-align:center; width: 70px;  font-size:13px;  border: 25px; border-radius: 3px;" > 신고하기 </button>
+            <%if(loginUser != null) {%>
+            	<button type="submit" id="btn4" class="report-button report-board btn-danger" data-toggle="modal" data-target="#reportForm" style="float: right; margin-right:20px; text-align:center; width: 70px;  font-size:13px;  border: 25px; border-radius: 3px;" > 신고하기 </button>
+           	<%} %>
+           	
+           	<script>
+            	$(function(){
+            		$(document).on("click", ".report-board", function () {
+                		$(".post-info #postNo").val(<%=c.getcPostNo()%>);
+                		$(".post-info #refType").val("POST");
+                		$(".post-info #memNo").val(<%=loginUser.getMemNo()%>);
+                	}); 
+            	})
+            </script>
            
             <br><br>
             <h5 id="cPostTitle" style="text-align:left; font-weight: bolder; margin-left: 10px;"><%= c.getcPostTitle() %></h5>
@@ -228,6 +240,16 @@
             		selectReplyList();
             		
             		setInterval(selectReplyList,1000);
+            		
+            		
+            		$(document).on("click", ".report-reply", function(){
+            			$(".post-info #postNo").val($(this).parent().siblings("input").val());
+                		$(".post-info #refType").val("REPLY");
+                		$(".post-info #memNo").val(<%=loginUser.getMemNo()%>);
+            		})
+            		
+            		
+            		
             	})
             	function reportCp(){
                     location.href="<%= contextPath%>/report.cp";
@@ -263,14 +285,16 @@
             				var result="";
             				for(var i in list){
             					result +=  "<tr>"
-				                          +	"<td>" + list[i].cUserName + "</td>"
-				                          +    "<td>"+list[i].replyContent+"</td>"
-				                          +    "<td>"+list[i].writtenDate+"</td>"
+            							  + 	"<input type='hidden' value='" + list[i].reNo + "'>"
+				                          +	   "<td>" + list[i].cUserName    + "</td>"
+				                          +    "<td>" + list[i].replyContent + "</td>"
+				                          +    "<td>" + list[i].writtenDate  + "</td>"
+				                          +    "<td><button type='submit' id='btn4' class='report-button btn-danger report-reply' data-toggle='modal' data-target='#reportForm'>신고하기</button></td>"
 				                          +"</tr>";
             				}
             				$("#reply-area tbody").html(result);
             				
-            			}, error:function(){
+            			}, error:function(){	
             				console.log("댓글조회용 ajax실패다")
             			}
             		})

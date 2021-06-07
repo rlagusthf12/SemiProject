@@ -117,8 +117,18 @@
         <br>
         <div class="inner">
             <button  onclick="location.href='<%= contextPath%>/list.ad?currentPage=1'" id="btn1" class="submitB" style=" text-align:center; width: 55px;  font-size:13px; background:lightgray; border: 25px; border-radius: 3px;" > 목록 </button>
-            <button type="submit" id="btn4" class="btn-danger" style="float: right; margin-right:20px; text-align:center; width: 70px;  font-size:13px;  border: 25px; border-radius: 3px;" > 신고하기 </button>
-            
+            <%if(loginUser != null) {%>
+            	<button type="submit" id="btn4" class="report-button btn-danger" data-toggle="modal" data-target="#reportForm" style="float: right; margin-right:20px; text-align:center; width: 70px;  font-size:13px;  border: 25px; border-radius: 3px;" > 신고하기 </button>
+           	<%} %>
+            <script>
+            	$(function(){
+            		$(document).on("click", ".report-button", function () {
+                		$(".post-info #postNo").val(<%=a.getAdoptNo()%>);
+                		$(".post-info #refType").val("ADOPT");
+                		$(".post-info #memNo").val(<%=loginUser.getMemNo()%>);
+                	}); 
+            	})
+            </script>
             <br><br>
             <h5 id="adoptTitle" style="text-align:left; font-weight: bolder; margin-left: 10px;"> <%=a.getAdoptTitle() %></h5>
          

@@ -100,8 +100,9 @@ public int insertReport(Connection conn, Report r) {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, r.getMemNo());
-			pstmt.setInt(2, r.getRefNo());
-			pstmt.setInt(3, r.getReportNo());
+			pstmt.setString(2, r.getRefType());
+			pstmt.setInt(3, r.getRefNo());
+			pstmt.setInt(4, r.getReportNo());
 			
 			result = pstmt.executeUpdate();
 			

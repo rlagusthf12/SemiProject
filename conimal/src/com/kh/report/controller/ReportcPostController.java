@@ -33,6 +33,8 @@ public class ReportcPostController extends HttpServlet {
 		
 		// 신고 게시글 번호
 		int cPostNo = Integer.parseInt(request.getParameter("postNo"));
+		// 신고 게시글 유형
+		String refType = request.getParameter("refType");
 		// 신고자 번호
 		int memNo = Integer.parseInt(request.getParameter("memNo"));
 		// 신고 유형
@@ -42,13 +44,16 @@ public class ReportcPostController extends HttpServlet {
 		r.setMemNo(memNo);
 		r.setRefNo(cPostNo);
 		r.setReportNo(reportNo);
+		r.setRefType(refType);
 		
 		int result = new ReportService().insertReport(r);
 		
 		if(result > 0) {
-			request.setAttribute("alertMsg", "신고 접수가 완료되었습니다");
+			request.getSession().setAttribute("alertMsg", "신고 접수가 완료되었습니다");
+			response.sendRedirect(request.getContextPath() + "/list.cp?currentPage=1");
 		} else {
-			request.setAttribute("errorMsg", "신고 실패!");
+			request.getSession().setAttribute("errorMsg", "신고 실패!");
+			response.sendRedirect(request.getContextPath() + "/list.cp?currentPage=1");
 		}
 		
 	}

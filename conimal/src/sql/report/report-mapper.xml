@@ -41,15 +41,25 @@
 		        )
 		 WHERE RNUM BETWEEN ? AND ?
 	</entry>
-<entry key="insertReport">INSERTINTO REPORT(REPORT_UNIQUE, 
- 											MEM_NO, REF_TYPE, 
- 											REF_NO, REPORT_NO, 
- 											REPORT_DATE)
- 											VALUES(SEQ_RNO.NEXTVAL, 
- 												    ?, 
- 												    'POST', 
- 												    ?, 
- 												    ?, 
- 												    SYSDATE) 
- </entry>
+	<entry key="insertReport">
+		INSERT
+		  INTO REPORT
+		     (
+		       REPORT_UNIQUE
+		     , MEM_NO
+		     , REF_TYPE
+		     , REF_NO
+		     , REPORT_NO
+		     , REPORT_DATE
+		     )
+		VALUES
+		     (
+		       SEQ_RNO.NEXTVAL
+		     , ?
+		     , ?
+		     , ?
+		     , ?
+		     , SYSDATE
+		     )
+	</entry>
 </properties>

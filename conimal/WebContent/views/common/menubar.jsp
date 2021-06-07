@@ -264,6 +264,8 @@
 			      	<div class="post-info">
 			      		<!-- 게시글 번호 -->
 			      		<input type="hidden" name="postNo" id="postNo" value=""/>
+			      		<!-- 게시글 유형 -->
+			      		<input type="hidden" name="refType" id="refType" value=""/>
 			      		<!-- 신고자 번호 -->
 			      		<input type="hidden" name="memNo" id="memNo" value=""/>
 			      	</div>
