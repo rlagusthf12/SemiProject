@@ -111,18 +111,19 @@
 	                <br>
 	
 	                <div id="cPostImg" style="margin: auto;">
-	                    <img src="" id="mainImg">
+	                    <img src="<%= contextPath %>/<%=at.getFilePath() + at.getChangeName() %>" width=790px; height=341px; id="mainImg">
+						
 	                    <br><Br>
 	                    
 	                </div>
 	                <div id="fileBtn">
-	                <%if(at != null){ %>
+		                <input style="margin-left:680px;" type="file" id="file1" name="reUpfile1" onchange="loadImg(this, 1);">
+	               		<label class="btnImg" for="file1">
                            <%= at.getOriginName() %>(사진을 수정하고자 한다면 이미지 부분을 클릭해주세요.)
 		            		<input type="hidden" name="originFileNo" value="<%=at.getFileNo()%>">
                             <input type="hidden" name="originFileName" value="<%=at.getChangeName()%>">
-                   <% } %> 
+                   		</label>
                    <Br>
-		                <input style="margin-left:680px;" type="file" id="file1" name="reUpfile1" onchange="loadImg(this, 1);"required>
 		            </div>
 	                <br><br><br>
 	                <textarea name="content" style="margin-left: 20px;" cols="115" rows="10">

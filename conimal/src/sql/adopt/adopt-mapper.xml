@@ -159,7 +159,7 @@
 		    VALUES
 		    (
 		      SEQ_FNO.NEXTVAL
-		    , 'POST'
+		    , 'ADOPT'
 		    , ?
 		    , ?
 		    , ?
