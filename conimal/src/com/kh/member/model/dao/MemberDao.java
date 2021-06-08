@@ -419,11 +419,34 @@ public class MemberDao {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("imUpdateMember");
+		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, m.getMemName());
 			pstmt.setString(2, m.getEmail());
 			pstmt.setInt(3, m.getMemNo());
+			
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public int imUpdateShelter(Connection conn, Member m) {
+		// update문 => int result
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("imUpdateShelter");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, m.getShPhone());
+			pstmt.setString(2, m.getShAddress());
+			pstmt.setString(3, m.getShAbout());
+			pstmt.setInt(4, m.getMemNo());
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {

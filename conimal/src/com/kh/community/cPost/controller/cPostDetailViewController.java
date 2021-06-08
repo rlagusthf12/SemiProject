@@ -42,7 +42,7 @@ public class cPostDetailViewController extends HttpServlet {
 		if(result>0) { // 유효한 게시글 => 게시글,첨부파일 조회 => 상세조회 페이지
 			
 			Cpost c = cPostService.selectCpost(cPostNo);
-			ArrayList<Attachment> list = new cPostService().selectAttachmentList(cPostNo);
+			Attachment at = new cPostService().selectAttachment(cPostNo);
 			
 			request.setAttribute("c", c);
 			request.setAttribute("list", list);

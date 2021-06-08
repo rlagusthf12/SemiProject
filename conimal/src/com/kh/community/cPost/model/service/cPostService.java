@@ -134,8 +134,6 @@ public class cPostService {
 	public Attachment selectAttachment(int cPostNo) {
 		Connection conn = getConnection();
 		Attachment at = new cPostDao().selectAttachment(conn,cPostNo);
-		
-		
 		close(conn);
 		return at;
 		

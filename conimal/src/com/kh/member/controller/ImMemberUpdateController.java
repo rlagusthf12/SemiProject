@@ -33,12 +33,23 @@ public class ImMemberUpdateController extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 		int memNo = Integer.parseInt(request.getParameter("mno"));
-		String MemName = (String)request.getParameter("MemName");
+		String memName = (String)request.getParameter("memName");
 		String email = (String)request.getParameter("email");
+		String shPhone = (String)request.getParameter("shPhone");
+		String shAddress = (String)request.getParameter("shAddress");
+		String shAbout = (String)request.getParameter("shAbout");
+		int memCode = Integer.parseInt(request.getParameter("memCode"));
+		
 		Member m = new Member();
 		m.setMemNo(memNo);
-		m.setMemName(MemName);
+		m.setMemName(memName);
 		m.setEmail(email);
+		m.setMemCode(memCode);
+		if(memCode == 2) {
+			m.setShPhone(shPhone);
+			m.setShAddress(shAddress);
+			m.setShAbout(shAbout);
+		}
 		
 		int result = new MemberService().imUpdateMember(m);
 		

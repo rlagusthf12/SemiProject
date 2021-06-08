@@ -270,6 +270,16 @@
 		       EMAIL = ?
 		 WHERE MEM_NO = ?
 	</entry>
+	
+	<entry key="imUpdateShelter">
+		UPDATE 
+		  	   SHELTER
+		   SET 
+	           SH_PHONE = ?,
+	           SH_ADDRESS = ?,
+	           SH_ABOUT = ?
+		 WHERE MEM_NO = ?
+	</entry>
 
 
 </properties>

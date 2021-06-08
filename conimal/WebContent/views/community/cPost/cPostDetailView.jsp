@@ -3,9 +3,8 @@
 <%@ page import ="java.util.ArrayList, com.kh.community.cPost.model.vo.*"%> 
 <%
 	Cpost c =(Cpost)request.getAttribute("c");
-	// 번호, 작성자, 제목, 내용, 조회수, 작성일 ?0? 이거 어디서 담아온건데?
+	// 번호, 작성자, 제목, 내용, 조회수, 작성일 ?0? 
 	Attachment at = (Attachment)request.getAttribute("at");
-	ArrayList<Attachment> list = (ArrayList<Attachment>)request.getAttribute("list");
 
 %>
 
@@ -116,6 +115,7 @@
     #img1{
     margin:auto;
     }
+    #btn1{margin-left: 15px;}
 </style>
 
 </head>
@@ -131,8 +131,6 @@
         <br>
         <div class="inner">
             <button onclick="location.href='<%= contextPath%>/list.cp?currentPage=1'" id="btn1" class="submitB" style=" text-align:center; width: 55px;  font-size:13px; background:lightgray; border: 25px; border-radius: 3px;" > 목록 </button>
-            <button id="btn2" class="submitB" style=" text-align:center; width: 55px;  font-size:13px; background:lightgray; border: 25px; border-radius: 3px;" > 이전글 </button>
-            <button id="btn3" class="submitB" style=" text-align:center; width: 55px;  font-size:13px; background:lightgray; border: 25px; border-radius: 3px;" > 다음글 </button>
             <%if(loginUser != null) {%>
             	<button type="submit" id="btn4" class="report-button report-board btn-danger" data-toggle="modal" data-target="#reportForm" style="float: right; margin-right:20px; text-align:center; width: 70px;  font-size:13px;  border: 25px; border-radius: 3px;" > 신고하기 </button>
            	
@@ -175,14 +173,8 @@
 		            <tr style="border:1px solid rgb(180, 178, 178)">
 		                <th style="border:1px solid rgb(180, 178, 178)" >첨부파일</th>
 		                <td id="img1" colspan="3">
-		                       <!-- 첨부파일이 없는 이유-->
-		                       <% if(list.isEmpty()){ %>
-		                       		첨부파일이 없습니다. 
-		                       <%}else{ %>
-			                       <!-- 첨부파일이 있는 경우 -->
-			                       <img src="<%= contextPath %>/<%=list.get(0).getFilePath() + list.get(0).getChangeName() %>" width=790px; height=341px;>
-							   <% } %>
-		                </td>
+			                  <img src="<%= contextPath %>/<%=at.getFilePath() + at.getChangeName() %>" width=790px; height=341px;>
+						</td>
 		            </tr>
                 
                 </table>
@@ -205,10 +197,8 @@
 	                        <td><button onclick="insertReply();">댓글등록</button></td>
 	
 	                    </tr>
+	                    
 	                    <%}else{ %>
-	
-	
-	                    <!--로그인이 되어있지 않은 경우-->
 	                    <tr>
 	                        <th>댓글작성</th>
 	                        <td>

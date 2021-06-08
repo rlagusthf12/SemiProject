@@ -54,7 +54,7 @@ public class adoptInsertController extends HttpServlet {
 			Adopt a = new Adopt();
 			a.setAdoptWriter(multiRequest.getParameter("memNo"));
 			// 여기에다가 보호소 번호를 가져와서 담아야함 
-			a.setMemNo("shelterNo");
+			a.setMemNo(multiRequest.getParameter("shelterNo"));
 			a.setAdoptTitle(multiRequest.getParameter("adoptTitle"));
 			a.setAdoptContent(multiRequest.getParameter("content"));
 			

@@ -217,7 +217,7 @@ public class cPostDao {
 		// insert문 여러번 =>(할때마다)처리된 행수가 돌아옴
 		int result = 0;
 		PreparedStatement pstmt = null;
-		String sql = prop.getProperty("insertAttachmentList");
+		String sql = prop.getProperty("insertAttachmentCpList");
 		
 		try {
 			

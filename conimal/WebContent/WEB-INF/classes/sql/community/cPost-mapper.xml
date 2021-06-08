@@ -202,16 +202,6 @@
 		    )
 	</entry>
 	
-	<entry key="selectAttachment">
-		SELECT 
-		       FILE_NO
-		     , ORIGIN_NAME
-		     , CHANGE_NAME
-		     , FILE_PATH
-		  FROM ATTACHMENT 
-		 WHERE REF_NO = ?
-	</entry>
-	
 	<entry key="deleteCpost">
 		DELETE 
 			FROM C_POST
@@ -229,7 +219,31 @@
 			 FROM REPLY
 		WHERE CPOST_NO=?
 	</entry>
-	
+	<entry key="insertAttachmentCpList">
+		INSERT 
+		   INTO ATTACHMENT
+		   (
+		      FILE_NO
+		    , REF_TYPE 
+		    , REF_NO
+		    , ORIGIN_NAME
+		    , CHANGE_NAME
+		    , FILE_PATH
+		    , UPLOAD_DATE
+		    , FILE_LEVEL
+		    )
+		    VALUES
+		    (
+		      SEQ_FNO.NEXTVAL
+		    , 'POST'
+		    , SEQ_CPNO.CURRVAL
+		    , ?
+		    , ?
+		    , ?
+		    , SYSDATE
+		    , ?
+		    )
+	</entry>
 	
 	
 	

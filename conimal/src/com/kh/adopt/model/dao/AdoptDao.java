@@ -15,6 +15,7 @@ import com.kh.adopt.model.vo.Adopt;
 import com.kh.adopt.model.vo.Attachment;
 import com.kh.common.model.vo.PageInfo;
 
+
 public class AdoptDao {
 
 	private Properties prop = new Properties();
@@ -143,14 +144,14 @@ public class AdoptDao {
 			
 			if(rset.next()) {
 				a = new Adopt(rset.getInt("adopt_no"),
-						      rset.getString("adopt_writer"),
-						      rset.getString("mem_no"),
-						      rset.getString("adopt_title"),
-						      rset.getString("adopt_content"),
-						      rset.getDate("adopt_date"),
-						      rset.getInt("count")
-						      );
-			}
+					      rset.getString("adopt_writer"),
+					      rset.getString("mem_no"),
+					      rset.getString("adopt_title"),
+					      rset.getString("adopt_content"),
+					      rset.getDate("adopt_date"),
+					      rset.getInt("count")
+					      );
+		}
 			
 			
 		} catch (SQLException e) {
@@ -172,7 +173,6 @@ public class AdoptDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, adoptNo);
-			// 첨부파일이 없을 수도 있지
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
@@ -264,7 +264,7 @@ public class AdoptDao {
 		// insert문 여러번 =>(할때마다)처리된 행수가 돌아옴
 		int result = 0;
 		PreparedStatement pstmt = null;
-		String sql = prop.getProperty("insertAttachmentList");
+		String sql = prop.getProperty("insertAttachmentAdList");
 		
 		try {
 			
@@ -294,7 +294,7 @@ public class AdoptDao {
 	}
 	
 	
-	public int updateCpost(Connection conn, Adopt a) {
+	public int updateAdopt(Connection conn, Adopt a) {
 		// update문 => 처리된 행수가 돌아옴 
 		int result =0 ;
 		PreparedStatement pstmt = null;
@@ -303,10 +303,10 @@ public class AdoptDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1,Integer.parseInt(a.getMemNo()));
-			pstmt.setString(2, a.getAdoptTitle());
-			pstmt.setString(3, a.getAdoptContent());
-			pstmt.setInt(4,a.getAdoptNo());
+			
+			pstmt.setString(1, a.getAdoptTitle());
+			pstmt.setString(2, a.getAdoptContent());
+			pstmt.setInt(3,a.getAdoptNo());
 			
 			result = pstmt.executeUpdate();
 			
@@ -319,6 +319,7 @@ public class AdoptDao {
 		return result;
 	
 	}
+	
 	
 	
 	public int updateAttachment(Connection conn, Attachment at) {

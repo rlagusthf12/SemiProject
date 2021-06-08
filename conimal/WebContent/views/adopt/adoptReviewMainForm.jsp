@@ -76,7 +76,7 @@
         <p style="margin-left: 10px;">소중한 생명들의 새로운 시작을 함께 축하해주세요:)</p><br><br>
 
         <div class="cAdopt">
-            <!--여기에 검색하는 창 들어가야 하는데 이걸 Form으로 묶어줘야할지 말지..-->
+           
             <nav class="navbar justify-content-center">
             	<form class="adoptSearchF" action="<%=contextPath%>/list.ad?currentPage=1" method="post">
 		            <div class="searchWord">

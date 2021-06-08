@@ -57,14 +57,14 @@ public class AnimalInsertController extends HttpServlet {
 			String memNo = multiRequest.getParameter("memNo");
 			
 			
-			Animal an = new Animal();
-			an.setAnTitle(anTitle);
-			an.setAnPlace(anPlace);
-			an.setAnDate(anDate);
-			an.setAnSpecies(anSpecies[0]);
-			an.setAnGender(anGender[0]);
-			an.setAnContent(anContent);
-			an.setMemNo(memNo);
+			Animal a = new Animal();
+			a.setAnTitle(anTitle);
+			a.setAnPlace(anPlace);
+			a.setAnDate(anDate);
+			a.setAnSpecies(anSpecies[0]);
+			a.setAnGender(anGender[0]);
+			a.setAnContent(anContent);
+			a.setMemNo(memNo);
 			
 			Attachment at = null;
 			
@@ -79,7 +79,7 @@ public class AnimalInsertController extends HttpServlet {
 			 }
 			 
 			 // 4. 서비스요청
-			 int result = new AnimalService().insertAnimal(an, at);
+			 int result = new AnimalService().insertAnimal(a, at);
 			 
 			 if(result > 0) { // 성공 => list.bo?currentPage=1 재요청 => 리스트페이지
 				 
