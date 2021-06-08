@@ -154,7 +154,30 @@
 	    , SH_LOCAL = ?
 	  WHERE MEM_NO = ?
 	 </entry>
-
+	 
+	<entry key="selectListCountByPlace">
+		SELECT
+		       COUNT(*) COUNT
+		  FROM SHELTER
+		 WHERE SH_LOCAL = ?
+	</entry>
+	
+	<entry key="selectListByPlace">
+		SELECT *
+		  FROM (
+		        SELECT ROWNUM RNUM, A.*
+		          FROM (
+		                SELECT 
+		                       MEM_NO 
+		                     , SH_NAME
+		                  FROM SHELTER
+                 		 WHERE SH_LOCAL = ?      
+		                 ORDER
+		                    BY MEM_NO
+		                ) A
+		        )
+		 WHERE RNUM BETWEEN ? AND ?
+	</entry>
 
 	
 	

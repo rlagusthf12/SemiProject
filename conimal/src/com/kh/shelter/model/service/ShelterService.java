@@ -147,6 +147,30 @@ public int insertShelter(Member m, Shelter sh) {
 		
 	}
 
+	public int selectListCountByPlace(String place) {
+		
+		Connection conn = getConnection();
+		
+		int listCount = new ShelterDao().selectListCountByPlace(conn, place);
+		
+		close(conn);
+		
+		return listCount;
+		
+	}
+	
+	public ArrayList<Shelter> selectListByPlace(PageInfo pi, String place) {
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Shelter> list = new ShelterDao().selectListByPlace(conn, pi, place);
+		
+		close(conn);
+		
+		return list;
+		
+	}
+
 
 	
 

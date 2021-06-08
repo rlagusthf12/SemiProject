@@ -46,7 +46,7 @@ public class cPostDetailViewController extends HttpServlet {
 			
 			request.setAttribute("c", c);
 			request.setAttribute("list", list);
-			
+
 			request.getRequestDispatcher("views/community/cPost/cPostDetailView.jsp").forward(request, response);
 											
 			

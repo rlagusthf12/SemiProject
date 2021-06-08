@@ -72,13 +72,13 @@
 				<div class="input-group-prepend">
 					<button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown">지역</button>
 				    <div class="dropdown-menu">
-				      	<a class="dropdown-item" href="<%=contextPath%>/place.sh?place=1">서울</a>
-				      	<a class="dropdown-item" href="<%=contextPath%>/search.sh?currentPage=1&place=2">경기도</a>
-				      	<a class="dropdown-item" href="<%=contextPath%>/search.sh?currentPage=1&place=3">강원도</a>
-				      	<a class="dropdown-item" href="<%=contextPath%>/search.sh?currentPage=1&place=4">충청도</a>
-				      	<a class="dropdown-item" href="<%=contextPath%>/search.sh?currentPage=1&place=5">전라도</a>
-				      	<a class="dropdown-item" href="<%=contextPath%>/search.sh?currentPage=1&place=6">경상도</a>
-				      	<a class="dropdown-item" href="<%=contextPath%>/search.sh?currentPage=1&place=7">제주</a>
+				      	<a class="dropdown-item" href="<%=contextPath%>/search.shp?currentPage=1&place=서울">서울</a>
+				      	<a class="dropdown-item" href="<%=contextPath%>/search.shp?currentPage=1&place=경기도">경기도</a>
+				      	<a class="dropdown-item" href="<%=contextPath%>/search.shp?currentPage=1&place=강원도">강원도</a>
+				      	<a class="dropdown-item" href="<%=contextPath%>/search.shp?currentPage=1&place=충청도">충청도</a>
+				      	<a class="dropdown-item" href="<%=contextPath%>/search.shp?currentPage=1&place=전라도">전라도</a>
+				      	<a class="dropdown-item" href="<%=contextPath%>/search.shp?currentPage=1&place=경상도">경상도</a>
+				      	<a class="dropdown-item" href="<%=contextPath%>/search.shp?currentPage=1&place=제주">제주</a>
 				    </div>
 				</div>
 				<!--

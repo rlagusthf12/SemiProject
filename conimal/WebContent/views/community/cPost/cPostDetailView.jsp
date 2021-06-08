@@ -7,7 +7,6 @@
 	Attachment at = (Attachment)request.getAttribute("at");
 	ArrayList<Attachment> list = (ArrayList<Attachment>)request.getAttribute("list");
 
-
 %>
 
 <!DOCTYPE html>
@@ -122,6 +121,8 @@
 </head>
 <body>
 <%@ include file="../../common/menubar.jsp" %>
+	
+	
     <div class="outer" style="margin: auto; margin-top:50px;  margin-bottom: 50px;">
         <h6 style="margin-left: 10px;">커뮤니티 > 자유게시판</h6>
        
@@ -134,17 +135,17 @@
             <button id="btn3" class="submitB" style=" text-align:center; width: 55px;  font-size:13px; background:lightgray; border: 25px; border-radius: 3px;" > 다음글 </button>
             <%if(loginUser != null) {%>
             	<button type="submit" id="btn4" class="report-button report-board btn-danger" data-toggle="modal" data-target="#reportForm" style="float: right; margin-right:20px; text-align:center; width: 70px;  font-size:13px;  border: 25px; border-radius: 3px;" > 신고하기 </button>
-           	<%} %>
            	
-           	<script>
-            	$(function(){
-            		$(document).on("click", ".report-board", function () {
-                		$(".post-info #postNo").val(<%=c.getcPostNo()%>);
-                		$(".post-info #refType").val("POST");
-                		$(".post-info #memNo").val(<%=loginUser.getMemNo()%>);
-                	}); 
-            	})
-            </script>
+	           	<script>
+	            	$(function(){
+	            		$(document).on("click", ".report-board", function () {
+	                		$(".post-info #postNo").val(<%=c.getcPostNo()%>);
+	                		$(".post-info #refType").val("POST");
+	                		$(".post-info #memNo").val(<%=loginUser.getMemNo()%>);
+	                	}); 
+	            	})
+	            </script>
+           	<%} %>
            
             <br><br>
             <h5 id="cPostTitle" style="text-align:left; font-weight: bolder; margin-left: 10px;"><%= c.getcPostTitle() %></h5>
@@ -242,12 +243,6 @@
             		setInterval(selectReplyList,1000);
             		
             		
-            		$(document).on("click", ".report-reply", function(){
-            			$(".post-info #postNo").val($(this).parent().siblings("input").val());
-                		$(".post-info #refType").val("REPLY");
-                		$(".post-info #memNo").val(<%=loginUser.getMemNo()%>);
-            		})
-            		
             		
             		
             	})
@@ -283,6 +278,7 @@
             				console.log(list);//[{}, {}, ..] | []
             				
             				var result="";
+            				
             				for(var i in list){
             					result +=  "<tr>"
             							  + 	"<input type='hidden' value='" + list[i].reNo + "'>"
@@ -311,6 +307,15 @@
             			}
             	}
             </script>
+            <%if(loginUser != null) {%>
+	            <script>
+		    		$(document).on("click", ".report-reply", function(){
+		    			$(".post-info #postNo").val($(this).parent().siblings("input").val());
+		        		$(".post-info #refType").val("REPLY");
+		        		$(".post-info #memNo").val(<%=loginUser.getMemNo()%>);
+		    		})
+	            </script>
+            <%} %>
         
 		</div>
 		<br>
