@@ -62,7 +62,12 @@ public ArrayList<Shelter> selectList(PageInfo pi) {
 		close(conn);
 		return n;
 	}
-
+	public ArrayList<Shelter> selectAllShelters () {
+		Connection conn = getConnection();
+		ArrayList<Shelter> list = new ShelterDao().selectAllShelters(conn);
+		close(conn);
+		return list;
+	}
 	
 	
 	public int approveShelter(String memNo, String admission) {
