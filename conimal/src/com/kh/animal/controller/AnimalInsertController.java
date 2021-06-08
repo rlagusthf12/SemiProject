@@ -75,6 +75,7 @@ public class AnimalInsertController extends HttpServlet {
 				 at.setOriginName(multiRequest.getOriginalFileName("upfile")); // 원본명
 				 at.setChangeName(multiRequest.getFilesystemName("upfile")); // 수정명(실제 서버에 업로드되어있는 파일명)
 				 at.setFilePath("resources/board_upfiles/");
+				 at.setRefType("ANIMAL");
 				 
 			 }
 			 

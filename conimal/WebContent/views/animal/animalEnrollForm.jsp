@@ -105,7 +105,7 @@
                 <tr>
                     <th>사진첨부</th>
                         <td>
-                            <input type="file">
+                            <input type="file" name="upfile">
                         </td>
                 </tr>
 

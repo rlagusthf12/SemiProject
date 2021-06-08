@@ -185,11 +185,13 @@
 		     , ORIGIN_NAME
 		     , CHANGE_NAME
 		     , FILE_PATH
+		     , REF_TYPE
 		     )
 		     VALUES
 		     (
 		     SEQ_FNO.NEXTVAL
 		     , SEQ_ANO.CURRVAL
+		     , ?
 		     , ?
 		     , ?
 		     , ?

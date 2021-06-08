@@ -422,6 +422,7 @@ public ArrayList<Animal> selectAnimalList(Connection conn){
 			pstmt.setString(1, at.getOriginName());
 			pstmt.setString(2, at.getChangeName());
 			pstmt.setString(3, at.getFilePath());
+			pstmt.setString(4, at.getRefType());
 			
 			result = pstmt.executeUpdate();
 			
