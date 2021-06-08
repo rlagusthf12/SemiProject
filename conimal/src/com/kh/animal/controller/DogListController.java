@@ -64,6 +64,7 @@ public class DogListController extends HttpServlet {
 		
 		ArrayList<Animal> list = new AnimalService().selectDogList(pi);
 		
+		
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
 		

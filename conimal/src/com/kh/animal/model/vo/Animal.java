@@ -16,6 +16,10 @@ public class Animal {
 	private String refType; // 게시글 유형
 	private int anCount; // 조회수
 	
+	private String changeName;
+	private String filePath;
+	
+
 	private String shName; // 보호소명
 	
 	public Animal() {}
@@ -24,6 +28,15 @@ public class Animal {
 		super();
 		this.anNo = anNo;
 		this.anTitle = anTitle;
+	}
+	
+
+	public Animal(int anNo, String anTitle, String changeName, String filePath) {
+		super();
+		this.anNo = anNo;
+		this.anTitle = anTitle;
+		this.changeName = changeName;
+		this.filePath = filePath;
 	}
 
 	// 글번호, 보호소명, 성별, 발견날짜, 발견장소, 글내용
@@ -65,6 +78,22 @@ public Animal(int anNo, String anTitle, String anPlace, String anDate, String an
 		this.anCount = anCount;
 	}
 
+	public String getChangeName() {
+		return changeName;
+	}
+	
+	public void setChangeName(String changeName) {
+		this.changeName = changeName;
+	}
+	
+	public String getFilePath() {
+		return filePath;
+	}
+	
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
+	
 	public int getAnNo() {
 		return anNo;
 	}

@@ -440,6 +440,10 @@ public ArrayList<Shelter> selectAllShelters(Connection conn){
 		return list;
 		
 	}
+	
+
+	   
+	
 
 	
 

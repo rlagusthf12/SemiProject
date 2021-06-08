@@ -38,8 +38,12 @@
 		                SELECT 
 		                       AN_NO 
 		                     , AN_TITLE
+                             , CHANGE_NAME
+                             , FILE_PATH
 		                  FROM ANIMAL
+                          JOIN ATTACHMENT USING(REF_TYPE)
 		                 WHERE AN_SPECIES = '강아지'
+                           AND REF_NO = AN_NO
 		                 ORDER
 		                    BY AN_WRITEDATE DESC
 		                ) A
