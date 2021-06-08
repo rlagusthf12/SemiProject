@@ -61,7 +61,7 @@
 			<%} else { %>
 				<%for(Animal a : list) {%>
 					<div class="pet" style="text-align: center;">
-						<a href="<%=contextPath%>/detail.an?ano=<%=a.getAnNo()%>" ><img src="resources/images/cat.jpg" class="img-thumbnail" alt="Cinque Terre"></a><br>
+						<a href="<%=contextPath%>/detail.ao?ano=<%=a.getAnNo()%>" ><img src="resources/images/cat.jpg" class="img-thumbnail" alt="Cinque Terre"></a><br>
 						<%=a.getAnTitle() %>
 					</div>
 				<%} %>	

@@ -51,8 +51,9 @@
     <div class="body">
         <h2 align="center">보호중인 동물 수정하기</h2>
         <br>
-        <form action="<%= contextPath %>/update.ao" id="animal-updateForm" method="post" enctype="multipart/form-data">
-            <input type=hidden name="ano" value="<%=a.getAnNo()%>">
+        <form action="<%=contextPath%>/update.ao" id="animal-updateForm" method="post">       
+            <input type="hidden" name="anNo" value="<%=a.getAnNo()%>">
+           
 			<h3 align="center">등록 정보 입력</h3>
             <hr>
             <table>

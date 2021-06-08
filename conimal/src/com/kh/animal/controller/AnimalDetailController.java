@@ -14,7 +14,7 @@ import com.kh.animal.model.vo.Animal;
 /**
  * Servlet implementation class DogDetailController
  */
-@WebServlet("/detail.an")
+@WebServlet("/detail.ao")
 public class AnimalDetailController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
