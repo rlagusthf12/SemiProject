@@ -77,7 +77,7 @@
 
 			<!--현재 로그인한 사용자가 글작성자일 경우-->
 			<% if(loginUser != null && loginUser.getMemCode() == 2 && loginUser.getMemName().equals(a.getShName())) { %>
-			<a href="" class="btn btn-warning btn-sm">수정하기</a>
+			<a href="<%=contextPath %>/updateForm.ao?ano=<%=a.getAnNo()%>" class="btn btn-warning btn-sm">수정하기</a>
 			<a href="" class="btn btn-danger btn-sm">삭제하기</a>
 			<% } %>
 

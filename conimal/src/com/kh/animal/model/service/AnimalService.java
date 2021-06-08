@@ -189,5 +189,25 @@ public ArrayList<Animal> selectAnimalList(){
 		return result1 * result2;
 		
 	}
+	
+	public int updateAnimal(Animal a) {
+		Connection conn = getConnection();
+		int result = new AnimalDao().updateAnimal(conn, a);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+	
+	public Attachment selectAttachment(int anNo) {
+		Connection conn = getConnection();
+		Attachment at = new AnimalDao().selectAttachment(conn, anNo);
+		close(conn);
+		return at;
+	}
 
 }

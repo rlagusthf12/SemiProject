@@ -74,6 +74,7 @@
 	<entry key="selectAnimal">
 		SELECT
 		       AN_NO
+		     , AN_TITLE  
 		     , SH_NAME
 		     , AN_GENDER
 		     , AN_DATE
@@ -196,6 +197,26 @@
 		     , ?
 		     , ?
 		     )
+	</entry>
+	
+	<entry key="updateAnimal">
+		UPDATE ANIMAL
+		   SET AN_TITLE = ?
+		     , AN_PLACE = ?
+		     , AN_SPECIES = ?
+		     , AN_GENDER = ?
+		     , AN_CONTENT = ?
+		 WHERE AN_NO = ? 
+	</entry>
+
+	<entry key="selectAttachment">
+		SELECT 
+			   FILE_NO
+			 , ORIGIN_NAME
+			 , CHANGE_NAME
+			 , FILE_PATH
+	      FROM ATTACHMENT
+	     WHERE REF_NO = ? 
 	</entry>
 	
 	

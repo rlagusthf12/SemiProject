@@ -219,6 +219,7 @@ public ArrayList<Animal> selectAnimalList(Connection conn){
 			
 			if(rset.next()) {
 				a = new Animal(rset.getInt("AN_NO"),
+							   rset.getString("AN_TITLE"),
 						       rset.getString("SH_NAME"),
 							   rset.getString("AN_GENDER"),
 							   rset.getString("AN_DATE"),
@@ -433,6 +434,62 @@ public ArrayList<Animal> selectAnimalList(Connection conn){
 		}
 		
 		return result;
+		
+	}
+	
+	public int updateAnimal(Connection conn, Animal a) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateAnimal");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, a.getAnTitle());
+			pstmt.setString(2, a.getAnPlace());
+			pstmt.setString(3, a.getAnSpecies());
+			pstmt.setString(4, a.getAnGender());
+			pstmt.setInt(5, a.getAnNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	public Attachment selectAttachment(Connection conn, int anNo) {
+		// select문 => ResultSet(한행)
+		Attachment at = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectAttachment");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, anNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				at = new Attachment();
+				at.setFileNo(rset.getInt("file_no"));
+				at.setOriginName(rset.getString("origin_name"));
+				at.setChangeName(rset.getString("change_name"));
+				at.setFilePath(rset.getString("file_path"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return at;
 		
 	}
 	
