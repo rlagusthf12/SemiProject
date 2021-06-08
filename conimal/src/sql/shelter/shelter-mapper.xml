@@ -148,7 +148,12 @@
 				   		  				?, 
 				   		  				?)
 	 </entry>
-	 
+	 <entry key="selectAllShelters">
+		SELECT 
+		      MEM_NO
+		    , SH_NAME
+		FROM SHELTER
+	</entry>
 	 <entry key="updateShelter">
 	 UPDATE SHELTER
 	    SET SH_PHONE = ?
