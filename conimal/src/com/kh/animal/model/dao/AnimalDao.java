@@ -448,7 +448,8 @@ public ArrayList<Animal> selectAnimalList(Connection conn){
 			pstmt.setString(2, a.getAnPlace());
 			pstmt.setString(3, a.getAnSpecies());
 			pstmt.setString(4, a.getAnGender());
-			pstmt.setInt(5, a.getAnNo());
+			pstmt.setString(5, a.getAnContent());
+			pstmt.setInt(6, a.getAnNo());
 			
 			result = pstmt.executeUpdate();
 			

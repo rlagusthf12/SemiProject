@@ -45,7 +45,7 @@ public class cPostDetailViewController extends HttpServlet {
 			Attachment at = new cPostService().selectAttachment(cPostNo);
 			
 			request.setAttribute("c", c);
-			request.setAttribute("list", list);
+			request.setAttribute("at", at);
 
 			request.getRequestDispatcher("views/community/cPost/cPostDetailView.jsp").forward(request, response);
 											

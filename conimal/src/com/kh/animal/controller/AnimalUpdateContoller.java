@@ -33,20 +33,20 @@ public class AnimalUpdateContoller extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 		
-		int anNo = Integer.parseInt(request.getParameter("ano"));
+		int anNo = Integer.parseInt(request.getParameter("anNo"));
 		String anTitle = request.getParameter("title");
 		String anPlace = request.getParameter("place");
-		String anSpecies[] = request.getParameterValues("animal");
-		String anGender[] = request.getParameterValues("gender");
+		String anSpecies = request.getParameter("animal");
+		String anGender = request.getParameter("gender");
 		String anContent = request.getParameter("content");
-		
+	
 		Animal a = new Animal();
 		a.setAnTitle(anTitle);
 		a.setAnPlace(anPlace);
-		a.setAnSpecies(anSpecies[0]);
-		a.setAnGender(anGender[0]);
+		a.setAnSpecies(anSpecies);
+		a.setAnGender(anGender);
 		a.setAnContent(anContent);
-		
+		a.setAnNo(anNo);
 		int result = new AnimalService().updateAnimal(a);
 		
 		if(result > 0) {
