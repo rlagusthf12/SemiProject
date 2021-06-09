@@ -59,8 +59,12 @@
 		                SELECT 
 		                       AN_NO 
 		                     , AN_TITLE
+		                     , CHANGE_NAME
+                             , FILE_PATH
 		                  FROM ANIMAL
+                          JOIN ATTACHMENT USING(REF_TYPE)
 		                 WHERE AN_SPECIES = '고양이'
+		                   AND REF_NO = AN_NO
 		                 ORDER
 		                    BY AN_WRITEDATE DESC
 		                ) A
@@ -84,9 +88,13 @@
 		     , AN_DATE
 		     , AN_PLACE
 		     , AN_CONTENT
-		  FROM ANIMAL
+             , CHANGE_NAME
+             , FILE_PATH
+		  FROM ANIMAL AN
 		  JOIN SHELTER USING(MEM_NO)
+          JOIN ATTACHMENT AT ON(AN.REF_TYPE = AT.REF_TYPE)
 		 WHERE AN_NO = ?
+           AND REF_NO = AN_NO
 	</entry>
 	
 	<entry key="insertBookMark">

@@ -38,7 +38,7 @@
 		<br>
 	
 		<div class="pic-area" align="center">
-			<img src="" alt="">
+			<img src="<%=contextPath%>/<%=a.getFilePath()%>/<%=a.getChangeName()%>" alt="">
 		</div>
 	
 		<br>

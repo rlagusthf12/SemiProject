@@ -30,6 +30,21 @@ public class Animal {
 		this.anTitle = anTitle;
 	}
 	
+	
+
+	public Animal(int anNo, String anTitle, String shName, String anGender, String anDate, String anPlace, 
+				  String anContent, String changeName, String filePath) {
+		super();
+		this.anNo = anNo;
+		this.anTitle = anTitle;
+		this.shName = shName;
+		this.anGender = anGender;
+		this.anDate = anDate;
+		this.anPlace = anPlace;
+		this.anContent = anContent;
+		this.changeName = changeName;
+		this.filePath = filePath;
+	}
 
 	public Animal(int anNo, String anTitle, String changeName, String filePath) {
 		super();

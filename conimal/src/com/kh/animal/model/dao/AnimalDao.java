@@ -138,7 +138,9 @@ public class AnimalDao {
 			
 			while(rset.next()) {
 				list.add(new Animal(rset.getInt("AN_NO"),
-									rset.getString("AN_TITLE")));
+									rset.getString("AN_TITLE"),
+									rset.getString("CHANGE_NAME"),
+									rset.getString("FILE_PATH")));
 			}
 			
 		} catch (SQLException e) {
@@ -226,7 +228,9 @@ public ArrayList<Animal> selectAnimalList(Connection conn){
 							   rset.getString("AN_GENDER"),
 							   rset.getString("AN_DATE"),
 							   rset.getString("AN_PLACE"),
-							   rset.getString("AN_CONTENT"));
+							   rset.getString("AN_CONTENT"),
+							   rset.getString("CHANGE_NAME"),
+							   rset.getString("FILE_PATH"));
 			}
 			
 		} catch (SQLException e) {

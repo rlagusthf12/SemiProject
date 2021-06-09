@@ -37,7 +37,7 @@
 		<br>
 	
 		<div class="pic-area" align="center">
-			<img src="" alt="">
+			<img src="resources/images/dog.png" alt="">
 		</div>
 	
 		<br>
