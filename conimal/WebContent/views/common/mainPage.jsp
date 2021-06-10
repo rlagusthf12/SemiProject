@@ -1,9 +1,39 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="com.kh.attachment.model.vo.Attachment,com.kh.banner.model.service.BannerService
     							,com.kh.animal.model.vo.Animal, com.kh.animal.model.service.AnimalService
-    							,java.util.ArrayList"%>
+    							,java.util.ArrayList,com.kh.common.model.vo.PageInfo,com.kh.adopt.model.service.AdoptService
+    							,com.kh.adopt.model.vo.Adopt"%>
     <% Attachment at = new BannerService().selectBanner("MAINPAGE");
-    	ArrayList<Animal> list = new AnimalService().selectAnimalList();%>
+	
+	int listCount; 		
+	int currentPage;	
+	int pageLimit;		
+	int boardLimit;			
+	int maxPage;		
+	int startPage;		
+	int endPage;	
+	
+	listCount = new AnimalService().selectDogCount();	
+	currentPage = 1; pageLimit = 10; boardLimit = 4;
+	
+	maxPage = (int)Math.ceil((double)listCount / boardLimit);	
+	startPage = (currentPage - 1) / pageLimit * pageLimit + 1;	
+	endPage = startPage + pageLimit - 1;
+	
+	if(endPage > maxPage) {
+		endPage = maxPage;
+	}
+	
+	PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
+	ArrayList<Animal> list = new AnimalService().selectDogList(pi);
+	
+	String keyword="";	
+	listCount = new AdoptService().selectListCount(keyword);
+	
+	PageInfo pi1 = new PageInfo(listCount,currentPage,pageLimit,boardLimit,maxPage,startPage, endPage);
+	ArrayList<Adopt> list1 = new AdoptService().selectList(keyword, pi1);
+	
+	%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,21 +56,21 @@
         z-index: 1;
     }
      .animal{
-        height: 20%;
+        height: 25%;
         
      }
      .adoption{
-        height: 20%;
+        height: 25%;
      }
     
     .extitle{
-        height: 15%;
+        height: 13%;
         color: rgb(94, 94, 94);
         font-family: HanSans; 
         font-weight: bold;
         text-align: left; 
         width: 100%;
-        margin: 10px;
+        
     }
     .careingimg{
          height: 65%;
@@ -50,7 +80,8 @@
     .more{
         height: 15%;
         width: 100%;
-        margin: 30px;
+        margin-top: 70px;
+        margin-left: 40px;
     }
     .animalimg{
         width: 23%;
@@ -102,28 +133,31 @@
             <% }%>
             <br><br><br><br>
             <div class="animal">
-
                 <div class="extitle">
                     <h3>보호중인 아이들</h3>
                 </div> 
                 <div class="careingimg">
-                    <div class="animalimg">
-                        <image src="resources/images/dog.png" ></image>
-                    </div>
-                    <div class="animalimg">
-                        <image src="resources/images/dog.png"></image>
-                    </div>
-                    <div class="animalimg">
-                        <image src="resources/images/dog.png" ></image>
-                    </div>
-                    <div class="animalimg">
-                        <image src="resources/images/dog.png"></image>
-                    </div>
+                   
+                       <%if(list.isEmpty()) {%>
+				조회된 결과가 없습니다
+			<%} else { %>
+				<%for(Animal a : list) {%>
+				 <div class="animalimg">
+					<div class="pet" style="text-align: center;">
+						<a href="<%=contextPath%>/detail.ao?ano=<%=a.getAnNo()%>" ><img src="<%=contextPath%>/<%=a.getFilePath()%>/<%=a.getChangeName()%>" class="img-thumbnail" alt="Cinque Terre"></a><br>
+						<%=a.getAnTitle() %>
+					</div>
+					 </div>
+				<%} %>	
+			<%} %>
+                   
+                   
 
                 </div>
                 
                 <div class="more" align="right">
-                    <button>더보기</button>
+                    <button onclick= "location.href='<%=contextPath%>/list.dog?currentPage=1'">더보기</button>
+                    
                 </div>
             </div>
             <br><br><br><br>
@@ -133,25 +167,24 @@
                     <h3>입양 후기</h3>
                 </div> 
                 <div class="careingimg">
-                    <div class="animalimg">
-                        <image src="resources/images/dog.png"></image>
-                    </div>
-                    <div class="animalimg">
-                        <image src="resources/images/dog.png"></image>
-                    </div>
-                    <div class="animalimg">
-                        <image src="resources/images/dog.png"></image>
-                    </div>
-                    <div class="animalimg">
-                        <image src="resources/images/dog.png"></image>
-                    </div>
-
+                  
+                      <%if(list1.isEmpty()) {%>
+				조회된 결과가 없습니다
+			<%} else { %>
+				<%for(Adopt a1 : list1) {%>
+				 <div class="animalimg">
+					<div class="pet" style="text-align: center;">					
+						<a href="<%=contextPath%>/detail.ad?ano=<%=a1.getAdoptNo()%>" ><img src="<%=contextPath%>/<%=a1.getFilePath()%>/<%=a1.getChangeName()%>" class="img-thumbnail" alt="Cinque Terre"></a><br>
+						<%=a1.getAdoptTitle() %>
+					</div>
+					 </div>
+				<%} %>	
+			<%} %>
+                   
+                   </div>
                 <div class="more" align="right">
-                    <button>더보기</button>
+                   <button onclick= "location.href='<%=contextPath%>/list.ad?currentPage=1'">더보기</button>
                 </div>
-
-                </div>
-
             </div>
             </div>
        

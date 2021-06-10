@@ -130,12 +130,11 @@
   <table class="list-area">
             <thead>
                 <tr>
-                    <th width="50">No.</th>
-                    <th width="200">사진</th>
-                    <th width="100">보호소명</th>
-                    <th width="175">시설 연락처</th>
-                    <th width="400">내용</th>
-                    <th width="100">등록일자</th>
+                    <th width="60">No.</th>                   
+                    <th width="150">보호소명</th>
+                    <th width="210">시설 연락처</th>
+                    <th width="450">내용</th>
+                    <th width="160">등록일자</th>
                 </tr>
             </thead>
              <tbody>
@@ -146,14 +145,7 @@
             <% } else {%>
             <% for(Donation dona: list){ %>
                  <tr>
-		                 <td><%=dona.getDoNo()%></td>
-		                
-						 <%if(dona.getFilePath()==null){%>
-						 <td><img src="<%=contextPath %>/<%=a%>" width="200" height="200"></td>
-						<%} else {%> 
-						<td><img src="<%=contextPath %>/<%=dona.getFilePath() + dona.getChangeName()%>" width="200" height="150"></td>
-						<% }%>
-						
+		                 <td><%=dona.getDoNo()%></td>      
 		                 <td><%=dona.getShName()%></td>
 		                  <td><%=dona.getShPhone()%></td>
 		                   <td><%=dona.getDoContent()%></td>

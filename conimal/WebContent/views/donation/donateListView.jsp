@@ -66,6 +66,7 @@
 							<td><%=d.getDoCount()     %></td>
 							<td><%=d.getDoWriteDate() %></td>
 						</tr>
+						
 					<%} %>
 				<%} %>
 			</tbody>

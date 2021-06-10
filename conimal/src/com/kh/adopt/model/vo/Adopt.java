@@ -12,6 +12,8 @@ public class Adopt {
 	private Date adoptDate;
 	private int count;
 	private String refType;
+	private String changeName;
+	private String filePath;
 	
 	public Adopt(){}
 
@@ -37,6 +39,7 @@ public class Adopt {
 		this.adoptDate = adoptDate;
 		this.count = count;
 	}
+
 	
 	
 	public Adopt(int adoptNo, String adoptWriter, String adoptTitle, String adoptContent, Date adoptDate, int count) {
@@ -48,7 +51,19 @@ public class Adopt {
 		this.adoptDate = adoptDate;
 		this.count = count;
 	}
+	public Adopt(int adoptNo, String adoptWriter, String adoptTitle, String adoptContent, Date adoptDate, int count,String changeName, String filePath) {
+		super();
+		this.adoptNo = adoptNo;
+		this.adoptWriter = adoptWriter;
+		this.adoptTitle = adoptTitle;
+		this.adoptContent = adoptContent;
+		this.adoptDate = adoptDate;
+		this.count = count;
+		this.changeName = changeName;
+		this.filePath = filePath;
 
+	}
+	
 	public Adopt(int adoptNo, String adoptWriter, String memNo, String adoptTitle, String adoptContent, Date adoptDate,
 			int count) {
 		super();
@@ -123,6 +138,22 @@ public class Adopt {
 
 	public void setRefType(String refType) {
 		this.refType = refType;
+	}
+
+	public String getChangeName() {
+		return changeName;
+	}
+
+	public void setChangeName(String changeName) {
+		this.changeName = changeName;
+	}
+
+	public String getFilePath() {
+		return filePath;
+	}
+
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
 	}
 
 	@Override

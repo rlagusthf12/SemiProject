@@ -12,6 +12,8 @@ import javax.servlet.http.HttpSession;
 
 import com.kh.member.model.service.MemberService;
 import com.kh.member.model.vo.Member;
+import com.kh.shelter.model.service.ShelterService;
+import com.kh.shelter.model.vo.Shelter;
 
 /**
  * Servlet implementation class LoginController
@@ -40,7 +42,7 @@ public class LoginController extends HttpServlet {
 		
 		
 		Member loginUser = new MemberService().loginMember(memId,memPwd);
-		
+		Shelter sh = new ShelterService().selectShelter(String.valueOf(loginUser.getMemNo()));
 		
 	
 		/*
@@ -57,9 +59,27 @@ public class LoginController extends HttpServlet {
 		 *		   데이터를 지우고자 한다면 .romoveAttribute("키", 밸류값)
 		 *
 		 */
-		
+		if(loginUser.getMemCode()==2) {
+			if(loginUser.getAdmission().equals("N")) { //로그인 실패 => 에러 페이지 응답				
+				request.setAttribute("errorMsg", "승인 신청 대기중");
+				// 응답 페이지 jsp에게 위임시 필요한 객체 (RequestDispatcher)
+				// 포워드 방식 (응답뷰 지정을 위한) : 해당 경로로 선택된 뷰가 보여질 뿐 url은 절대 변경되지 않음!!
+				RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
+				view.forward(request, response);
+			}else { // 로그인 성공 => index페이지가 보여짐(원래 메인 화면)
+				
+				// Servlet에서 JSP내장객체인 session에 접근하고자 한다면 우선 세션 객체를 얻어와야됨!
+				HttpSession session = request.getSession();
+				session.setAttribute("loginUser", loginUser);
+				session.setAttribute("alertMsg", "성공적으로 로그인됐습니다!");
+				
+			
+				response.sendRedirect(request.getContextPath());
+			}
+		}
+		else {
 		if(loginUser == null) { //로그인 실패 => 에러 페이지 응답
-			request.setAttribute("errorMsg", "로그인 실패했다!");
+			request.setAttribute("errorMsg", "로그인 실패");
 			// 응답 페이지 jsp에게 위임시 필요한 객체 (RequestDispatcher)
 			// 포워드 방식 (응답뷰 지정을 위한) : 해당 경로로 선택된 뷰가 보여질 뿐 url은 절대 변경되지 않음!!
 			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
@@ -73,6 +93,7 @@ public class LoginController extends HttpServlet {
 			
 		
 			response.sendRedirect(request.getContextPath());
+		}
 		}
 		
 	}

@@ -146,13 +146,7 @@ public int selectListCount(Connection conn) {
 									rset.getString("ref_type"),
 									rset.getInt("do_count"),
 									rset.getString("sh_name"),
-									rset.getString("sh_phone"),
-									rset.getInt("file_no"),
-									rset.getInt("ref_no"),
-									rset.getString("origin_name"),
-									rset.getString("change_name"),
-									rset.getString("file_path"),
-									rset.getDate("upload_date")									
+									rset.getString("sh_phone")															
 									));
 			}
 			
@@ -190,13 +184,8 @@ public int selectListCount(Connection conn) {
 						rset.getString("ref_type"),
 						rset.getInt("do_count"),
 						rset.getString("sh_name"),
-						rset.getString("sh_phone"),
-						rset.getInt("file_no"),
-						rset.getInt("ref_no"),
-						rset.getString("origin_name"),
-						rset.getString("change_name"),
-						rset.getString("file_path"),
-						rset.getDate("upload_date")		);
+						rset.getString("sh_phone")
+						);
 			}
 			
 			
@@ -280,7 +269,8 @@ public ArrayList<Donation> selectList(Connection conn, PageInfo pi) {
 									  rset.getString("DO_TITLE"),
 									  rset.getString("MEM_ID"),
 									  rset.getInt("DO_COUNT"),
-									  rset.getDate("DO_WRITEDATE")));
+									  rset.getDate("DO_WRITEDATE"),
+									  rset.getString("DO_ADMISSION")));
 			}
 			
 		} catch (SQLException e) {

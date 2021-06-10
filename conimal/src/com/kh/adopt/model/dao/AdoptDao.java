@@ -95,7 +95,9 @@ public class AdoptDao {
 						           rset.getString("adopt_title"),
 						           rset.getString("adopt_content"),
 						           rset.getDate("adopt_date"),
-						           rset.getInt("count")
+						           rset.getInt("count"),
+						           rset.getString("CHANGE_NAME"),
+						           rset.getString("FILE_PATH")
 						           ));
 			}
 			

@@ -46,6 +46,16 @@ public Donation(int doNo, String doTitle, String memNo, int doCount, Date doWrit
 		this.doWriteDate = doWriteDate;
 		
 	}
+public Donation(int doNo, String doTitle, String memNo, int doCount, Date doWriteDate, String doAdmission) {
+	super();
+	this.doNo = doNo;
+	this.doTitle = doTitle;
+	this.memNo = memNo;
+	this.doCount = doCount;
+	this.doWriteDate = doWriteDate;
+	this.doAdmission= doAdmission;
+	
+}
 public Donation(String doTitle, String shName, String shPhone, String shAddress, String doContent) {
 		super();
 		this.doTitle = doTitle;

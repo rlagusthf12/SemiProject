@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.kh.animal.model.service.AnimalService;
 import com.kh.animal.model.vo.Animal;
+import com.kh.attachment.model.vo.Attachment;
 
 /**
  * Servlet implementation class DogDetailController
@@ -36,7 +37,7 @@ public class AnimalDetailController extends HttpServlet {
 		int animalNo = Integer.parseInt(request.getParameter("ano"));
 		
 		AnimalService aService = new AnimalService();
-		
+		Attachment at = aService.selectAttachment(animalNo);
 		int result = aService.increaseCount(animalNo);
 		
 		if(result > 0) {
@@ -44,6 +45,7 @@ public class AnimalDetailController extends HttpServlet {
 			Animal a = aService.selectAnimal(animalNo);
 			
 			request.setAttribute("a", a);
+			request.setAttribute("at", at);
 			
 			request.getRequestDispatcher("views/animal/animalDetailView.jsp").forward(request, response);
 			

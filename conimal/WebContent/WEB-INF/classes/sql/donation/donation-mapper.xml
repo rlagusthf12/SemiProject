@@ -30,7 +30,8 @@
 	<entry key="selectListCount">
 		SELECT
 		       COUNT(*) COUNT
-		  FROM DONATION     
+		  FROM DONATION 
+		  WHERE DO_ADMISSION='Y'    
 	</entry>
 	
 <entry key="selectPostList">
@@ -60,20 +61,15 @@ SELECT DO_NO,
 					        	   DO_WRITEDATE,
 					        	   DO_ADMISSION,
 					        	   a.MEM_NO,
-					        	   b.REF_TYPE,
+					        	   a.REF_TYPE,
 					        	   DO_COUNT,
 					        	   SH_NAME,
-					        	   SH_PHONE,
-					        	   FILE_NO,
-					        	   REF_NO,
-					        	   ORIGIN_NAME,
-					        	   CHANGE_NAME,
-					        	   FILE_PATH,
-					        	   UPLOAD_DATE
+					        	   SH_PHONE
+					        	  
 					        	   
 					       
-							from donation a, attachment b, shelter c
-							where (a.ref_type=b.ref_type and a.do_no=b.ref_no and c.mem_no=a.mem_no) and (do_title like ? or do_content like ? or sh_name like ?)
+							from donation a, shelter c
+							where (c.mem_no=a.mem_no) and (do_title like ? or do_content like ? or sh_name like ?)
 							order by do_writedate desc
 		                ) A
 		        )
@@ -90,8 +86,10 @@ SELECT DO_NO,
 		                     , MEM_ID
 		                     , DO_COUNT
 		                     , DO_WRITEDATE
+		                     , DO_ADMISSION
 		                  FROM DONATION
 		                  JOIN MEMBER USING(MEM_NO)
+		                  WHERE DO_ADMISSION='Y'
 		                 ORDER
 		                    BY DO_WRITEDATE DESC
 		                ) A
@@ -105,20 +103,15 @@ SELECT DO_NO,
 			   DO_WRITEDATE,
 			   DO_ADMISSION,
 			   a.MEM_NO,
-			   b.REF_TYPE,
+			   a.REF_TYPE,
 			   DO_COUNT,
 			   SH_NAME,
-			   SH_PHONE,
-			   FILE_NO,
-			   REF_NO,
-			   ORIGIN_NAME,
-			   CHANGE_NAME,
-			   FILE_PATH,
-			   UPLOAD_DATE
+			   SH_PHONE
+			
 			 
 					       
 		from donation a, attachment b, shelter c
-		where (a.ref_type=b.ref_type and a.do_no=b.ref_no and c.mem_no=a.mem_no) and do_no =?
+		where (c.mem_no=a.mem_no) and do_no =?
 		order by do_writedate desc 
 	</entry>
 	<entry key="increaseCount">

@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import="com.kh.animal.model.vo.Animal, java.util.ArrayList"%>
+    import="com.kh.animal.model.vo.Animal, java.util.ArrayList,com.kh.attachment.model.vo.Attachment"%>
 <%
-	Animal a = (Animal)request.getAttribute("a");
-	ArrayList<Animal> list = (ArrayList<Animal>)request.getAttribute("list");
+	Animal a = (Animal)request.getAttribute("a");	
+    Attachment at = (Attachment)request.getAttribute("at");
 %>    
 <!DOCTYPE html>
 <html>
@@ -38,7 +38,7 @@
 		<br>
 	
 		<div class="pic-area" align="center">
-			<img src="" alt="">
+			<img src="<%=contextPath%>/<%=at.getFilePath() + at.getChangeName() %>" alt="">
 		</div>
 	
 		<br>

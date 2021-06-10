@@ -30,9 +30,12 @@
 					                  , ADOPT_CONTENT
 					                  , ADOPT_DATE
 					                  , COUNT
+					                  , CHANGE_NAME
+					                  , FILE_PATH
 					             FROM ADOPT B
 					             JOIN MEMBER M ON (ADOPT_WRITER = M.MEM_NO)
-		                         WHERE ADOPT_TITLE LIKE ? OR ADOPT_CONTENT LIKE ?
+					             JOIN ATTACHMENT A ON (B.REF_TYPE = A.REF_TYPE)
+		                         WHERE (ADOPT_TITLE LIKE ? OR ADOPT_CONTENT LIKE ?) AND A.REF_NO = B.ADOPT_NO
 		                         ORDER 
 					                BY ADOPT_DATE DESC
 					                ) A

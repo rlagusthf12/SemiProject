@@ -124,11 +124,7 @@
 		         </tbody>
 		                
         </table>
-  </div>
-  <div class="imglist" align="center">
-  	<img src="<%=contextPath %>/<%=dona.getFilePath() + dona.getChangeName()%>" width="200" height="150">   
-  </div>
-  
+  </div> 
   
   <div class="content" align="center" >
   <hr>
